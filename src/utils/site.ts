@@ -19,6 +19,8 @@ export interface Product {
   sku: string;
   slug: string;
   name: string;
+  /** Unit price from the WooCommerce catalog export, e.g. "0.50" */
+  price?: string;
   categories: string[];
   metaTitle: string;
   metaDescription: string;

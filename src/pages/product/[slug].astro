@@ -46,8 +46,9 @@ const schemas: object[] = [
       },
     ],
   },
-  // Product schema without offers/ratings: catalog prices are quote-based and
-  // no genuine review data exists (see STRUCTURED_DATA_REPORT.md).
+  // Offer uses the unit price from the WooCommerce catalog export; shipping and
+  // return details mirror the published shipping-policy and refund_returns pages.
+  // No aggregateRating: the store has no genuine review data (see STRUCTURED_DATA_REPORT.md).
   {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -58,6 +59,46 @@ const schemas: object[] = [
     description: product.metaDescription,
     brand: { '@type': 'Brand', name: site.name },
     ...(mainImage ? { image: [`${site.url}${mainImage.src}`] } : {}),
+    ...(product.price
+      ? {
+          offers: {
+            '@type': 'Offer',
+            url: `${site.url}${path}`,
+            price: product.price,
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+            itemCondition: 'https://schema.org/NewCondition',
+            priceValidUntil: '2027-12-31',
+            shippingDetails: {
+              '@type': 'OfferShippingDetails',
+              shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
+              deliveryTime: {
+                '@type': 'ShippingDeliveryTime',
+                handlingTime: {
+                  '@type': 'QuantitativeValue',
+                  minValue: 1,
+                  maxValue: 3,
+                  unitCode: 'DAY',
+                },
+                transitTime: {
+                  '@type': 'QuantitativeValue',
+                  minValue: 3,
+                  maxValue: 7,
+                  unitCode: 'DAY',
+                },
+              },
+            },
+            hasMerchantReturnPolicy: {
+              '@type': 'MerchantReturnPolicy',
+              applicableCountry: 'US',
+              returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+              merchantReturnDays: 10,
+              returnMethod: 'https://schema.org/ReturnByMail',
+              returnFees: 'https://schema.org/FreeReturn',
+            },
+          },
+        }
+      : {}),
   },
 ];
 ---

@@ -82,5 +82,9 @@ const ogImageAbs = ogImage ? new URL(ogImage, site.url).href : undefined;
       <slot />
     </main>
     <Footer />
+    {/* ZeeOps live chat. Loaded last and deferred so it never blocks render.
+        Conversations land in the dashboard at chat.zeeops.dev under the
+        `thecoffeesleeves` site. */}
+    <script src="https://chat.zeeops.dev/widget.js?siteId=thecoffeesleeves" defer is:inline></script>
   </body>
 </html>
