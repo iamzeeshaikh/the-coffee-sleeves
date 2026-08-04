@@ -3,6 +3,7 @@ import { products, categories, site } from '../utils/site';
 
 const STATIC_PATHS = [
   '/',
+  '/about-us/',
   '/shop/',
   '/get-quote/',
   '/contact/',

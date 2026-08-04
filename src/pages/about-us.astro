@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../utils/site';
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'About Us', item: `${site.url}/about-us/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="About Us - The Coffee Sleeves"
+  description="The Coffee Sleeves crafts custom-printed coffee cup sleeves for cafés, events and brands across the US — quality materials, low minimums and fast turnaround."
+  path="/about-us/"
+  schemas={schemas}
+  offsetHeader={true}
+>
+  <section class="tcs-about-hero">
+    <nav class="tcs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">›</span> <span>About Us</span>
+    </nav>
+    <h1>About The Coffee Sleeves</h1>
+    <p class="tcs-about-lead">
+      We help coffee shops, roasters, event planners and brands turn an everyday cup into a
+      branding moment — with custom-printed coffee sleeves made from quality materials,
+      delivered on time, at prices that work for bulk orders.
+    </p>
+  </section>
+
+  <section class="tcs-about-body">
+    <div class="tcs-about-grid">
+      <article>
+        <h2>Who We Are</h2>
+        <p>
+          The Coffee Sleeves is a US-based custom packaging company specializing in one thing
+          and doing it well: coffee cup sleeves. From kraft and corrugated to full-color
+          printed designs, we produce sleeves that protect hands, hold heat and carry your
+          brand on every cup that leaves the counter.
+        </p>
+      </article>
+      <article>
+        <h2>What We Make</h2>
+        <p>
+          Cardboard, paper, kraft and corrugated sleeves; printed, branded, blank and seasonal
+          styles; sizes for every standard hot cup. Whether you need a few hundred sleeves for
+          an event or recurring bulk supply for a chain, we tailor material, print and quantity
+          to your needs.
+        </p>
+      </article>
+      <article>
+        <h2>How It Works</h2>
+        <p>
+          No carts, no checkout — every order starts with a free quote. Tell us your product,
+          quantity and artwork, and our team responds within 24 hours with pricing and
+          turnaround. Design help is included; we make sure your logo looks right before
+          anything goes to print.
+        </p>
+      </article>
+      <article>
+        <h2>Why Customers Stay</h2>
+        <p>
+          Consistent print quality, honest lead times and a real team you can call. We answer
+          at <a href={site.phoneHref}>{site.phone}</a> and
+          <a href={`mailto:${site.email}`}>{site.email}</a>, and we stand behind every batch
+          we ship.
+        </p>
+      </article>
+    </div>
+
+    <div class="tcs-about-cta">
+      <h2>Ready to put your brand on the cup?</h2>
+      <p>Get a free, no-obligation quote — we reply within 24 hours.</p>
+      <div class="tcs-about-actions">
+        <a class="tcs-about-btn primary" href="/get-quote/">Get Free Quote</a>
+        <a class="tcs-about-btn" href="/shop/">Browse Products</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tcs-about-hero {
+    background: #faf0e6;
+    padding: 48px 20px 56px;
+    text-align: center;
+  }
+  .tcs-breadcrumb {
+    font-size: 0.9rem;
+    color: #8a6f5c;
+    margin-bottom: 14px;
+  }
+  .tcs-breadcrumb a {
+    color: #d2691e;
+    text-decoration: none;
+  }
+  .tcs-breadcrumb a:hover {
+    text-decoration: underline;
+  }
+  .tcs-about-hero h1 {
+    color: #2c1810;
+    margin: 0 0 14px;
+  }
+  .tcs-about-lead {
+    max-width: 720px;
+    margin: 0 auto;
+    color: #5a4636;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  .tcs-about-body {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 20px 90px;
+  }
+  .tcs-about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 28px;
+  }
+  .tcs-about-grid article {
+    background: #fff;
+    border: 1px solid #ecdccd;
+    border-radius: 12px;
+    padding: 26px 24px;
+  }
+  .tcs-about-grid h2 {
+    color: #7e4a25;
+    font-size: 1.2rem;
+    margin: 0 0 10px;
+  }
+  .tcs-about-grid p {
+    color: #5a4636;
+    line-height: 1.7;
+    margin: 0;
+  }
+  .tcs-about-grid a {
+    color: #d2691e;
+  }
+  .tcs-about-cta {
+    margin-top: 56px;
+    text-align: center;
+    background: #7e4a25;
+    border-radius: 14px;
+    padding: 44px 24px;
+    color: #fff;
+  }
+  .tcs-about-cta h2 {
+    margin: 0 0 10px;
+  }
+  .tcs-about-cta p {
+    margin: 0 0 22px;
+    color: #f3e3d3;
+  }
+  .tcs-about-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .tcs-about-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+  .tcs-about-btn.primary {
+    background: #d2691e;
+    border-color: #d2691e;
+  }
+  .tcs-about-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .tcs-about-btn.primary:hover {
+    background: #b85a17;
+  }
+</style>

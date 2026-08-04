@@ -46,6 +46,8 @@ const main = resolved[0] ?? null;
                 data-full={img.src}
                 data-webp={img.webp}
                 data-alt={img.alt}
+                data-w={img.width}
+                data-h={img.height}
                 aria-label={`Show image: ${img.alt}`}
               >
                 <img
@@ -127,16 +129,37 @@ const main = resolved[0] ?? null;
 </style>
 
 <script>
-  document.querySelectorAll<HTMLButtonElement>('.tcs-gallery-thumb').forEach((btn) => {
+  const thumbs = document.querySelectorAll<HTMLButtonElement>('.tcs-gallery-thumb');
+
+  // Warm the cache for every full-size image so switching is instant.
+  // The <picture> serves WebP where supported, so preload that variant.
+  const preload = () => {
+    thumbs.forEach((btn) => {
+      const url = btn.dataset.webp || btn.dataset.full;
+      if (!url) return;
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = url;
+    });
+  };
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(preload, { timeout: 2000 });
+  } else {
+    setTimeout(preload, 300);
+  }
+
+  thumbs.forEach((btn) => {
     btn.addEventListener('click', () => {
       const main = document.getElementById('tcs-gallery-main-img') as HTMLImageElement | null;
       const source = main?.parentElement?.querySelector('source');
       if (!main) return;
+      if (source && btn.dataset.webp) source.setAttribute('srcset', btn.dataset.webp);
       main.src = btn.dataset.full ?? main.src;
       main.alt = btn.dataset.alt ?? main.alt;
-      main.removeAttribute('width');
-      main.removeAttribute('height');
-      if (source && btn.dataset.webp) source.setAttribute('srcset', btn.dataset.webp);
+      if (btn.dataset.w && btn.dataset.h) {
+        main.width = Number(btn.dataset.w);
+        main.height = Number(btn.dataset.h);
+      }
       document
         .querySelectorAll('.tcs-gallery-thumb.active')
         .forEach((el) => el.classList.remove('active'));

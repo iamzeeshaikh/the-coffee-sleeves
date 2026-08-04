@@ -1,0 +1,8 @@
+---
+// Client requirement: no visitor should ever see a 404 — any URL that doesn't
+// match a real page 301s to the homepage. Static files and prerendered pages
+// are served from the filesystem first, so this only catches unknown URLs.
+export const prerender = false;
+
+return Astro.redirect('/', 301);
+---
