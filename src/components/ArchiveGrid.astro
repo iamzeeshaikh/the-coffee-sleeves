@@ -1,0 +1,67 @@
+---
+// Shared product-archive layout used by /shop/, /product-category/*, /brand/*.
+import ProductCard from './ProductCard.astro';
+import type { Product } from '../utils/site';
+
+interface Props {
+  heading: string;
+  intro?: string | undefined;
+  products: Product[];
+  currentCategorySlug?: string | undefined;
+}
+
+const { heading, intro, products, currentCategorySlug } = Astro.props;
+---
+
+<div class="tcs-archive">
+  <header class="tcs-archive-header">
+    <h1>{heading}</h1>
+    {intro && <p class="tcs-archive-intro">{intro}</p>}
+    <p class="tcs-archive-count">
+      Showing all {products.length} {products.length === 1 ? 'result' : 'results'}
+    </p>
+  </header>
+  <ul class="tcs-archive-grid">
+    {products.map((product, i) => <ProductCard product={product} lazy={i > 5} currentCategorySlug={currentCategorySlug} />)}
+  </ul>
+</div>
+
+<style>
+  .tcs-archive {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+  }
+  .tcs-archive-header h1 {
+    font-size: 2rem;
+    color: #2c1810;
+    margin: 0 0 8px;
+  }
+  .tcs-archive-intro {
+    color: #5d4636;
+    max-width: 720px;
+    margin: 0 0 6px;
+  }
+  .tcs-archive-count {
+    color: #8a6f5c;
+    font-size: 0.9rem;
+    margin: 0 0 22px;
+  }
+  .tcs-archive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+  }
+  @media (max-width: 900px) {
+    .tcs-archive-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 540px) {
+    .tcs-archive-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

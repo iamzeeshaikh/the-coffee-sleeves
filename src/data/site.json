@@ -1,0 +1,18 @@
+{
+ "name": "The Coffee Sleeves",
+ "url": "https://thecoffeesleeves.com",
+ "phone": "(503) 358-0443",
+ "phoneHref": "tel:+15033580443",
+ "email": "info@thecoffeesleeves.com",
+ "address": {
+  "street": "303 W 137th Street, #5A",
+  "city": "New York",
+  "region": "NY",
+  "zip": "10030",
+  "country": "United States"
+ },
+ "homeMeta": {
+  "title": "Personalized Coffee Sleeves & Cups | The Coffee Sleeves",
+  "description": "High-quality custom coffee cup sleeves with logo printing, bulk pricing & quick estimates . Perfect for coffee shops, events, and branding."
+ }
+}

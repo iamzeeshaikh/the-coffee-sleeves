@@ -1,0 +1,888 @@
+<div class="elementor-element elementor-element-a7bb839 e-con-full e-flex e-con e-parent" data-id="a7bb839" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-11b8e99 elementor-widget elementor-widget-html" data-id="11b8e99" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
+					
+
+<style>
+/* Force clickable */
+.tcs-faq-hero,
+.tcs-faq-hero * {
+    pointer-events: auto !important;
+}
+
+.tcs-faq-hero a {
+    cursor: pointer !important;
+}
+
+/* FAQ Hero Section */
+.tcs-faq-hero {
+    background: linear-gradient(135deg, #2C1810, #6F4E37, #8B4513);
+    padding: 120px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.tcs-faq-hero::before {
+    content: '❓';
+    position: absolute;
+    font-size: 200px;
+    opacity: 0.05;
+    top: 20%;
+    right: 10%;
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(15deg); }
+}
+
+.tcs-faq-hero-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tcs-faq-hero-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.tcs-faq-hero-title {
+    font-size: 4rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.tcs-faq-hero-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.tcs-faq-search {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.tcs-faq-search-input {
+    width: 100%;
+    padding: 18px 60px 18px 25px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+
+.tcs-faq-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.tcs-faq-search-input:focus {
+    outline: none;
+    border-color: #FF8C42;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 0 4px rgba(255, 140, 66, 0.2);
+}
+
+.tcs-faq-search-icon {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.3rem;
+}
+
+@media (max-width: 768px) {
+    .tcs-faq-hero {
+        padding: 80px 0 60px;
+    }
+    .tcs-faq-hero-title {
+        font-size: 2.5rem;
+    }
+    .tcs-faq-hero-subtitle {
+        font-size: 1.1rem;
+    }
+}
+</style>
+
+<section class="tcs-faq-hero">
+    <div class="tcs-faq-hero-container">
+        
+        <div class="tcs-faq-hero-badge">💡 Help Center</div>
+        
+        <h1 class="tcs-faq-hero-title">Frequently Asked Questions</h1>
+        
+        <p class="tcs-faq-hero-subtitle">
+            Find answers to common questions about our custom coffee sleeves, ordering process, and services.
+        </p>
+        
+        <div class="tcs-faq-search">
+            <input 
+                type="text" 
+                class="tcs-faq-search-input" 
+                placeholder="Search for answers..."
+                id="faqSearch">
+            <span class="tcs-faq-search-icon">🔍</span>
+        </div>
+        
+    </div>
+</section>
+
+<script is:inline>
+(function() {
+    'use strict';
+    
+    const searchInput = document.getElementById('faqSearch');
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.tcs-faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.tcs-faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.tcs-faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = searchTerm ? 'none' : 'block';
+                }
+            });
+        });
+    }
+    
+})();
+</script>				</div>
+				</div>
+		<div class="elementor-element elementor-element-3504f28 e-con-full e-flex e-con e-parent" data-id="3504f28" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-c3ef1b6 elementor-widget elementor-widget-html" data-id="c3ef1b6" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
+					
+
+<style>
+/* Force clickable */
+.tcs-faq-section,
+.tcs-faq-section * {
+    pointer-events: auto !important;
+}
+
+.tcs-faq-section button {
+    cursor: pointer !important;
+}
+
+/* FAQ Section */
+.tcs-faq-section {
+    background: linear-gradient(180deg, #FFFFFF, #FFF8F0);
+    padding: 80px 0;
+}
+
+.tcs-faq-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Category Tabs */
+.tcs-faq-categories {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.tcs-faq-category-btn {
+    padding: 12px 25px;
+    background: white;
+    border: 2px solid #E5E5E5;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tcs-faq-category-btn:hover,
+.tcs-faq-category-btn.active {
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    border-color: #FF8C42;
+    transform: translateY(-2px);
+}
+
+/* FAQ Items */
+.tcs-faq-category-group {
+    display: none;
+}
+
+.tcs-faq-category-group.active {
+    display: block;
+}
+
+.tcs-faq-item {
+    background: white;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.tcs-faq-item:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.tcs-faq-question-btn {
+    width: 100%;
+    padding: 25px 30px;
+    background: none;
+    border: none;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tcs-faq-question {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #2C1810;
+    line-height: 1.4;
+}
+
+.tcs-faq-icon {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+}
+
+.tcs-faq-item.open .tcs-faq-icon {
+    transform: rotate(45deg);
+}
+
+.tcs-faq-answer {
+    padding: 0 30px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.tcs-faq-item.open .tcs-faq-answer {
+    max-height: 500px;
+    padding: 0 30px 30px;
+}
+
+.tcs-faq-answer p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.tcs-faq-answer ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.tcs-faq-answer li {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+    .tcs-faq-section {
+        padding: 60px 0;
+    }
+    .tcs-faq-question-btn {
+        padding: 20px;
+    }
+    .tcs-faq-question {
+        font-size: 1.05rem;
+    }
+    .tcs-faq-answer {
+        padding: 0 20px;
+    }
+    .tcs-faq-item.open .tcs-faq-answer {
+        padding: 0 20px 20px;
+    }
+}
+</style>
+
+<section class="tcs-faq-section">
+    <div class="tcs-faq-container">
+        
+        
+        <div class="tcs-faq-categories">
+            <button class="tcs-faq-category-btn active" data-category="general">
+                📦 General
+            </button>
+            <button class="tcs-faq-category-btn" data-category="ordering">
+                🛒 Ordering
+            </button>
+            <button class="tcs-faq-category-btn" data-category="design">
+                🎨 Design
+            </button>
+            <button class="tcs-faq-category-btn" data-category="shipping">
+                🚚 Shipping
+            </button>
+            <button class="tcs-faq-category-btn" data-category="pricing">
+                💰 Pricing
+            </button>
+        </div>
+        
+        
+        <div class="tcs-faq-category-group active" data-category="general">
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">What are coffee sleeves?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Coffee sleeves (also called cup sleeves or coffee jackets) are protective wraps that go around hot beverage cups to insulate the cup and protect your hands from heat. They're commonly used by coffee shops, cafes, and businesses to provide a comfortable grip while keeping drinks hot.</p>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">What materials do you use for coffee sleeves?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>We offer coffee sleeves in several premium materials:</p>
+                    <ul>
+                        <li><strong>Kraft Paper:</strong> Eco-friendly, recyclable, natural brown finish</li>
+                        <li><strong>Cardboard:</strong> Durable, high-quality, smooth printing surface</li>
+                        <li><strong>Corrugated:</strong> Extra insulation, premium feel</li>
+                        <li><strong>Custom Materials:</strong> Special requests available</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">Are your coffee sleeves eco-friendly?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Yes! We offer 100% recyclable and biodegradable options. Our kraft paper sleeves are especially popular for environmentally conscious businesses. All our materials are sourced responsibly and can be recycled after use.</p>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">What cup sizes do your sleeves fit?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Our coffee sleeves are available for all standard cup sizes:</p>
+                    <ul>
+                        <li>8 oz (small)</li>
+                        <li>12 oz (medium)</li>
+                        <li>16 oz (large)</li>
+                        <li>20 oz (extra large)</li>
+                        <li>Custom sizes available upon request</li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        <div class="tcs-faq-category-group" data-category="ordering">
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">What is the minimum order quantity?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Our minimum order quantity starts at 100 units. This allows us to maintain competitive pricing while ensuring quality production. We also offer bulk discounts for larger orders (1,000+ units).</p>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">How do I place an order?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Ordering is simple:</p>
+                    <ul>
+                        <li>1. Fill out our quote request form or call (503) 358-0443</li>
+                        <li>2. Our team will contact you within 24 hours with pricing</li>
+                        <li>3. Approve the design and quote</li>
+                        <li>4. We'll start production immediately</li>
+                        <li>5. Your order ships within 7-10 business days</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">Can I order samples before placing a bulk order?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Yes! We offer sample packs so you can feel the quality of our materials before committing to a large order. Contact us to request samples - shipping costs may apply.</p>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">What payment methods do you accept?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>We accept all major payment methods including credit cards (Visa, Mastercard, American Express), PayPal, bank transfers, and purchase orders for established businesses.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        <div class="tcs-faq-category-group" data-category="design">
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">Do you offer free design services?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Yes! We offer completely free design services with every order. Our expert designers will create custom artwork at no additional cost. You'll receive a proof for approval before we start production.</p>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">Can I use my own design?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Absolutely! If you already have a design, you can send us your artwork files. We accept PDF, AI, EPS, PSD, and high-resolution image files. Our team will review it to ensure it meets printing requirements.</p>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">What printing options are available?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>We offer several printing options:</p>
+                    <ul>
+                        <li><strong>Full Color (CMYK):</strong> Vibrant, detailed designs</li>
+                        <li><strong>Spot Color:</strong> Precise Pantone color matching</li>
+                        <li><strong>Black & White:</strong> Clean, classic look</li>
+                        <li><strong>Finishing:</strong> Gloss, Matte, or Spot UV coating</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">How many revisions do I get?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>We include up to 3 free design revisions with every order. This ensures you're completely satisfied with the final design before we begin production.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        <div class="tcs-faq-category-group" data-category="shipping">
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">How long does production take?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Standard production time is 7-10 business days after design approval. Rush options are available for an additional fee - ask us about expedited production timelines.</p>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">Do you ship internationally?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Yes! We ship worldwide. Shipping costs and delivery times vary by location. Contact us for an international shipping quote specific to your destination.</p>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">Can I track my order?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Yes! Once your order ships, you'll receive a tracking number via email. You can track your shipment in real-time through the carrier's website.</p>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">What if my order arrives damaged?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>We take great care in packaging all orders. If your order arrives damaged, please contact us within 48 hours with photos. We'll replace damaged items at no additional cost.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        <div class="tcs-faq-category-group" data-category="pricing">
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">How much do custom coffee sleeves cost?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Pricing depends on quantity, material, and printing options. Generally, prices start at $0.12-$0.18 per sleeve for bulk orders. Contact us for a detailed quote based on your specific needs.</p>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">Do you offer bulk discounts?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Yes! The more you order, the lower the per-unit cost. We offer tiered pricing with significant discounts for orders of 1,000+ units, 5,000+ units, and 10,000+ units.</p>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">Are there any hidden fees?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>No hidden fees! Our quotes include design services, printing, and materials. The only additional costs would be shipping and any optional rush production fees - both of which are clearly stated upfront.</p>
+                </div>
+            </div>
+            
+            <div class="tcs-faq-item">
+                <button class="tcs-faq-question-btn">
+                    <span class="tcs-faq-question">Do you offer discounts for repeat customers?</span>
+                    <span class="tcs-faq-icon">+</span>
+                </button>
+                <div class="tcs-faq-answer">
+                    <p>Yes! We value our loyal customers and offer special pricing for repeat orders. Plus, reorders of the same design often have reduced setup costs. Contact us to learn about our customer loyalty program.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</section>
+
+<script is:inline>
+(function() {
+    'use strict';
+    
+    // Category switching
+    const categoryBtns = document.querySelectorAll('.tcs-faq-category-btn');
+    const categoryGroups = document.querySelectorAll('.tcs-faq-category-group');
+    
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            
+            // Update active button
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update active group
+            categoryGroups.forEach(group => {
+                group.classList.remove('active');
+                if (group.getAttribute('data-category') === category) {
+                    group.classList.add('active');
+                }
+            });
+        });
+    });
+    
+    // FAQ accordion
+    const faqItems = document.querySelectorAll('.tcs-faq-item');
+    
+    faqItems.forEach(item => {
+        const btn = item.querySelector('.tcs-faq-question-btn');
+        
+        btn.addEventListener('click', function() {
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('open');
+                }
+            });
+            
+            // Toggle current item
+            item.classList.toggle('open');
+        });
+    });
+    
+    console.log('FAQ accordion initialized');
+    
+})();
+</script>				</div>
+				</div>
+		<div class="elementor-element elementor-element-bf5b4d9 e-con-full e-flex e-con e-parent" data-id="bf5b4d9" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-7c04b32 elementor-widget elementor-widget-html" data-id="7c04b32" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
+					
+
+<style>
+/* Force clickable */
+.tcs-faq-cta,
+.tcs-faq-cta * {
+    pointer-events: auto !important;
+}
+
+.tcs-faq-cta a,
+.tcs-faq-cta button {
+    cursor: pointer !important;
+}
+
+/* FAQ CTA Section */
+.tcs-faq-cta {
+    background: linear-gradient(135deg, #6F4E37, #8B4513, #3E2723);
+    padding: 80px 0;
+}
+
+.tcs-faq-cta-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.tcs-faq-cta-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.tcs-faq-cta-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.tcs-faq-cta-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.tcs-faq-cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.tcs-faq-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 40px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.tcs-faq-cta-btn-primary {
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    box-shadow: 0 10px 30px rgba(255, 140, 66, 0.5);
+}
+
+.tcs-faq-cta-btn-primary:hover {
+    background: linear-gradient(135deg, #D2691E, #8B4513);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 140, 66, 0.7);
+    color: white;
+}
+
+.tcs-faq-cta-btn-secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.tcs-faq-cta-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-5px);
+    color: white;
+}
+
+.tcs-faq-cta-contact-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.tcs-faq-cta-option {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px 25px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s;
+}
+
+.tcs-faq-cta-option:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 140, 66, 0.5);
+    transform: translateY(-5px);
+}
+
+.tcs-faq-cta-option-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.8rem;
+}
+
+.tcs-faq-cta-option h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.tcs-faq-cta-option p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+@media (max-width: 968px) {
+    .tcs-faq-cta-contact-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .tcs-faq-cta {
+        padding: 60px 0;
+    }
+    .tcs-faq-cta-title {
+        font-size: 2.2rem;
+    }
+    .tcs-faq-cta-subtitle {
+        font-size: 1.1rem;
+    }
+    .tcs-faq-cta-buttons {
+        flex-direction: column;
+    }
+    .tcs-faq-cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>
+
+<section class="tcs-faq-cta">
+    <div class="tcs-faq-cta-container">
+        
+        <div class="tcs-faq-cta-badge">💬 Need More Help?</div>
+        
+        <h2 class="tcs-faq-cta-title">Still Have Questions?</h2>
+        
+        <p class="tcs-faq-cta-subtitle">
+            Our team is here to help! Reach out and we'll get back to you within 24 hours during business hours.
+        </p>
+        
+        <div class="tcs-faq-cta-buttons">
+            <a href="/contact/" class="tcs-faq-cta-btn tcs-faq-cta-btn-primary">
+                Contact Us
+            </a>
+            <a href="/get-quote/" class="tcs-faq-cta-btn tcs-faq-cta-btn-secondary">
+                Get Free Quote
+            </a>
+        </div>
+        
+        <div class="tcs-faq-cta-contact-options">
+            
+            
+            <div class="tcs-faq-cta-option">
+                <div class="tcs-faq-cta-option-icon">📞</div>
+                <h3>Call Us</h3>
+                <p><strong>(503) 358-0443</strong></p>
+            </div>
+            
+            
+            <div class="tcs-faq-cta-option">
+                <div class="tcs-faq-cta-option-icon">✉️</div>
+                <h3>Email Us</h3>
+                <p>Response within 24 hours<br>during business hours<br><strong><a href="mailto:info@thecoffeesleeves.com">info@thecoffeesleeves.com</a></strong></p>
+            </div>
+            
+            
+            <div class="tcs-faq-cta-option">
+                <div class="tcs-faq-cta-option-icon">💬</div>
+                <h3>Live Chat</h3>
+                <p>Chat with our team</p>
+            </div>
+            
+        </div>
+        
+    </div>
+</section>
+</div></div>

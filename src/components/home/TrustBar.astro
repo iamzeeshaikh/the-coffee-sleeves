@@ -1,0 +1,645 @@
+<style is:global>
+/* Trust Bar Section */
+.tcs-trust-bar {
+    position: relative;
+    background: linear-gradient(135deg, #2C1810 0%, #3E2723 100%);
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+/* Animated Background Pattern */
+.tcs-trust-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 140, 66, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(210, 105, 30, 0.08) 0%, transparent 50%);
+    animation: bgMove 15s ease-in-out infinite;
+}
+
+@keyframes bgMove {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+}
+
+.tcs-trust-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Stats Grid */
+.tcs-trust-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.tcs-trust-stat {
+    text-align: center;
+    perspective: 1000px;
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.tcs-trust-stat:nth-child(1) { animation-delay: 0.1s; }
+.tcs-trust-stat:nth-child(2) { animation-delay: 0.2s; }
+.tcs-trust-stat:nth-child(3) { animation-delay: 0.3s; }
+.tcs-trust-stat:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tcs-trust-stat-inner {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+.tcs-trust-stat:hover .tcs-trust-stat-inner {
+    transform: translateY(-8px) rotateX(3deg);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.3),
+        0 0 25px rgba(255, 140, 66, 0.15);
+}
+
+/* Small Icon Container */
+.tcs-trust-stat-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 15px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 
+        0 8px 20px rgba(255, 140, 66, 0.35),
+        inset 0 -3px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.tcs-trust-stat-icon::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 12px;
+    opacity: 0.4;
+    filter: blur(12px);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.tcs-trust-stat:hover .tcs-trust-stat-icon {
+    transform: translateZ(15px) scale(1.08);
+}
+
+.tcs-trust-stat:hover .tcs-trust-stat-icon::before {
+    opacity: 0.6;
+}
+
+/* Animated Counter Number */
+.tcs-trust-stat-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1;
+    margin-bottom: 8px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #FFFFFF, #FFE8D6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tcs-trust-stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tcs-trust-stat-sublabel {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 4px;
+}
+
+/* Divider */
+.tcs-trust-divider {
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        transparent 100%);
+    margin: 40px auto;
+    max-width: 80%;
+}
+
+/* Simple Shipping Banner */
+.tcs-trust-shipping-banner {
+    text-align: center;
+    padding: 25px;
+    background: rgba(255, 140, 66, 0.1);
+    border: 1px solid rgba(255, 140, 66, 0.2);
+    border-radius: 15px;
+    margin-bottom: 40px;
+    animation: fadeIn 0.8s ease-out 0.5s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.tcs-trust-shipping-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.tcs-trust-shipping-icon {
+    font-size: 1.5rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Countries Grid */
+.tcs-trust-countries-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Small Country Card */
+.tcs-trust-country {
+    perspective: 1000px;
+    animation: fadeInScale 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.tcs-trust-country:nth-child(1) { animation-delay: 0.6s; }
+.tcs-trust-country:nth-child(2) { animation-delay: 0.7s; }
+.tcs-trust-country:nth-child(3) { animation-delay: 0.8s; }
+.tcs-trust-country:nth-child(4) { animation-delay: 0.9s; }
+.tcs-trust-country:nth-child(5) { animation-delay: 1s; }
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tcs-trust-country-inner {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    width: 100px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.tcs-trust-country:hover .tcs-trust-country-inner {
+    transform: translateY(-8px) rotateX(8deg) scale(1.05);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 140, 66, 0.4);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(255, 140, 66, 0.25);
+}
+
+/* Small Flag */
+.tcs-trust-country-flag {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.tcs-trust-country:hover .tcs-trust-country-flag {
+    transform: translateZ(20px) scale(1.15);
+}
+
+.tcs-trust-country-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tcs-trust-country-shipping {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 4px;
+}
+
+/* Small Checkmark */
+.tcs-trust-country-check {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: bold;
+    box-shadow: 0 3px 8px rgba(76, 175, 80, 0.4);
+    animation: checkPulse 2s ease-in-out infinite;
+}
+
+@keyframes checkPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .tcs-trust-stats {
+        gap: 25px;
+    }
+    
+    .tcs-trust-stat-number {
+        font-size: 2.2rem;
+    }
+    
+    .tcs-trust-shipping-text {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tcs-trust-bar {
+        padding: 50px 0;
+    }
+    
+    .tcs-trust-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+    
+    .tcs-trust-stat-number {
+        font-size: 2rem;
+    }
+    
+    .tcs-trust-stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+    }
+    
+    .tcs-trust-shipping-text {
+        font-size: 1rem;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .tcs-trust-country-inner {
+        width: 85px;
+        padding: 12px;
+    }
+    
+    .tcs-trust-country-flag {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tcs-trust-stats {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    
+    .tcs-trust-shipping-banner {
+        padding: 20px 15px;
+    }
+    
+    .tcs-trust-shipping-text {
+        font-size: 0.9rem;
+    }
+    
+    .tcs-trust-countries-grid {
+        gap: 15px;
+    }
+    
+    .tcs-trust-country-inner {
+        width: 80px;
+        padding: 10px;
+    }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+    .tcs-trust-stat,
+    .tcs-trust-country,
+    .tcs-trust-stat-icon,
+    .tcs-trust-country-flag,
+    .tcs-trust-shipping-icon,
+    .tcs-trust-bar::before {
+        animation: none !important;
+    }
+}
+</style>
+
+<!-- Trust Bar Section HTML -->
+<section class="tcs-trust-bar" id="tcsTrustBar">
+    <div class="tcs-trust-container">
+        
+        <!-- Stats Grid with Small Icons -->
+        <div class="tcs-trust-stats">
+            
+            <!-- Stat 1: Years in Business -->
+            <div class="tcs-trust-stat">
+                <div class="tcs-trust-stat-inner">
+                    <div class="tcs-trust-stat-icon">🏆</div>
+                    <div class="tcs-trust-stat-number">Custom</div>
+                    <div class="tcs-trust-stat-label">Printing</div>
+                    <div class="tcs-trust-stat-sublabel">Logos &amp; Full Designs</div>
+                </div>
+            </div>
+            
+            <!-- Stat 2: Orders Delivered -->
+            <div class="tcs-trust-stat">
+                <div class="tcs-trust-stat-inner">
+                    <div class="tcs-trust-stat-icon">📦</div>
+                    <div class="tcs-trust-stat-number">Bulk</div>
+                    <div class="tcs-trust-stat-label">Orders</div>
+                    <div class="tcs-trust-stat-sublabel">Wholesale Quantities</div>
+                </div>
+            </div>
+            
+            <!-- Stat 3: Customer Satisfaction -->
+            <div class="tcs-trust-stat">
+                <div class="tcs-trust-stat-inner">
+                    <div class="tcs-trust-stat-icon">⭐</div>
+                    <div class="tcs-trust-stat-number">Free</div>
+                    <div class="tcs-trust-stat-label">Design Help</div>
+                    <div class="tcs-trust-stat-sublabel">On Every Order</div>
+                </div>
+            </div>
+            
+            <!-- Stat 4: Countries Served -->
+            <div class="tcs-trust-stat">
+                <div class="tcs-trust-stat-inner">
+                    <div class="tcs-trust-stat-icon">🌍</div>
+                    <div class="tcs-trust-stat-number">Global</div>
+                    <div class="tcs-trust-stat-label">Shipping</div>
+                    <div class="tcs-trust-stat-sublabel">US &amp; International</div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Divider -->
+        <div class="tcs-trust-divider"></div>
+        
+        <!-- Simple Shipping Banner -->
+        <div class="tcs-trust-shipping-banner">
+            <div class="tcs-trust-shipping-text">
+                <span class="tcs-trust-shipping-icon">🚚</span>
+                <span>We Ship Worldwide - USA &amp; International Delivery</span>
+            </div>
+        </div>
+        
+        <!-- Countries with Small Flags -->
+        <div class="tcs-trust-countries-grid">
+            
+            <!-- USA -->
+            <div class="tcs-trust-country">
+                <div class="tcs-trust-country-inner">
+                    <div class="tcs-trust-country-check">✓</div>
+                    <div class="tcs-trust-country-flag">🇺🇸</div>
+                    <div class="tcs-trust-country-name">USA</div>
+                    <div class="tcs-trust-country-shipping">3–7 Day Delivery</div>
+                </div>
+            </div>
+            
+            <!-- UK -->
+            <div class="tcs-trust-country">
+                <div class="tcs-trust-country-inner">
+                    <div class="tcs-trust-country-check">✓</div>
+                    <div class="tcs-trust-country-flag">🇬🇧</div>
+                    <div class="tcs-trust-country-name">UK</div>
+                    <div class="tcs-trust-country-shipping">10–15 Day Delivery</div>
+                </div>
+            </div>
+            
+            <!-- Australia -->
+            <div class="tcs-trust-country">
+                <div class="tcs-trust-country-inner">
+                    <div class="tcs-trust-country-check">✓</div>
+                    <div class="tcs-trust-country-flag">🇦🇺</div>
+                    <div class="tcs-trust-country-name">Australia</div>
+                    <div class="tcs-trust-country-shipping">10–15 Day Delivery</div>
+                </div>
+            </div>
+            
+            <!-- Canada -->
+            <div class="tcs-trust-country">
+                <div class="tcs-trust-country-inner">
+                    <div class="tcs-trust-country-check">✓</div>
+                    <div class="tcs-trust-country-flag">🇨🇦</div>
+                    <div class="tcs-trust-country-name">Canada</div>
+                    <div class="tcs-trust-country-shipping">7–12 Day Delivery</div>
+                </div>
+            </div>
+            
+            <!-- Europe -->
+            <div class="tcs-trust-country">
+                <div class="tcs-trust-country-inner">
+                    <div class="tcs-trust-country-check">✓</div>
+                    <div class="tcs-trust-country-flag">🇪🇺</div>
+                    <div class="tcs-trust-country-name">Europe</div>
+                    <div class="tcs-trust-country-shipping">Intl. Delivery</div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</section>
+
+<script is:inline>
+(function() {
+    'use strict';
+    
+    // Animated Counter Function
+    function animateCounter(element) {
+        if (!element.hasAttribute('data-count')) return;
+        const target = parseInt(element.getAttribute('data-count'));
+        if (isNaN(target)) return;
+        const suffix = element.getAttribute('data-suffix') || '';
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+        
+        const updateCounter = () => {
+            current += increment;
+            
+            if (current < target) {
+                element.textContent = Math.floor(current).toLocaleString() + suffix;
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = target.toLocaleString() + suffix;
+            }
+        };
+        
+        updateCounter();
+    }
+    
+    // Intersection Observer for Counter Animation
+    function initCounterAnimation() {
+        const counters = document.querySelectorAll('.tcs-trust-stat-number');
+        let animated = false;
+        
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animated) {
+                    animated = true;
+                    counters.forEach(counter => {
+                        animateCounter(counter);
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        const trustBar = document.getElementById('tcsTrustBar');
+        if (trustBar) {
+            observer.observe(trustBar);
+        }
+    }
+    
+    // 3D Tilt Effect for Stats Cards
+    function init3DTilt() {
+        const statCards = document.querySelectorAll('.tcs-trust-stat-inner');
+        
+        statCards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                
+                card.style.transform = `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = '';
+            });
+        });
+    }
+    
+    // 3D Tilt Effect for Country Cards
+    function init3DCountryCards() {
+        const countryCards = document.querySelectorAll('.tcs-trust-country-inner');
+        
+        countryCards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = '';
+            });
+        });
+    }
+    
+    // Initialize all functions
+    function init() {
+        initCounterAnimation();
+        
+        if (window.innerWidth > 768) {
+            init3DTilt();
+            init3DCountryCards();
+        }
+        
+        console.log('The Coffee Sleeves Trust Bar - Initialized');
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    
+})();
+</script>

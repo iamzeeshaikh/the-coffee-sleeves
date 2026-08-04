@@ -1,0 +1,1110 @@
+<style is:global>
+/* Design Templates Section */
+.tcs-design-templates {
+    position: relative;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF8F0 50%, #FFFFFF 100%);
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Background Decoration */
+.tcs-design-templates::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 140, 66, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(156, 39, 176, 0.04) 0%, transparent 50%);
+    animation: bgSwirl 30s ease-in-out infinite;
+}
+
+@keyframes bgSwirl {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(10deg) scale(1.1); }
+}
+
+.tcs-design-templates-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Section Header */
+.tcs-templates-header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tcs-templates-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #9C27B0, #673AB7);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4);
+}
+
+.tcs-templates-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 15px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    line-height: 1.2;
+}
+
+.tcs-templates-subtitle {
+    font-size: 1.2rem;
+    color: #666666;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Filter Tabs */
+.tcs-filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.tcs-filter-tab {
+    padding: 12px 30px;
+    background: white;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2C1810;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.tcs-filter-tab:hover {
+    border-color: #9C27B0;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(156, 39, 176, 0.2);
+}
+
+.tcs-filter-tab.active {
+    background: linear-gradient(135deg, #9C27B0, #673AB7);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(156, 39, 176, 0.4);
+}
+
+/* Templates Grid */
+.tcs-templates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Template Card */
+.tcs-template-card {
+    perspective: 1500px;
+    animation: fadeInScale 0.8s ease-out backwards;
+}
+
+.tcs-template-card:nth-child(1) { animation-delay: 0.1s; }
+.tcs-template-card:nth-child(2) { animation-delay: 0.2s; }
+.tcs-template-card:nth-child(3) { animation-delay: 0.3s; }
+.tcs-template-card:nth-child(4) { animation-delay: 0.4s; }
+.tcs-template-card:nth-child(5) { animation-delay: 0.5s; }
+.tcs-template-card:nth-child(6) { animation-delay: 0.6s; }
+.tcs-template-card:nth-child(7) { animation-delay: 0.7s; }
+.tcs-template-card:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tcs-template-inner {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 3px solid transparent;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.tcs-template-card:hover .tcs-template-inner {
+    transform: translateY(-15px) rotateY(5deg) scale(1.03);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    border-color: rgba(156, 39, 176, 0.3);
+}
+
+/* Template Image */
+.tcs-template-image {
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(135deg, #E1BEE7, #CE93D8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Placeholder for actual images - replace with <img> tags */
+.tcs-template-image::after {
+    content: attr(data-emoji);
+    font-size: 4rem;
+}
+
+.tcs-template-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.tcs-template-card:hover .tcs-template-image img {
+    transform: scale(1.1);
+}
+
+/* Template Overlay */
+.tcs-template-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.9), rgba(103, 58, 183, 0.9));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tcs-template-card:hover .tcs-template-overlay {
+    opacity: 1;
+}
+
+.tcs-template-action {
+    padding: 12px 25px;
+    background: white;
+    color: #9C27B0;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tcs-template-action:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Template Info */
+.tcs-template-info {
+    padding: 25px;
+}
+
+.tcs-template-category {
+    display: inline-block;
+    padding: 5px 12px;
+    background: rgba(156, 39, 176, 0.1);
+    color: #9C27B0;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.tcs-template-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2C1810;
+    margin-bottom: 8px;
+}
+
+.tcs-template-description {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.6;
+}
+
+/* Before/After Section */
+.tcs-before-after-section {
+    background: white;
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    margin-bottom: 60px;
+    animation: fadeInUp 0.8s ease-out 0.9s backwards;
+}
+
+.tcs-before-after-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-before-after-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+/* Before/After Card */
+.tcs-ba-card {
+    position: relative;
+    perspective: 1500px;
+}
+
+.tcs-ba-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.tcs-ba-item {
+    text-align: center;
+}
+
+.tcs-ba-label {
+    display: inline-block;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #9C27B0, #673AB7);
+    color: white;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.tcs-ba-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #E0E0E0, #BDBDBD);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.tcs-ba-card:hover .tcs-ba-image {
+    transform: scale(1.05);
+}
+
+.tcs-ba-arrow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #9C27B0, #673AB7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 10px 30px rgba(156, 39, 176, 0.5);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Industry Examples */
+.tcs-industry-examples {
+    margin-bottom: 60px;
+}
+
+.tcs-industry-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    animation: fadeInUp 0.8s ease-out 1s backwards;
+}
+
+.tcs-industry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.tcs-industry-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    border: 3px solid transparent;
+    animation: fadeInScale 0.8s ease-out backwards;
+}
+
+.tcs-industry-card:nth-child(1) { animation-delay: 1.1s; }
+.tcs-industry-card:nth-child(2) { animation-delay: 1.2s; }
+.tcs-industry-card:nth-child(3) { animation-delay: 1.3s; }
+.tcs-industry-card:nth-child(4) { animation-delay: 1.4s; }
+
+.tcs-industry-card:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    border-color: rgba(156, 39, 176, 0.3);
+}
+
+.tcs-industry-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.1), rgba(103, 58, 183, 0.1));
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.tcs-industry-card:hover .tcs-industry-icon {
+    background: linear-gradient(135deg, #9C27B0, #673AB7);
+    transform: rotateY(180deg);
+}
+
+.tcs-industry-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2C1810;
+    margin-bottom: 10px;
+}
+
+.tcs-industry-desc {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.tcs-industry-examples-list {
+    font-size: 0.85rem;
+    color: #9C27B0;
+    font-weight: 600;
+}
+
+/* Free Design Service CTA */
+.tcs-free-design-cta {
+    background: linear-gradient(135deg, #9C27B0, #673AB7);
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInScale 0.8s ease-out 1.5s backwards;
+}
+
+.tcs-free-design-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>');
+    animation: bgMove 20s linear infinite;
+}
+
+@keyframes bgMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(100px); }
+}
+
+.tcs-cta-content {
+    position: relative;
+    z-index: 1;
+}
+
+.tcs-cta-icon {
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.tcs-cta-icon svg {
+    width: 60px;
+    height: 60px;
+    fill: white;
+}
+
+.tcs-cta-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 20px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-cta-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+.tcs-cta-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.tcs-cta-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: 600;
+}
+
+.tcs-cta-feature::before {
+    content: '✓';
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tcs-cta-button {
+    display: inline-block;
+    padding: 18px 50px;
+    background: white;
+    color: #9C27B0;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-cta-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .tcs-templates-title {
+        font-size: 2.5rem;
+    }
+    
+    .tcs-templates-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .tcs-design-templates {
+        padding: 60px 0;
+    }
+    
+    .tcs-templates-title {
+        font-size: 2rem;
+    }
+    
+    .tcs-templates-subtitle {
+        font-size: 1rem;
+    }
+    
+    .tcs-filter-tabs {
+        gap: 10px;
+    }
+    
+    .tcs-filter-tab {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+    
+    .tcs-templates-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tcs-template-card:hover .tcs-template-inner {
+        transform: translateY(-10px) scale(1.02);
+    }
+    
+    .tcs-before-after-section {
+        padding: 40px 25px;
+    }
+    
+    .tcs-ba-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .tcs-ba-arrow {
+        top: auto;
+        bottom: -60px;
+        transform: translate(-50%, 0) rotate(90deg);
+    }
+    
+    .tcs-industry-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tcs-free-design-cta {
+        padding: 50px 25px;
+    }
+    
+    .tcs-cta-title {
+        font-size: 2rem;
+    }
+    
+    .tcs-cta-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .tcs-templates-title {
+        font-size: 1.75rem;
+    }
+    
+    .tcs-template-image {
+        height: 200px;
+    }
+    
+    .tcs-cta-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+    .tcs-template-card,
+    .tcs-industry-card,
+    .tcs-ba-arrow,
+    .tcs-cta-icon,
+    .tcs-design-templates::before {
+        animation: none !important;
+    }
+}
+</style>
+
+<!-- Design Templates & Inspiration Section HTML -->
+<section class="tcs-design-templates" id="tcsDesignTemplates">
+    <div class="tcs-design-templates-container">
+        
+        <!-- Section Header -->
+        <div class="tcs-templates-header">
+            <div class="tcs-templates-badge">🎨 Design Inspiration</div>
+            <h2 class="tcs-templates-title">Browse Design Templates & Ideas</h2>
+            <p class="tcs-templates-subtitle">
+                Get inspired by our collection of professionally designed templates, or let our expert design team create something unique for your brand.
+            </p>
+        </div>
+        
+        <!-- Filter Tabs -->
+        <div class="tcs-filter-tabs">
+            <button class="tcs-filter-tab active" data-filter="all">All Designs</button>
+            <button class="tcs-filter-tab" data-filter="modern">Modern</button>
+            <button class="tcs-filter-tab" data-filter="vintage">Vintage</button>
+            <button class="tcs-filter-tab" data-filter="minimal">Minimal</button>
+            <button class="tcs-filter-tab" data-filter="artistic">Artistic</button>
+            <button class="tcs-filter-tab" data-filter="seasonal">Seasonal</button>
+        </div>
+        
+        <!-- Templates Grid -->
+        <div class="tcs-templates-grid" id="tcsTemplatesGrid">
+            
+            <!-- Template 1 -->
+            <div class="tcs-template-card" data-category="modern">
+                <div class="tcs-template-inner">
+                    <div class="tcs-template-image" data-emoji="☕">
+                    </div>
+                    <div class="tcs-template-overlay">
+                        <a href="#" class="tcs-template-action">Use Template</a>
+                        <a href="#" class="tcs-template-action">Preview</a>
+                    </div>
+                    <div class="tcs-template-info">
+                        <span class="tcs-template-category">Modern</span>
+                        <h3 class="tcs-template-name">Urban Coffee Culture</h3>
+                        <p class="tcs-template-description">Bold typography with geometric patterns, perfect for trendy urban cafes.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Template 2 -->
+            <div class="tcs-template-card" data-category="vintage">
+                <div class="tcs-template-inner">
+                    <div class="tcs-template-image" data-emoji="🎨">
+                    </div>
+                    <div class="tcs-template-overlay">
+                        <a href="#" class="tcs-template-action">Use Template</a>
+                        <a href="#" class="tcs-template-action">Preview</a>
+                    </div>
+                    <div class="tcs-template-info">
+                        <span class="tcs-template-category">Vintage</span>
+                        <h3 class="tcs-template-name">Classic Roasters</h3>
+                        <p class="tcs-template-description">Retro-inspired design with classic coffee imagery and warm tones.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Template 3 -->
+            <div class="tcs-template-card" data-category="minimal">
+                <div class="tcs-template-inner">
+                    <div class="tcs-template-image" data-emoji="✨">
+                    </div>
+                    <div class="tcs-template-overlay">
+                        <a href="#" class="tcs-template-action">Use Template</a>
+                        <a href="#" class="tcs-template-action">Preview</a>
+                    </div>
+                    <div class="tcs-template-info">
+                        <span class="tcs-template-category">Minimal</span>
+                        <h3 class="tcs-template-name">Pure Simplicity</h3>
+                        <p class="tcs-template-description">Clean lines and elegant simplicity for a sophisticated look.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Template 4 -->
+            <div class="tcs-template-card" data-category="artistic">
+                <div class="tcs-template-inner">
+                    <div class="tcs-template-image" data-emoji="🌺">
+                    </div>
+                    <div class="tcs-template-overlay">
+                        <a href="#" class="tcs-template-action">Use Template</a>
+                        <a href="#" class="tcs-template-action">Preview</a>
+                    </div>
+                    <div class="tcs-template-info">
+                        <span class="tcs-template-category">Artistic</span>
+                        <h3 class="tcs-template-name">Botanical Blend</h3>
+                        <p class="tcs-template-description">Hand-drawn floral patterns with artistic watercolor effects.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Template 5 -->
+            <div class="tcs-template-card" data-category="seasonal">
+                <div class="tcs-template-inner">
+                    <div class="tcs-template-image" data-emoji="🎄">
+                    </div>
+                    <div class="tcs-template-overlay">
+                        <a href="#" class="tcs-template-action">Use Template</a>
+                        <a href="#" class="tcs-template-action">Preview</a>
+                    </div>
+                    <div class="tcs-template-info">
+                        <span class="tcs-template-category">Seasonal</span>
+                        <h3 class="tcs-template-name">Holiday Warmth</h3>
+                        <p class="tcs-template-description">Festive design perfect for holiday seasonal promotions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Template 6 -->
+            <div class="tcs-template-card" data-category="modern">
+                <div class="tcs-template-inner">
+                    <div class="tcs-template-image" data-emoji="⚡">
+                    </div>
+                    <div class="tcs-template-overlay">
+                        <a href="#" class="tcs-template-action">Use Template</a>
+                        <a href="#" class="tcs-template-action">Preview</a>
+                    </div>
+                    <div class="tcs-template-info">
+                        <span class="tcs-template-category">Modern</span>
+                        <h3 class="tcs-template-name">Energy Boost</h3>
+                        <p class="tcs-template-description">Dynamic design with bold colors and modern energy.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Template 7 -->
+            <div class="tcs-template-card" data-category="minimal">
+                <div class="tcs-template-inner">
+                    <div class="tcs-template-image" data-emoji="🌙">
+                    </div>
+                    <div class="tcs-template-overlay">
+                        <a href="#" class="tcs-template-action">Use Template</a>
+                        <a href="#" class="tcs-template-action">Preview</a>
+                    </div>
+                    <div class="tcs-template-info">
+                        <span class="tcs-template-category">Minimal</span>
+                        <h3 class="tcs-template-name">Midnight Brew</h3>
+                        <p class="tcs-template-description">Elegant dark theme with subtle sophistication.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Template 8 -->
+            <div class="tcs-template-card" data-category="vintage">
+                <div class="tcs-template-inner">
+                    <div class="tcs-template-image" data-emoji="📜">
+                    </div>
+                    <div class="tcs-template-overlay">
+                        <a href="#" class="tcs-template-action">Use Template</a>
+                        <a href="#" class="tcs-template-action">Preview</a>
+                    </div>
+                    <div class="tcs-template-info">
+                        <span class="tcs-template-category">Vintage</span>
+                        <h3 class="tcs-template-name">Heritage Blend</h3>
+                        <p class="tcs-template-description">Traditional coffee house aesthetic with vintage charm.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Before/After Section -->
+        <div class="tcs-before-after-section">
+            <h3 class="tcs-before-after-title">Customization Examples</h3>
+            
+            <div class="tcs-before-after-grid">
+                
+                <!-- Example 1 -->
+                <div class="tcs-ba-card">
+                    <div class="tcs-ba-container">
+                        <div class="tcs-ba-item">
+                            <span class="tcs-ba-label">Before</span>
+                            <div class="tcs-ba-image">🤎</div>
+                        </div>
+                        <div class="tcs-ba-item">
+                            <span class="tcs-ba-label">After</span>
+                            <div class="tcs-ba-image">✨</div>
+                        </div>
+                    </div>
+                    <div class="tcs-ba-arrow">→</div>
+                </div>
+                
+                <!-- Example 2 -->
+                <div class="tcs-ba-card">
+                    <div class="tcs-ba-container">
+                        <div class="tcs-ba-item">
+                            <span class="tcs-ba-label">Before</span>
+                            <div class="tcs-ba-image">📦</div>
+                        </div>
+                        <div class="tcs-ba-item">
+                            <span class="tcs-ba-label">After</span>
+                            <div class="tcs-ba-image">🎨</div>
+                        </div>
+                    </div>
+                    <div class="tcs-ba-arrow">→</div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Industry Examples -->
+        <div class="tcs-industry-examples">
+            <h3 class="tcs-industry-title">Industry-Specific Designs</h3>
+            
+            <div class="tcs-industry-grid">
+                
+                <!-- Cafes & Coffee Shops -->
+                <div class="tcs-industry-card">
+                    <div class="tcs-industry-icon">☕</div>
+                    <h4 class="tcs-industry-name">Cafes & Coffee Shops</h4>
+                    <p class="tcs-industry-desc">Designs that capture the essence of artisan coffee culture.</p>
+                    <p class="tcs-industry-examples-list">Urban, Rustic, Artisan, Specialty</p>
+                </div>
+                
+                <!-- Restaurants -->
+                <div class="tcs-industry-card">
+                    <div class="tcs-industry-icon">🍽️</div>
+                    <h4 class="tcs-industry-name">Restaurants</h4>
+                    <p class="tcs-industry-desc">Elegant designs that complement your dining experience.</p>
+                    <p class="tcs-industry-examples-list">Fine Dining, Casual, Fast Food, Bistro</p>
+                </div>
+                
+                <!-- Events & Catering -->
+                <div class="tcs-industry-card">
+                    <div class="tcs-industry-icon">🎉</div>
+                    <h4 class="tcs-industry-name">Events & Catering</h4>
+                    <p class="tcs-industry-desc">Custom designs for weddings, corporate events, and parties.</p>
+                    <p class="tcs-industry-examples-list">Weddings, Corporate, Festivals, Private</p>
+                </div>
+                
+                <!-- Retail & Brands -->
+                <div class="tcs-industry-card">
+                    <div class="tcs-industry-icon">🏪</div>
+                    <h4 class="tcs-industry-name">Retail & Brands</h4>
+                    <p class="tcs-industry-desc">Brand-focused designs that strengthen your identity.</p>
+                    <p class="tcs-industry-examples-list">Retail, Franchise, Chains, Boutique</p>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Free Design Service CTA -->
+        <div class="tcs-free-design-cta">
+            <div class="tcs-cta-content">
+                <div class="tcs-cta-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                </div>
+                <h3 class="tcs-cta-title">Free Professional Design Service</h3>
+                <p class="tcs-cta-subtitle">
+                    Don't have a design? No problem! Our expert design team will create a custom design for you absolutely free with your order.
+                </p>
+                <div class="tcs-cta-features">
+                    <div class="tcs-cta-feature">Professional Designers</div>
+                    <div class="tcs-cta-feature">Unlimited Revisions</div>
+                    <div class="tcs-cta-feature">100% Free Service</div>
+                    <div class="tcs-cta-feature">Fast Turnaround</div>
+                </div>
+                <a href="#tcsCustomization" class="tcs-cta-button">Get Free Design Now</a>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<script is:inline>
+(function() {
+    'use strict';
+    
+    // Filter functionality
+    function initFilterTabs() {
+        const tabs = document.querySelectorAll('.tcs-filter-tab');
+        const cards = document.querySelectorAll('.tcs-template-card');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter cards
+                cards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeInScale 0.5s ease-out';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+    
+    // 3D Tilt effect for template cards
+    function init3DTilt() {
+        const cards = document.querySelectorAll('.tcs-template-inner');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                if (window.innerWidth <= 768) return;
+                
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `translateY(-15px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = '';
+            });
+        });
+    }
+    
+    // Template card animations on scroll
+    function initScrollAnimations() {
+        const cards = document.querySelectorAll('.tcs-template-card');
+        
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+        
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+    }
+    
+    // Industry card hover effects
+    function initIndustryCards() {
+        const cards = document.querySelectorAll('.tcs-industry-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('.tcs-industry-icon');
+                if (icon) {
+                    icon.style.transform = 'rotateY(180deg)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('.tcs-industry-icon');
+                if (icon) {
+                    icon.style.transform = '';
+                }
+            });
+        });
+    }
+    
+    // Smooth scroll for CTA button
+    function initCTAButton() {
+        const ctaBtn = document.querySelector('.tcs-cta-button');
+        
+        if (ctaBtn) {
+            ctaBtn.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        }
+    }
+    
+    // Template action buttons
+    function initTemplateActions() {
+        const actionButtons = document.querySelectorAll('.tcs-template-action');
+        
+        actionButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const action = this.textContent.toLowerCase();
+                const templateCard = this.closest('.tcs-template-card');
+                const templateName = templateCard.querySelector('.tcs-template-name').textContent;
+                
+                if (action.includes('use')) {
+                    console.log('Using template:', templateName);
+                    // Add your template selection logic here
+                    alert('Template "' + templateName + '" selected! Redirecting to customization...');
+                    // Redirect to customization section
+                    window.location.href = '#tcsCustomization';
+                } else if (action.includes('preview')) {
+                    console.log('Previewing template:', templateName);
+                    // Add your preview logic here
+                    alert('Opening preview for "' + templateName + '"');
+                }
+            });
+        });
+    }
+    
+    // Initialize
+    function init() {
+        initFilterTabs();
+        
+        if (window.innerWidth > 768) {
+            init3DTilt();
+        }
+        
+        initScrollAnimations();
+        initIndustryCards();
+        initCTAButton();
+        initTemplateActions();
+        
+        console.log('The Coffee Sleeves Design Templates - Initialized');
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    
+})();
+</script>

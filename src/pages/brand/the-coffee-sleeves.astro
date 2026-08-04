@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArchiveGrid from '../../components/ArchiveGrid.astro';
+import { products, site } from '../../utils/site';
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'The Coffee Sleeves',
+        item: `${site.url}/brand/the-coffee-sleeves/`,
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="The Coffee Sleeves Archives - The Coffee Sleeves"
+  description="All products by The Coffee Sleeves brand — custom printed coffee sleeves and cup sleeves in cardboard, kraft, paper and corrugated materials."
+  path="/brand/the-coffee-sleeves/"
+  schemas={schemas}
+>
+  <ArchiveGrid heading="The Coffee Sleeves" products={products} />
+</BaseLayout>

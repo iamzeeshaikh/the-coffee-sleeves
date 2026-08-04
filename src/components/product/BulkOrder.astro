@@ -1,0 +1,1163 @@
+<style is:global>
+/* Bulk Order CTA Section */
+.tcs-bulk-order {
+    position: relative;
+    background: linear-gradient(135deg, #1A237E 0%, #283593 50%, #3F51B5 100%);
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Animated Background */
+.tcs-bulk-order::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    animation: bgPulse 15s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Geometric Shapes Background */
+.tcs-bulk-order::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="30" height="30" fill="rgba(255,255,255,0.03)"/><circle cx="70" cy="70" r="15" fill="rgba(255,255,255,0.03)"/></svg>');
+    animation: bgMove 30s linear infinite;
+}
+
+@keyframes bgMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(100px); }
+}
+
+.tcs-bulk-order-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Section Header */
+.tcs-bulk-header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tcs-bulk-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.tcs-bulk-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 15px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    line-height: 1.2;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tcs-bulk-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Main Content Grid */
+.tcs-bulk-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* Volume Discount Card */
+.tcs-discount-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: fadeInLeft 0.8s ease-out 0.2s backwards;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.tcs-discount-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tcs-discount-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #1A237E, #3F51B5);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(26, 35, 126, 0.4);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.tcs-discount-icon svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+}
+
+.tcs-discount-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #1A237E;
+    margin-bottom: 10px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-discount-desc {
+    font-size: 1rem;
+    color: #666666;
+    line-height: 1.6;
+}
+
+/* Discount Tiers Table */
+.tcs-discount-tiers {
+    margin-top: 30px;
+}
+
+.tcs-tier-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+    padding: 20px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    align-items: center;
+}
+
+.tcs-tier-row:first-child {
+    background: linear-gradient(135deg, #1A237E, #3F51B5);
+    color: white;
+    border-radius: 12px;
+    font-weight: 700;
+    border: none;
+}
+
+.tcs-tier-row:not(:first-child):hover {
+    background: rgba(26, 35, 126, 0.05);
+    transform: translateX(10px);
+    border-left: 4px solid #3F51B5;
+}
+
+.tcs-tier-quantity {
+    font-weight: 700;
+    color: #1A237E;
+}
+
+.tcs-tier-row:first-child .tcs-tier-quantity,
+.tcs-tier-row:first-child .tcs-tier-discount,
+.tcs-tier-row:first-child .tcs-tier-savings {
+    color: white;
+}
+
+.tcs-tier-discount {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #4CAF50;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-tier-savings {
+    font-size: 0.9rem;
+    color: #666666;
+    font-weight: 600;
+}
+
+/* Enterprise Solutions Card */
+.tcs-enterprise-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: fadeInRight 0.8s ease-out 0.2s backwards;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.tcs-enterprise-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tcs-enterprise-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #FF6F00, #FF9800);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(255, 111, 0, 0.4);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.tcs-enterprise-icon svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+}
+
+.tcs-enterprise-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #1A237E;
+    margin-bottom: 10px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-enterprise-desc {
+    font-size: 1rem;
+    color: #666666;
+    line-height: 1.6;
+}
+
+/* Enterprise Features */
+.tcs-enterprise-features {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tcs-enterprise-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(26, 35, 126, 0.05);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.tcs-enterprise-feature:hover {
+    background: rgba(26, 35, 126, 0.1);
+    border-left-color: #3F51B5;
+    transform: translateX(5px);
+}
+
+.tcs-feature-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #1A237E, #3F51B5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tcs-feature-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+
+.tcs-feature-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1A237E;
+    margin-bottom: 5px;
+}
+
+.tcs-feature-content p {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Benefits Grid */
+.tcs-bulk-benefits {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 50px 40px;
+    margin-bottom: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 0.8s ease-out 0.4s backwards;
+}
+
+.tcs-benefits-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tcs-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.tcs-benefit-item {
+    text-align: center;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    perspective: 1000px;
+}
+
+.tcs-benefit-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-10px) scale(1.05);
+}
+
+.tcs-benefit-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.tcs-benefit-item:hover .tcs-benefit-icon {
+    transform: rotateY(180deg) scale(1.1);
+}
+
+.tcs-benefit-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+}
+
+.tcs-benefit-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.tcs-benefit-desc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+/* Contact Form Section */
+.tcs-bulk-contact {
+    background: white;
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: fadeInScale 0.8s ease-out 0.6s backwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tcs-contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tcs-contact-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #1A237E;
+    margin-bottom: 15px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-contact-subtitle {
+    font-size: 1.1rem;
+    color: #666666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Form Grid */
+.tcs-contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.tcs-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tcs-form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.tcs-form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1A237E;
+}
+
+.tcs-form-input,
+.tcs-form-textarea,
+.tcs-form-select {
+    padding: 15px 20px;
+    border: 2px solid rgba(26, 35, 126, 0.2);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    font-family: inherit;
+}
+
+.tcs-form-input:focus,
+.tcs-form-textarea:focus,
+.tcs-form-select:focus {
+    outline: none;
+    border-color: #3F51B5;
+    box-shadow: 0 5px 15px rgba(63, 81, 181, 0.2);
+}
+
+.tcs-form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Response Time Guarantee */
+.tcs-response-guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 12px;
+    border: 2px solid rgba(76, 175, 80, 0.3);
+}
+
+.tcs-guarantee-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+.tcs-guarantee-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+}
+
+.tcs-guarantee-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2E7D32;
+}
+
+/* Submit Button */
+.tcs-submit-button {
+    padding: 18px 50px;
+    background: linear-gradient(135deg, #1A237E, #3F51B5);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(26, 35, 126, 0.5);
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    width: 100%;
+}
+
+.tcs-submit-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(26, 35, 126, 0.7);
+}
+
+.tcs-submit-button:active {
+    transform: translateY(-2px);
+}
+
+/* Contact Info */
+.tcs-contact-info {
+    margin-top: 30px;
+    text-align: center;
+    padding-top: 30px;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.tcs-contact-methods {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.tcs-contact-method {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #1A237E;
+    font-weight: 600;
+}
+
+.tcs-contact-method svg {
+    width: 24px;
+    height: 24px;
+    fill: #3F51B5;
+}
+
+/* Stats Bar */
+.tcs-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 0.8s ease-out 0.8s backwards;
+}
+
+.tcs-stat-item {
+    text-align: center;
+}
+
+.tcs-stat-value {
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.tcs-stat-item:hover .tcs-stat-value {
+    transform: scale(1.15);
+}
+
+.tcs-stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .tcs-bulk-title {
+        font-size: 2.5rem;
+    }
+    
+    .tcs-bulk-content {
+        gap: 30px;
+    }
+    
+    .tcs-tier-row {
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 10px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tcs-bulk-order {
+        padding: 60px 0;
+    }
+    
+    .tcs-bulk-title {
+        font-size: 2rem;
+    }
+    
+    .tcs-bulk-subtitle {
+        font-size: 1rem;
+    }
+    
+    .tcs-bulk-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .tcs-discount-card,
+    .tcs-enterprise-card {
+        padding: 30px 20px;
+    }
+    
+    .tcs-tier-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .tcs-bulk-benefits {
+        padding: 40px 25px;
+    }
+    
+    .tcs-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tcs-bulk-contact {
+        padding: 40px 25px;
+    }
+    
+    .tcs-contact-form {
+        grid-template-columns: 1fr;
+    }
+    
+    .tcs-contact-methods {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .tcs-stats-bar {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .tcs-bulk-title {
+        font-size: 1.75rem;
+    }
+    
+    .tcs-stat-value {
+        font-size: 2.5rem;
+    }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+    .tcs-discount-icon,
+    .tcs-enterprise-icon,
+    .tcs-guarantee-icon,
+    .tcs-bulk-order::before,
+    .tcs-bulk-order::after {
+        animation: none !important;
+    }
+}
+
+
+/* FIX: force both items to take full row in the form grid */
+#tcsBulkOrderForm .tcs-response-guarantee{
+  grid-column: 1 / -1 !important;   /* full width row */
+  align-self: start !important;
+}
+
+#tcsBulkOrderForm .tcs-submit-button{
+  grid-column: 1 / -1 !important;   /* full width row */
+  align-self: start !important;
+  justify-self: center !important;  /* if width auto */
+}
+
+/* Optional: stop grid from stretching items vertically */
+#tcsBulkOrderForm.tcs-contact-form{
+  align-items: start !important;
+}
+
+#tcsBulkOrderForm .tcs-submit-button{
+  padding: 12px 22px !important;
+  font-size: 15px !important;
+  line-height: 1.1 !important;
+  border-radius: 18px !important;
+  min-height: 0 !important;
+  height: auto !important;
+  width: auto !important;  /* agar full width nahi chahiye */
+}
+
+
+</style>
+
+<!-- Bulk Order CTA Section HTML -->
+<section class="tcs-bulk-order" id="tcsBulkOrder">
+    <div class="tcs-bulk-order-container">
+        
+        <!-- Section Header -->
+        <div class="tcs-bulk-header">
+            <div class="tcs-bulk-badge">📦 Bulk & Enterprise Orders</div>
+            <h2 class="tcs-bulk-title">Save More with Volume Orders</h2>
+            <p class="tcs-bulk-subtitle">
+                Get special pricing for large orders, dedicated account management, and enterprise-level solutions tailored to your business needs.
+            </p>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="tcs-bulk-content">
+            
+            <!-- Volume Discounts -->
+            <div class="tcs-discount-card">
+                <div class="tcs-discount-header">
+                    <div class="tcs-discount-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="9" cy="21" r="1"/>
+                            <circle cx="20" cy="21" r="1"/>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                        </svg>
+                    </div>
+                    <h3 class="tcs-discount-title">Volume Discounts</h3>
+                    <p class="tcs-discount-desc">
+                        The more you order, the more you save. Our tiered pricing ensures you get the best value for your investment.
+                    </p>
+                </div>
+                
+                <div class="tcs-discount-tiers">
+                    <div class="tcs-tier-row">
+                        <div class="tcs-tier-quantity">Order Quantity</div>
+                        <div class="tcs-tier-discount">Pricing</div>
+                        <div class="tcs-tier-savings">Benefit</div>
+                    </div>
+                    <div class="tcs-tier-row">
+                        <div class="tcs-tier-quantity">5,000 - 9,999 units</div>
+                        <div class="tcs-tier-discount">Volume rate</div>
+                        <div class="tcs-tier-savings">Reduced per-unit cost</div>
+                    </div>
+                    <div class="tcs-tier-row">
+                        <div class="tcs-tier-quantity">10,000 - 24,999 units</div>
+                        <div class="tcs-tier-discount">Better rate</div>
+                        <div class="tcs-tier-savings">Larger savings per unit</div>
+                    </div>
+                    <div class="tcs-tier-row">
+                        <div class="tcs-tier-quantity">25,000 - 49,999 units</div>
+                        <div class="tcs-tier-discount">Wholesale rate</div>
+                        <div class="tcs-tier-savings">Best standard pricing</div>
+                    </div>
+                    <div class="tcs-tier-row">
+                        <div class="tcs-tier-quantity">50,000+ units</div>
+                        <div class="tcs-tier-discount">Custom rate</div>
+                        <div class="tcs-tier-savings">Negotiated per order</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Enterprise Solutions -->
+            <div class="tcs-enterprise-card">
+                <div class="tcs-enterprise-header">
+                    <div class="tcs-enterprise-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <h3 class="tcs-enterprise-title">Enterprise Solutions</h3>
+                    <p class="tcs-enterprise-desc">
+                        Comprehensive solutions for large organizations, chains, and franchises with dedicated support.
+                    </p>
+                </div>
+                
+                <div class="tcs-enterprise-features">
+                    <div class="tcs-enterprise-feature">
+                        <div class="tcs-feature-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <div class="tcs-feature-content">
+                            <h4>Dedicated Account Manager</h4>
+                            <p>Your personal point of contact for all orders and inquiries</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tcs-enterprise-feature">
+                        <div class="tcs-feature-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </div>
+                        <div class="tcs-feature-content">
+                            <h4>Priority Support</h4>
+                            <p>Priority handling for bulk enquiries by phone and email</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tcs-enterprise-feature">
+                        <div class="tcs-feature-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="tcs-feature-content">
+                            <h4>Flexible Scheduling</h4>
+                            <p>Scheduled deliveries and recurring orders available</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tcs-enterprise-feature">
+                        <div class="tcs-feature-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                        </div>
+                        <div class="tcs-feature-content">
+                            <h4>Custom Contracts</h4>
+                            <p>Tailored agreements with net payment terms available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Benefits Grid -->
+        <div class="tcs-bulk-benefits">
+            <h3 class="tcs-benefits-title">Why Order in Bulk?</h3>
+            
+            <div class="tcs-benefits-grid">
+                <div class="tcs-benefit-item">
+                    <div class="tcs-benefit-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h4 class="tcs-benefit-title">Lower Cost Per Unit</h4>
+                    <p class="tcs-benefit-desc">Save up to 20% or more on large volume orders</p>
+                </div>
+                
+                <div class="tcs-benefit-item">
+                    <div class="tcs-benefit-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="3" width="15" height="13"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h4 class="tcs-benefit-title">Bulk Delivery</h4>
+                    <p class="tcs-benefit-desc">Palletised delivery arranged for large orders</p>
+                </div>
+                
+                <div class="tcs-benefit-item">
+                    <div class="tcs-benefit-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h4 class="tcs-benefit-title">Stock Guarantee</h4>
+                    <p class="tcs-benefit-desc">Never run out with guaranteed inventory</p>
+                </div>
+                
+                <div class="tcs-benefit-item">
+                    <div class="tcs-benefit-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                        </svg>
+                    </div>
+                    <h4 class="tcs-benefit-title">Quality Consistency</h4>
+                    <p class="tcs-benefit-desc">Same high quality across all your orders</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="tcs-bulk-contact">
+            <div class="tcs-contact-header">
+                <h3 class="tcs-contact-title">Request a Custom Quote</h3>
+                <p class="tcs-contact-subtitle">
+                    Fill out the form below and our bulk order specialists will get back to you within 24 hours with a personalized quote.
+                </p>
+            </div>
+            
+            <form class="tcs-contact-form" id="tcsBulkOrderForm">
+                <div class="tcs-form-group">
+                    <label class="tcs-form-label">Your Name *</label>
+                    <input type="text" class="tcs-form-input" placeholder="John Smith" required>
+                </div>
+                
+                <div class="tcs-form-group">
+                    <label class="tcs-form-label">Company Name *</label>
+                    <input type="text" class="tcs-form-input" placeholder="Coffee Chain Ltd" required>
+                </div>
+                
+                <div class="tcs-form-group">
+                    <label class="tcs-form-label">Email Address *</label>
+                    <input type="email" class="tcs-form-input" placeholder="john@company.com" required>
+                </div>
+                
+                <div class="tcs-form-group">
+                    <label class="tcs-form-label">Phone Number</label>
+                    <input type="tel" class="tcs-form-input" placeholder="(503) 358-0443">
+                </div>
+                
+                <div class="tcs-form-group full-width">
+                    <label class="tcs-form-label">Estimated Quantity *</label>
+                    <select class="tcs-form-select" required>
+                        <option value="">Select quantity range</option>
+                        <option value="5000-10000">5,000 - 10,000 units</option>
+                        <option value="10000-25000">10,000 - 25,000 units</option>
+                        <option value="25000-50000">25,000 - 50,000 units</option>
+                        <option value="50000-100000">50,000 - 100,000 units</option>
+                        <option value="100000+">100,000+ units</option>
+                    </select>
+                </div>
+                
+                <div class="tcs-form-group full-width">
+                    <label class="tcs-form-label">Additional Details</label>
+                    <textarea class="tcs-form-textarea" placeholder="Tell us about your requirements, timeline, and any specific needs..."></textarea>
+                </div>
+                
+                
+                <button type="submit" class="tcs-submit-button">
+                    Get Your Custom Quote Now
+                </button>
+            </form>
+            
+            <div class="tcs-contact-info">
+                <div class="tcs-contact-methods">
+                    <div class="tcs-contact-method">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        (503) 358-0443
+                    </div>
+                    <div class="tcs-contact-method">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        info@thecoffeesleeves.com
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Bar -->
+        <div class="tcs-stats-bar">
+            <div class="tcs-stat-item">
+                <div class="tcs-stat-value">500+</div>
+                <div class="tcs-stat-label">Enterprise Clients</div>
+            </div>
+            <div class="tcs-stat-item">
+                <div class="tcs-stat-value">10M+</div>
+                <div class="tcs-stat-label">Sleeves Delivered</div>
+            </div>
+            <div class="tcs-stat-item">
+                <div class="tcs-stat-value">98%</div>
+                <div class="tcs-stat-label">Repeat Orders</div>
+            </div>
+            <div class="tcs-stat-item">
+                <div class="tcs-stat-value">2HR</div>
+                <div class="tcs-stat-label">Response Time</div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<script is:inline>
+(function() {
+    'use strict';
+    
+    // Form submission handler
+    function initFormSubmission() {
+        const form = document.getElementById('tcsBulkOrderForm');
+        
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const submitBtn = form.querySelector('[type="submit"]');
+                if (submitBtn) submitBtn.disabled = true;
+                try {
+                    const res = await fetch('/api/quote/', { method: 'POST', body: formData });
+                    const data = await res.json().catch(function() { return {}; });
+                    if (res.ok && data.success) {
+                        alert('Thank you! Your quote request has been received. Our team will contact you within 24 hours.');
+                        form.reset();
+                    } else {
+                        alert(data.message || 'Sorry, your request could not be sent. Please call (503) 358-0443 or email info@thecoffeesleeves.com.');
+                    }
+                } catch (err) {
+                    alert('Network error - please try again, or email info@thecoffeesleeves.com.');
+                } finally {
+                    if (submitBtn) submitBtn.disabled = false;
+                }
+            });
+        }
+    }
+    
+    // Animate stats on scroll
+    function initStatsAnimation() {
+        const stats = document.querySelectorAll('.tcs-stat-value');
+        
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stat = entry.target;
+                    const text = stat.textContent;
+                    
+                    // Animate only numeric stats
+                    if (text.match(/^\d+/)) {
+                        const match = text.match(/^(\d+)(.*)$/);
+                        if (match) {
+                            const target = parseInt(match[1]);
+                            const suffix = match[2];
+                            let current = 0;
+                            const increment = target / 30;
+                            
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    stat.textContent = target + suffix;
+                                    clearInterval(timer);
+                                } else {
+                                    stat.textContent = Math.floor(current) + suffix;
+                                }
+                            }, 50);
+                        }
+                    }
+                    
+                    observer.unobserve(stat);
+                }
+            });
+        }, observerOptions);
+        
+        stats.forEach(stat => {
+            observer.observe(stat);
+        });
+    }
+    
+    // Highlight discount tiers on hover
+    function initTierHighlight() {
+        const rows = document.querySelectorAll('.tcs-tier-row:not(:first-child)');
+        
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                const discount = this.querySelector('.tcs-tier-discount');
+                if (discount) {
+                    discount.style.transform = 'scale(1.2)';
+                }
+            });
+            
+            row.addEventListener('mouseleave', function() {
+                const discount = this.querySelector('.tcs-tier-discount');
+                if (discount) {
+                    discount.style.transform = '';
+                }
+            });
+        });
+    }
+    
+    // Initialize
+    function init() {
+        initFormSubmission();
+        initStatsAnimation();
+        initTierHighlight();
+        
+        console.log('The Coffee Sleeves Bulk Order - Initialized');
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    
+})();
+</script>

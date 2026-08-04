@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import TrustBar from '../components/home/TrustBar.astro';
+import CategoryCards from '../components/home/CategoryCards.astro';
+import WhyChoose from '../components/home/WhyChoose.astro';
+import HowItWorks from '../components/home/HowItWorks.astro';
+import FeaturedProducts from '../components/home/FeaturedProducts.astro';
+import Industries from '../components/home/Industries.astro';
+import Customization from '../components/home/Customization.astro';
+import HomeFaq from '../components/home/HomeFaq.astro';
+import CtaBanner from '../components/home/CtaBanner.astro';
+import LeadSection from '../components/home/LeadSection.astro';
+import site from '../data/site.json';
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${site.url}/#organization`,
+    name: site.name,
+    url: `${site.url}/`,
+    logo: `${site.url}/favicon-192x192.png`,
+    email: site.email,
+    telephone: '+1-503-358-0443',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: site.address.street,
+      addressLocality: site.address.city,
+      addressRegion: site.address.region,
+      postalCode: site.address.zip,
+      addressCountry: 'US',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${site.url}/#website`,
+    name: site.name,
+    url: `${site.url}/`,
+    publisher: { '@id': `${site.url}/#organization` },
+  },
+];
+---
+
+<BaseLayout
+  title={site.homeMeta.title}
+  description={site.homeMeta.description}
+  path="/"
+  ogImage="/images/Custom-coffee-sleeves-Reusable.jpg"
+  schemas={schemas}
+  offsetHeader={false}
+>
+  <Hero />
+  <TrustBar />
+  <CategoryCards />
+  <WhyChoose />
+  <HowItWorks />
+  <FeaturedProducts />
+  <Industries />
+  <Customization />
+  <HomeFaq />
+  <CtaBanner />
+  <LeadSection />
+</BaseLayout>

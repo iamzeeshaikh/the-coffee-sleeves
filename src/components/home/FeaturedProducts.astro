@@ -1,0 +1,371 @@
+<!-- Paste in Elementor HTML Widget -->
+
+<style is:global>
+/* Fix Elementor conflicts - MAKE EVERYTHING CLICKABLE */
+.tcs-featured * {
+    pointer-events: auto !important;
+    cursor: default;
+}
+
+.tcs-featured a,
+.tcs-featured button {
+    cursor: pointer !important;
+}
+
+.tcs-featured {
+    background: linear-gradient(135deg, #2C1810, #3E2723);
+    padding: 80px 0;
+}
+
+.tcs-featured-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tcs-featured-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.tcs-featured-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.tcs-featured-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.tcs-featured-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.tcs-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.tcs-product-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.tcs-product-card:hover {
+    transform: translateY(-10px);
+}
+
+.tcs-product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    z-index: 10;
+}
+
+.tcs-product-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.tcs-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tcs-product-content {
+    padding: 25px;
+}
+
+.tcs-product-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 12px;
+}
+
+.tcs-product-stars {
+    color: #FF8C42;
+    font-size: 0.9rem;
+}
+
+.tcs-product-reviews {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.tcs-product-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #2C1810;
+    margin-bottom: 10px;
+}
+
+.tcs-product-description {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.tcs-product-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tcs-product-feature {
+    background: rgba(255, 140, 66, 0.1);
+    color: #FF8C42;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.tcs-product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.tcs-product-price-label {
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+}
+
+.tcs-product-price-amount {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #FF8C42;
+}
+
+.tcs-product-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #6F4E37, #8B4513);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.tcs-product-btn:hover {
+    background: linear-gradient(135deg, #8B4513, #3E2723);
+    transform: translateX(5px);
+    color: white;
+}
+
+.tcs-featured-cta {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.tcs-featured-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.tcs-featured-cta-btn:hover {
+    transform: translateY(-3px);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .tcs-featured-title {
+        font-size: 2rem;
+    }
+    .tcs-featured-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<section class="tcs-featured">
+    <div class="tcs-featured-container">
+        
+        <div class="tcs-featured-header">
+            <div class="tcs-featured-badge">⭐ Best Sellers</div>
+            <h2 class="tcs-featured-title">Featured Products</h2>
+            <p class="tcs-featured-subtitle">
+                Discover our most popular coffee sleeves - trusted by thousands of businesses worldwide
+            </p>
+        </div>
+        
+        <div class="tcs-featured-grid">
+            
+            <!-- Product 1 -->
+            <div class="tcs-product-card">
+                <div class="tcs-product-image">
+                   
+                    <img src="/images/Custom-coffee-sleeves-Reusable.jpg" alt="Custom Coffee Sleeves">
+                </div>
+                <div class="tcs-product-content">
+                    <div class="tcs-product-rating">
+                        <span class="tcs-product-feature">✓ Wholesale Pricing</span>
+                    </div>
+                    <h3 class="tcs-product-name">Custom Coffee Sleeves</h3>
+                    <p class="tcs-product-description">
+                        Premium reusable coffee sleeves with full-color custom printing. Perfect for cafes, events, and brand promotion.
+                    </p>
+                    <div class="tcs-product-features">
+                        <span class="tcs-product-feature">✓ Free Design</span>
+                        <span class="tcs-product-feature">✓ Fast Ship</span>
+                        <span class="tcs-product-feature">✓ Eco-Friendly</span>
+                    </div>
+                    <div class="tcs-product-footer">
+                        <div>
+                            <div class="tcs-product-price-label">Starting at</div>
+                            <div class="tcs-product-price-amount">$0.15</div>
+                        </div>
+                        <a href="/product/custom-cup-sleeves/" class="tcs-product-btn">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="tcs-product-card">
+                <div class="tcs-product-image">
+                    
+                    <img src="/images/Kraft-Coffee-Sleeves-Wholesale.jpg" alt="Kraft Coffee Sleeves">
+                </div>
+                <div class="tcs-product-content">
+                    <div class="tcs-product-rating">
+                        <span class="tcs-product-feature">✓ Wholesale Pricing</span>
+                    </div>
+                    <h3 class="tcs-product-name">Kraft Coffee Sleeves</h3>
+                    <p class="tcs-product-description">
+                        Eco-friendly kraft paper sleeves with natural brown finish. Biodegradable and sustainable for environmentally conscious businesses.
+                    </p>
+                    <div class="tcs-product-features">
+                        <span class="tcs-product-feature">✓ 100% Recyclable</span>
+                        <span class="tcs-product-feature">✓ Wholesale</span>
+                        <span class="tcs-product-feature">✓ Printable</span>
+                    </div>
+                    <div class="tcs-product-footer">
+                        <div>
+                            <div class="tcs-product-price-label">Starting at</div>
+                            <div class="tcs-product-price-amount">$0.12</div>
+                        </div>
+                        <a href="/product/kraft-coffee-sleeves/" class="tcs-product-btn">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="tcs-product-card">
+                <div class="tcs-product-image">
+                    
+                    <img src="/images/Printed-Coffee-Sleeves.jpg" alt="Printed Coffee Sleeves">
+                </div>
+                <div class="tcs-product-content">
+                    <div class="tcs-product-rating">
+                        <span class="tcs-product-feature">✓ Wholesale Pricing</span>
+                    </div>
+                    <h3 class="tcs-product-name">Printed Coffee Sleeves</h3>
+                    <p class="tcs-product-description">
+                        Vibrant full-color printed sleeves that showcase your brand. High-quality offset printing for stunning results.
+                    </p>
+                    <div class="tcs-product-features">
+                        <span class="tcs-product-feature">✓ Full Color</span>
+                        <span class="tcs-product-feature">✓ HD Quality</span>
+                        <span class="tcs-product-feature">✓ Custom Size</span>
+                    </div>
+                    <div class="tcs-product-footer">
+                        <div>
+                            <div class="tcs-product-price-label">Starting at</div>
+                            <div class="tcs-product-price-amount">$0.18</div>
+                        </div>
+                        <a href="/product/printed-coffee-sleeves/" class="tcs-product-btn">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="tcs-product-card">
+                <div class="tcs-product-image">
+                  
+                    <img src="/images/Branded-cup-sleeves-for-coffee.jpg" alt="Branded Cup Sleeves">
+                </div>
+                <div class="tcs-product-content">
+                    <div class="tcs-product-rating">
+                        <span class="tcs-product-feature">✓ Wholesale Pricing</span>
+                    </div>
+                    <h3 class="tcs-product-name">Branded Cup Sleeves</h3>
+                    <p class="tcs-product-description">
+                        Professional branded sleeves that turn every cup into a marketing opportunity. Perfect for corporate events and businesses.
+                    </p>
+                    <div class="tcs-product-features">
+                        <span class="tcs-product-feature">✓ Logo Print</span>
+                        <span class="tcs-product-feature">✓ Bulk Order</span>
+                        <span class="tcs-product-feature">✓ Premium</span>
+                    </div>
+                    <div class="tcs-product-footer">
+                        <div>
+                            <div class="tcs-product-price-label">Starting at</div>
+                            <div class="tcs-product-price-amount">$0.16</div>
+                        </div>
+                        <a href="/product/branded-cup-sleeves/" class="tcs-product-btn">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="tcs-featured-cta">
+            <a href="/shop/" class="tcs-featured-cta-btn">
+                View All Products →
+            </a>
+        </div>
+        
+    </div>
+</section>

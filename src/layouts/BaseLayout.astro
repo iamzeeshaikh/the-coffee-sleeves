@@ -1,0 +1,83 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import site from '../data/site.json';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path beginning and ending with '/', e.g. '/product/kraft-coffee-sleeves/' */
+  path: string;
+  ogImage?: string | undefined;
+  ogType?: string;
+  /** Extra JSON-LD blocks rendered in <head> */
+  schemas?: object[];
+  /** When true, <main> gets top padding to clear the fixed header */
+  offsetHeader?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  ogImage,
+  ogType = 'website',
+  schemas = [],
+  offsetHeader = true,
+} = Astro.props;
+
+const canonical = new URL(path, site.url).href;
+// Vercel preview deployments must not be indexed; production must be.
+const vercelEnv = process.env.VERCEL_ENV ?? import.meta.env.VERCEL_ENV;
+const isPreview = vercelEnv && vercelEnv !== 'production';
+const robots = isPreview ? 'noindex, nofollow' : 'index, follow';
+const ogImageAbs = ogImage ? new URL(ogImage, site.url).href : undefined;
+---
+
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={robots} />
+    <link rel="icon" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="/favicon-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/favicon-180x180.png" />
+    <link
+      rel="preload"
+      href="/fonts/roboto-var-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    {ogImageAbs && <meta property="og:image" content={ogImageAbs} />}
+    <meta name="twitter:card" content={ogImageAbs ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImageAbs && <meta name="twitter:image" content={ogImageAbs} />}
+    {
+      schemas.map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    }
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Header />
+    <main id="main-content" class={offsetHeader ? 'tcs-page-offset' : undefined}>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,1134 @@
+<style is:global>
+/* Materials & Quality Section */
+.tcs-materials-quality {
+    position: relative;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF8F0 50%, #FFFFFF 100%);
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Background Decoration */
+.tcs-materials-quality::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 140, 66, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(76, 175, 80, 0.04) 0%, transparent 50%);
+    animation: bgPulse 20s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.tcs-materials-quality-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Section Header */
+.tcs-materials-header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tcs-materials-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.tcs-materials-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 15px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    line-height: 1.2;
+}
+
+.tcs-materials-subtitle {
+    font-size: 1.2rem;
+    color: #666666;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Certifications Bar */
+.tcs-certifications-bar {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    margin-bottom: 60px;
+    animation: fadeInScale 0.8s ease-out 0.3s backwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tcs-certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    align-items: center;
+}
+
+.tcs-certification-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    perspective: 1000px;
+}
+
+.tcs-cert-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.tcs-cert-icon::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    border-radius: 50%;
+    opacity: 0.3;
+    filter: blur(15px);
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.tcs-certification-item:hover .tcs-cert-icon {
+    transform: translateY(-10px) rotateY(180deg) scale(1.1);
+    box-shadow: 0 15px 40px rgba(76, 175, 80, 0.6);
+}
+
+.tcs-certification-item:hover .tcs-cert-icon::before {
+    opacity: 0.6;
+    filter: blur(20px);
+}
+
+.tcs-cert-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: white;
+}
+
+.tcs-cert-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #2C1810;
+}
+
+.tcs-cert-desc {
+    font-size: 0.75rem;
+    color: #666666;
+}
+
+/* Material Cards Grid */
+.tcs-materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Material Card */
+.tcs-material-detail-card {
+    background: white;
+    border-radius: 20px;
+    padding: 35px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    perspective: 1500px;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInScale 0.8s ease-out backwards;
+}
+
+.tcs-material-detail-card:nth-child(1) { animation-delay: 0.1s; }
+.tcs-material-detail-card:nth-child(2) { animation-delay: 0.2s; }
+.tcs-material-detail-card:nth-child(3) { animation-delay: 0.3s; }
+.tcs-material-detail-card:nth-child(4) { animation-delay: 0.4s; }
+
+.tcs-material-detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+
+.tcs-material-detail-card:hover {
+    transform: translateY(-15px) rotateX(5deg);
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(76, 175, 80, 0.2);
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+.tcs-material-detail-card:hover::before {
+    transform: scaleX(1);
+}
+
+.tcs-material-image {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+    border-radius: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tcs-material-image::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.tcs-material-detail-card:hover .tcs-material-image {
+    transform: scale(1.05);
+}
+
+.tcs-material-detail-card:hover .tcs-material-image::after {
+    opacity: 1;
+    animation: shine 0.8s ease;
+}
+
+@keyframes shine {
+    from { left: -50%; }
+    to { left: 150%; }
+}
+
+.tcs-material-name {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 12px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-material-description {
+    font-size: 0.95rem;
+    color: #666666;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.tcs-material-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tcs-material-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #2C1810;
+}
+
+.tcs-material-feature::before {
+    content: '✓';
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+/* Comparison Table */
+.tcs-comparison-section {
+    background: white;
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    margin-bottom: 60px;
+    animation: fadeInUp 0.8s ease-out 0.5s backwards;
+}
+
+.tcs-comparison-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.tcs-comparison-table thead {
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    color: white;
+}
+
+.tcs-comparison-table th {
+    padding: 18px 15px;
+    font-weight: 700;
+    text-align: left;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tcs-comparison-table tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.tcs-comparison-table tbody tr:hover {
+    background: rgba(76, 175, 80, 0.05);
+    transform: scale(1.01);
+}
+
+.tcs-comparison-table td {
+    padding: 18px 15px;
+    font-size: 0.9rem;
+    color: #2C1810;
+}
+
+.tcs-comparison-table td:first-child {
+    font-weight: 700;
+}
+
+.tcs-check-icon {
+    color: #4CAF50;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.tcs-times-icon {
+    color: #F44336;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* Quality Guarantee Section */
+.tcs-quality-guarantee {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.08), rgba(139, 195, 74, 0.08));
+    border-radius: 20px;
+    padding: 50px 40px;
+    border: 2px solid rgba(76, 175, 80, 0.2);
+    margin-bottom: 60px;
+    animation: fadeInUp 0.8s ease-out 0.6s backwards;
+}
+
+.tcs-guarantee-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tcs-guarantee-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 15px 40px rgba(76, 175, 80, 0.5);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.tcs-guarantee-icon svg {
+    width: 50px;
+    height: 50px;
+    fill: white;
+}
+
+.tcs-guarantee-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 15px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-guarantee-subtitle {
+    font-size: 1.1rem;
+    color: #666666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tcs-guarantee-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.tcs-guarantee-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.tcs-guarantee-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.tcs-guarantee-item-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tcs-guarantee-item-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+.tcs-guarantee-item-content h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2C1810;
+    margin-bottom: 8px;
+}
+
+.tcs-guarantee-item-content p {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Sustainability Section */
+.tcs-sustainability {
+    background: white;
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out 0.7s backwards;
+}
+
+.tcs-sustainability-icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #4CAF50, #8BC34A);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.tcs-sustainability-icon svg {
+    width: 50px;
+    height: 50px;
+    fill: white;
+}
+
+.tcs-sustainability-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 20px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-sustainability-text {
+    font-size: 1.1rem;
+    color: #666666;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.tcs-sustainability-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.tcs-stat-item {
+    perspective: 1000px;
+}
+
+.tcs-stat-value {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #4CAF50;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.tcs-stat-item:hover .tcs-stat-value {
+    transform: scale(1.15) rotateY(10deg);
+    text-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.tcs-stat-label {
+    font-size: 1rem;
+    color: #666666;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .tcs-materials-title {
+        font-size: 2.5rem;
+    }
+    
+    .tcs-comparison-table {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tcs-materials-quality {
+        padding: 60px 0;
+    }
+    
+    .tcs-materials-title {
+        font-size: 2rem;
+    }
+    
+    .tcs-materials-subtitle {
+        font-size: 1rem;
+    }
+    
+    .tcs-certifications-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .tcs-materials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tcs-comparison-section {
+        padding: 30px 20px;
+        overflow-x: auto;
+    }
+    
+    .tcs-comparison-table {
+        min-width: 600px;
+    }
+    
+    .tcs-quality-guarantee {
+        padding: 40px 25px;
+    }
+    
+    .tcs-guarantee-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .tcs-sustainability {
+        padding: 40px 25px;
+    }
+    
+    .tcs-sustainability-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .tcs-materials-title {
+        font-size: 1.75rem;
+    }
+    
+    .tcs-certifications-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tcs-stat-value {
+        font-size: 2.5rem;
+    }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+    .tcs-material-detail-card,
+    .tcs-cert-icon,
+    .tcs-guarantee-icon,
+    .tcs-sustainability-icon,
+    .tcs-materials-quality::before {
+        animation: none !important;
+    }
+}
+</style>
+
+<!-- Materials & Quality Section HTML -->
+<section class="tcs-materials-quality" id="tcsMaterialsQuality">
+    <div class="tcs-materials-quality-container">
+        
+        <!-- Section Header -->
+        <div class="tcs-materials-header">
+            <div class="tcs-materials-badge">🌿 Premium Quality Materials</div>
+            <h2 class="tcs-materials-title">Materials & Quality Standards</h2>
+            <p class="tcs-materials-subtitle">
+                We use only the finest, eco-friendly materials with certified quality standards to ensure your coffee sleeves are safe, sustainable, and superior.
+            </p>
+        </div>
+        
+        <!-- Certifications Bar -->
+        <div class="tcs-certifications-bar">
+            <div class="tcs-certifications-grid">
+                <div class="tcs-certification-item">
+                    <div class="tcs-cert-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 11l3 3L22 4"/>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                        </svg>
+                    </div>
+                    <div class="tcs-cert-name">Food-Contact Safe</div>
+                    <div class="tcs-cert-desc">Beverage-Ready Materials</div>
+                </div>
+                
+                <div class="tcs-certification-item">
+                    <div class="tcs-cert-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <div class="tcs-cert-name">Responsibly Sourced</div>
+                    <div class="tcs-cert-desc">Paper-Based Materials</div>
+                </div>
+                
+                <div class="tcs-certification-item">
+                    <div class="tcs-cert-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.67C7.83 17.01 10 11.24 19 9l-2-1zm-5.55 3c-2.66.37-5.02 1.37-7.24 2.47L5.42 15c1.84-.77 3.78-1.49 5.98-1.84l.05-2.16zM19 12l-2-1c-8 0-12 7-12 7h2c1-2 4-6 12-6z"/>
+                            <circle cx="4.5" cy="9.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <div class="tcs-cert-name">Recyclable Options</div>
+                    <div class="tcs-cert-desc">Eco-Friendly Choices</div>
+                </div>
+                
+                <div class="tcs-certification-item">
+                    <div class="tcs-cert-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div class="tcs-cert-name">Quality Checked</div>
+                    <div class="tcs-cert-desc">Inspected Production</div>
+                </div>
+                
+                <div class="tcs-certification-item">
+                    <div class="tcs-cert-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                        </svg>
+                    </div>
+                    <div class="tcs-cert-name">Paperboard Build</div>
+                    <div class="tcs-cert-desc">Simple, Safe Materials</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Material Cards -->
+        <div class="tcs-materials-grid">
+            
+            <!-- Kraft Paper -->
+            <div class="tcs-material-detail-card">
+                <div class="tcs-material-image">🌾</div>
+                <h3 class="tcs-material-name">Kraft Paper</h3>
+                <p class="tcs-material-description">
+                    Natural, unbleached kraft paper made from sustainably sourced wood fibers. The eco-friendly choice with excellent insulation properties.
+                </p>
+                <ul class="tcs-material-features">
+                    <li class="tcs-material-feature">Paper-based, plastic-free build</li>
+                    <li class="tcs-material-feature">Natural brown aesthetic</li>
+                    <li class="tcs-material-feature">Excellent heat resistance</li>
+                    <li class="tcs-material-feature">Recyclable & compostable</li>
+                    <li class="tcs-material-feature">Responsibly sourced fibers</li>
+                </ul>
+            </div>
+            
+            <!-- White Cardboard -->
+            <div class="tcs-material-detail-card">
+                <div class="tcs-material-image">📄</div>
+                <h3 class="tcs-material-name">White Cardboard</h3>
+                <p class="tcs-material-description">
+                    Premium white cardboard with superior printability. Perfect for vibrant, full-color designs that make your brand stand out.
+                </p>
+                <ul class="tcs-material-features">
+                    <li class="tcs-material-feature">Bright white surface</li>
+                    <li class="tcs-material-feature">Superior print quality</li>
+                    <li class="tcs-material-feature">Smooth texture</li>
+                    <li class="tcs-material-feature">Food-safe coating</li>
+                    <li class="tcs-material-feature">Premium appearance</li>
+                </ul>
+            </div>
+            
+            <!-- Corrugated -->
+            <div class="tcs-material-detail-card">
+                <div class="tcs-material-image">📦</div>
+                <h3 class="tcs-material-name">Corrugated</h3>
+                <p class="tcs-material-description">
+                    Extra-thick corrugated material providing maximum insulation. The ultimate protection for hot beverages with enhanced grip.
+                </p>
+                <ul class="tcs-material-features">
+                    <li class="tcs-material-feature">Double-wall insulation</li>
+                    <li class="tcs-material-feature">Maximum heat protection</li>
+                    <li class="tcs-material-feature">Enhanced durability</li>
+                    <li class="tcs-material-feature">Superior grip</li>
+                    <li class="tcs-material-feature">Premium quality</li>
+                </ul>
+            </div>
+            
+            <!-- Recycled -->
+            <div class="tcs-material-detail-card">
+                <div class="tcs-material-image">♻️</div>
+                <h3 class="tcs-material-name">Recycled Paper</h3>
+                <p class="tcs-material-description">
+                    Made from 100% post-consumer recycled materials. The most environmentally responsible choice without compromising quality.
+                </p>
+                <ul class="tcs-material-features">
+                    <li class="tcs-material-feature">100% recycled content</li>
+                    <li class="tcs-material-feature">Reduces waste</li>
+                    <li class="tcs-material-feature">Carbon neutral</li>
+                    <li class="tcs-material-feature">Eco-conscious branding</li>
+                    <li class="tcs-material-feature">Certified sustainable</li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <!-- Comparison Table -->
+        <div class="tcs-comparison-section">
+            <h3 class="tcs-comparison-title">Material Comparison</h3>
+            <table class="tcs-comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Kraft Paper</th>
+                        <th>White Cardboard</th>
+                        <th>Corrugated</th>
+                        <th>Recycled</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Heat Resistance</td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Print Quality</td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Eco-Friendly</td>
+                        <td><span class="tcs-check-icon">✓✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓✓✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Durability</td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Insulation</td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Food-Safe</td>
+                        <td><span class="tcs-check-icon">✓</span></td>
+                        <td><span class="tcs-check-icon">✓</span></td>
+                        <td><span class="tcs-check-icon">✓</span></td>
+                        <td><span class="tcs-check-icon">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Recyclable</td>
+                        <td><span class="tcs-check-icon">✓</span></td>
+                        <td><span class="tcs-check-icon">✓</span></td>
+                        <td><span class="tcs-check-icon">✓</span></td>
+                        <td><span class="tcs-check-icon">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Premium Look</td>
+                        <td><span class="tcs-check-icon">✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓✓✓</span></td>
+                        <td><span class="tcs-check-icon">✓✓</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Quality Guarantee -->
+        <div class="tcs-quality-guarantee">
+            <div class="tcs-guarantee-header">
+                <div class="tcs-guarantee-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                        <path d="M9 11l3 3 5-5" stroke="white" fill="none" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3 class="tcs-guarantee-title">Our Quality Guarantee</h3>
+                <p class="tcs-guarantee-subtitle">
+                    We stand behind every coffee sleeve we produce with comprehensive quality assurance and customer satisfaction guarantees.
+                </p>
+            </div>
+            
+            <div class="tcs-guarantee-features">
+                <div class="tcs-guarantee-item">
+                    <div class="tcs-guarantee-item-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 11l3 3L22 4"/>
+                        </svg>
+                    </div>
+                    <div class="tcs-guarantee-item-content">
+                        <h4>100% Satisfaction</h4>
+                        <p>Not happy? We'll remake your order or provide a full refund. Your satisfaction is guaranteed.</p>
+                    </div>
+                </div>
+                
+                <div class="tcs-guarantee-item">
+                    <div class="tcs-guarantee-item-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div class="tcs-guarantee-item-content">
+                        <h4>Quality Control</h4>
+                        <p>Every batch undergoes rigorous inspection to ensure consistent quality and performance.</p>
+                    </div>
+                </div>
+                
+                <div class="tcs-guarantee-item">
+                    <div class="tcs-guarantee-item-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div class="tcs-guarantee-item-content">
+                        <h4>On-Time Delivery</h4>
+                        <p>We guarantee delivery within the quoted timeframe or your order ships free.</p>
+                    </div>
+                </div>
+                
+                <div class="tcs-guarantee-item">
+                    <div class="tcs-guarantee-item-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                    </div>
+                    <div class="tcs-guarantee-item-content">
+                        <h4>Perfect Print Match</h4>
+                        <p>Colors match your approved design proof exactly, or we'll reprint at no charge.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sustainability Section -->
+        <div class="tcs-sustainability">
+            <div class="tcs-sustainability-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.67C7.83 17.01 10 11.24 19 9l-2-1zm-5.55 3c-2.66.37-5.02 1.37-7.24 2.47L5.42 15c1.84-.77 3.78-1.49 5.98-1.84l.05-2.16zM19 12l-2-1c-8 0-12 7-12 7h2c1-2 4-6 12-6z"/>
+                    <circle cx="4.5" cy="9.5" r="2.5"/>
+                </svg>
+            </div>
+            <h3 class="tcs-sustainability-title">Committed to Sustainability</h3>
+            <p class="tcs-sustainability-text">
+                We're dedicated to minimizing our environmental impact through responsible sourcing, eco-friendly production processes, and sustainable materials. Every coffee sleeve we create is a step towards a greener future.
+            </p>
+            
+            <div class="tcs-sustainability-stats">
+                <div class="tcs-stat-item">
+                    <div class="tcs-stat-value">100%</div>
+                    <div class="tcs-stat-label">Recyclable Materials</div>
+                </div>
+                <div class="tcs-stat-item">
+                    <div class="tcs-stat-value">0</div>
+                    <div class="tcs-stat-label">Plastic Components</div>
+                </div>
+                <div class="tcs-stat-item">
+                    <div class="tcs-stat-value">FSC</div>
+                    <div class="tcs-stat-label">Certified Forestry</div>
+                </div>
+                <div class="tcs-stat-item">
+                    <div class="tcs-stat-value">-30%</div>
+                    <div class="tcs-stat-label">Carbon Footprint</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<script is:inline>
+(function() {
+    'use strict';
+    
+    // Animate certifications on scroll
+    function initCertificationAnimations() {
+        const certItems = document.querySelectorAll('.tcs-certification-item');
+        
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        const icon = entry.target.querySelector('.tcs-cert-icon');
+                        if (icon) {
+                            icon.style.animation = 'pulse 0.6s ease';
+                            setTimeout(() => {
+                                icon.style.animation = '';
+                            }, 600);
+                        }
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+        
+        certItems.forEach(item => {
+            observer.observe(item);
+        });
+    }
+    
+    // 3D Tilt effect for material cards
+    function init3DTiltCards() {
+        const cards = document.querySelectorAll('.tcs-material-detail-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                if (window.innerWidth <= 768) return;
+                
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                
+                card.style.transform = `translateY(-15px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = '';
+            });
+        });
+    }
+    
+    // Animate stats counter
+    function animateStats() {
+        const stats = document.querySelectorAll('.tcs-stat-value');
+        
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stat = entry.target;
+                    const text = stat.textContent;
+                    
+                    // Skip non-numeric values
+                    if (text === 'FSC' || text === '0') {
+                        stat.style.animation = 'pulse 0.6s ease';
+                        return;
+                    }
+                    
+                    // Animate percentage
+                    if (text.includes('%')) {
+                        let current = 0;
+                        const target = parseInt(text);
+                        const increment = target / 30;
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                stat.textContent = target + '%';
+                                clearInterval(timer);
+                            } else {
+                                stat.textContent = Math.floor(current) + '%';
+                            }
+                        }, 50);
+                    }
+                    
+                    observer.unobserve(stat);
+                }
+            });
+        }, observerOptions);
+        
+        stats.forEach(stat => {
+            observer.observe(stat);
+        });
+    }
+    
+    // Highlight table rows on hover
+    function initTableHighlight() {
+        const rows = document.querySelectorAll('.tcs-comparison-table tbody tr');
+        
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = 'rgba(76, 175, 80, 0.1)';
+            });
+            
+            row.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '';
+            });
+        });
+    }
+    
+    // Initialize
+    function init() {
+        initCertificationAnimations();
+        
+        if (window.innerWidth > 768) {
+            init3DTiltCards();
+        }
+        
+        animateStats();
+        initTableHighlight();
+        
+        console.log('The Coffee Sleeves Materials & Quality - Initialized');
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    
+})();
+</script>

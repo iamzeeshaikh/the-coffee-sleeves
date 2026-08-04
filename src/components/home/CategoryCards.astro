@@ -1,0 +1,271 @@
+<!-- Paste in Elementor HTML Widget -->
+
+<style is:global>
+/* Fix Elementor conflicts - MAKE EVERYTHING CLICKABLE */
+.tcs-categories * {
+    pointer-events: auto !important;
+    cursor: default;
+}
+
+.tcs-categories a,
+.tcs-categories button {
+    cursor: pointer !important;
+}
+
+.tcs-categories {
+    background: linear-gradient(180deg, #FFF8F0, #FFFFFF);
+    padding: 80px 0;
+}
+
+.tcs-categories-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tcs-categories-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.tcs-categories-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.tcs-categories-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 15px;
+}
+
+.tcs-categories-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.tcs-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.tcs-category-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.tcs-category-card:hover {
+    transform: translateY(-10px);
+}
+
+.tcs-category-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    z-index: 10;
+}
+
+.tcs-category-image {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #FAF0E6, #FFF8F0);
+}
+
+.tcs-category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tcs-category-content {
+    padding: 25px;
+}
+
+.tcs-category-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #6F4E37, #8B4513);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.tcs-category-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #2C1810;
+    margin-bottom: 10px;
+}
+
+.tcs-category-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.tcs-category-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    color: #FF8C42;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.tcs-category-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #6F4E37, #8B4513);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.tcs-category-btn:hover {
+    background: linear-gradient(135deg, #8B4513, #3E2723);
+    transform: translateX(5px);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .tcs-categories-title {
+        font-size: 2rem;
+    }
+    .tcs-categories-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<section class="tcs-categories">
+    <div class="tcs-categories-container">
+        
+        <div class="tcs-categories-header">
+            <div class="tcs-categories-badge">Our Products</div>
+            <h2 class="tcs-categories-title">Premium Coffee Sleeve Collections</h2>
+            <p class="tcs-categories-subtitle">
+                Explore our diverse range of custom coffee sleeves designed for every need
+            </p>
+        </div>
+        
+        <div class="tcs-categories-grid">
+            
+            <!-- Category 1 -->
+            <div class="tcs-category-card">
+                <div class="tcs-category-image">
+                    <div class="tcs-category-badge">Popular</div>
+                    <img src="/images/Cardboard-coffee-sleeves-diy.jpg" alt="Sleeve Materials">
+                </div>
+                <div class="tcs-category-content">
+                    <div class="tcs-category-icon">📦</div>
+                    <h3 class="tcs-category-name">Sleeve Materials</h3>
+                    <p class="tcs-category-description">
+                        Premium quality materials including cardboard, paper, kraft, and corrugated sleeves.
+                    </p>
+                    <div class="tcs-category-count">
+                        <span>4 Products</span>
+                    </div>
+                    <a href="/product-category/sleeve-materials/" class="tcs-category-btn">
+                        View Collection →
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Category 2 -->
+            <div class="tcs-category-card">
+                <div class="tcs-category-image">
+                    <div class="tcs-category-badge">Trending</div>
+                    <img src="/images/Drink-Sleeve-with-Handle.jpg" alt="Sleeve Usage">
+                </div>
+                <div class="tcs-category-content">
+                    <div class="tcs-category-icon">☕</div>
+                    <h3 class="tcs-category-name">Sleeve Usage</h3>
+                    <p class="tcs-category-description">
+                        Hot coffee sleeves, beverage sleeves, and specialized options for various applications.
+                    </p>
+                    <div class="tcs-category-count">
+                        <span>5 Products</span>
+                    </div>
+                    <a href="/product-category/sleeve-usage/" class="tcs-category-btn">
+                        View Collection →
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Category 3 -->
+            <div class="tcs-category-card">
+                <div class="tcs-category-image">
+                    <div class="tcs-category-badge">Best Sellers</div>
+                    <img src="/images/Printed-Coffee-Sleeves.jpg" alt="Sleeve Styles">
+                </div>
+                <div class="tcs-category-content">
+                    <div class="tcs-category-icon">🎨</div>
+                    <h3 class="tcs-category-name">Sleeve Styles</h3>
+                    <p class="tcs-category-description">
+                        Custom printed, branded, blank, and colored sleeves in various designs.
+                    </p>
+                    <div class="tcs-category-count">
+                        <span>12 Products</span>
+                    </div>
+                    <a href="/product-category/sleeve-styles/" class="tcs-category-btn">
+                        View Collection →
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Category 4 -->
+            <div class="tcs-category-card">
+                <div class="tcs-category-image">
+                    <div class="tcs-category-badge">New</div>
+                    <img src="/images/Custom-cup-sleeves-with-logo.jpg" alt="Cup Sleeves">
+                </div>
+                <div class="tcs-category-content">
+                    <div class="tcs-category-icon">🥤</div>
+                    <h3 class="tcs-category-name">Cup Sleeves</h3>
+                    <p class="tcs-category-description">
+                        Complete cup sleeve solutions including cups with lids and custom designs.
+                    </p>
+                    <div class="tcs-category-count">
+                        <span>9 Products</span>
+                    </div>
+                    <a href="/product-category/cup-sleeves/" class="tcs-category-btn">
+                        View Collection →
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</section>

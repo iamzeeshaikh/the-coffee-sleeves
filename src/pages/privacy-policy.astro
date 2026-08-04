@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrivacyBody from '../components/pagebody/PrivacyBody.astro';
+import { site } from '../utils/site';
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Privacy Policy', item: `${site.url}/privacy-policy/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title='Privacy Policy - The Coffee Sleeves'
+  description='Privacy policy for The Coffee Sleeves — what personal information we collect, how it is used, and your choices.'
+  path="/privacy-policy/"
+  schemas={schemas}
+  offsetHeader={true}
+>
+  <div class="tcs-policy-wrap"><PrivacyBody /></div>
+</BaseLayout>
+
+<style>
+  .tcs-policy-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+  }
+  .tcs-policy-wrap :global(.tcs-policy-title) {
+    font-size: 2rem;
+    color: #2c1810;
+  }
+</style>

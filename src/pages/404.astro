@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page Not Found - The Coffee Sleeves"
+  description="The page you are looking for could not be found. Browse our custom coffee sleeves or request a free quote."
+  path="/404/"
+  offsetHeader={true}
+>
+  <section class="tcs-404">
+    <p class="tcs-404-code">404</p>
+    <h1>Page Not Found</h1>
+    <p>
+      Sorry, we couldn't find that page. It may have been moved or no longer exists.
+    </p>
+    <div class="tcs-404-actions">
+      <a class="tcs-404-btn primary" href="/">Back to Home</a>
+      <a class="tcs-404-btn" href="/shop/">Browse Products</a>
+      <a class="tcs-404-btn" href="/get-quote/">Get a Quote</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tcs-404 {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 60px 20px 100px;
+    text-align: center;
+  }
+  .tcs-404-code {
+    font-size: 5rem;
+    font-weight: 800;
+    color: #d2691e;
+    margin: 0;
+    line-height: 1;
+  }
+  .tcs-404 h1 {
+    color: #2c1810;
+    margin: 10px 0 12px;
+  }
+  .tcs-404-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+  .tcs-404-btn {
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #6f4e37;
+    border: 1px solid #d9c7b8;
+  }
+  .tcs-404-btn.primary {
+    background: #7e4a25;
+    color: #fff;
+    border-color: #7e4a25;
+  }
+  .tcs-404-btn:hover {
+    background: #faf0e6;
+  }
+  .tcs-404-btn.primary:hover {
+    background: #6f4e37;
+  }
+</style>

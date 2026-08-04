@@ -1,0 +1,1166 @@
+<style is:global>
+/* Size Guide Section */
+.tcs-size-guide {
+    position: relative;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF8F0 100%);
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Background Decoration */
+.tcs-size-guide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 25% 15%, rgba(255, 140, 66, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 75% 85%, rgba(210, 105, 30, 0.04) 0%, transparent 50%);
+    animation: bgDrift 25s ease-in-out infinite;
+}
+
+@keyframes bgDrift {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.tcs-size-guide-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Section Header */
+.tcs-size-guide-header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tcs-size-guide-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(255, 140, 66, 0.4);
+}
+
+.tcs-size-guide-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 15px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    line-height: 1.2;
+}
+
+.tcs-size-guide-subtitle {
+    font-size: 1.2rem;
+    color: #666666;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Size Chart Table */
+.tcs-size-chart-wrapper {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+    animation: fadeInScale 0.8s ease-out 0.2s backwards;
+    perspective: 1500px;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.tcs-size-chart-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #2C1810;
+    margin-bottom: 25px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tcs-size-chart-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(255, 140, 66, 0.4);
+}
+
+.tcs-size-chart-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: white;
+}
+
+.tcs-size-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.tcs-size-table thead {
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+}
+
+.tcs-size-table th {
+    padding: 18px 15px;
+    text-align: left;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.tcs-size-table tbody tr {
+    background: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.tcs-size-table tbody tr:hover {
+    background: rgba(255, 140, 66, 0.05);
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(255, 140, 66, 0.2);
+}
+
+.tcs-size-table tbody tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.tcs-size-table tbody tr:nth-child(even):hover {
+    background: rgba(255, 140, 66, 0.05);
+}
+
+.tcs-size-table td {
+    padding: 16px 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 0.95rem;
+}
+
+.tcs-size-name {
+    font-weight: 700;
+    color: #2C1810;
+    font-size: 1.05rem;
+}
+
+.tcs-size-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+.tcs-size-badge.popular {
+    background: rgba(255, 140, 66, 0.15);
+    color: #D2691E;
+}
+
+.tcs-size-badge.eco {
+    background: rgba(76, 175, 80, 0.15);
+    color: #2E7D32;
+}
+
+/* Compatibility Grid */
+.tcs-compatibility-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.tcs-compatibility-card {
+    background: white;
+    border-radius: 20px;
+    padding: 35px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+    perspective: 1000px;
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.tcs-compatibility-card:nth-child(1) { animation-delay: 0.1s; }
+.tcs-compatibility-card:nth-child(2) { animation-delay: 0.2s; }
+.tcs-compatibility-card:nth-child(3) { animation-delay: 0.3s; }
+.tcs-compatibility-card:nth-child(4) { animation-delay: 0.4s; }
+
+.tcs-compatibility-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 20px 50px rgba(255, 140, 66, 0.2);
+    border-color: rgba(255, 140, 66, 0.3);
+}
+
+.tcs-compatibility-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tcs-compatibility-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 8px 20px rgba(255, 140, 66, 0.4);
+    transition: all 0.3s ease;
+}
+
+.tcs-compatibility-card:hover .tcs-compatibility-icon {
+    transform: scale(1.1) rotateY(15deg);
+}
+
+.tcs-compatibility-name {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #2C1810;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-compatibility-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tcs-compatibility-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 0.95rem;
+    color: #666666;
+}
+
+.tcs-compatibility-item:last-child {
+    border-bottom: none;
+}
+
+.tcs-check-icon {
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tcs-check-icon::after {
+    content: '✓';
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Measurement Diagram */
+.tcs-measurement-section {
+    background: linear-gradient(135deg, #2C1810, #3E2723);
+    border-radius: 20px;
+    padding: 50px 40px;
+    margin-bottom: 50px;
+    color: white;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    animation: fadeInScale 0.8s ease-out 0.4s backwards;
+}
+
+.tcs-measurement-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.tcs-measurement-content h3 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-measurement-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tcs-measurement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tcs-measurement-item:last-child {
+    border-bottom: none;
+}
+
+.tcs-measurement-label {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 140, 66, 0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: #FF8C42;
+    flex-shrink: 0;
+}
+
+.tcs-measurement-text {
+    flex: 1;
+}
+
+.tcs-measurement-text strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #FF8C42;
+}
+
+.tcs-measurement-text span {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.tcs-measurement-diagram {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tcs-diagram-sleeve {
+    width: 200px;
+    height: 280px;
+    background: linear-gradient(135deg, #D2691E, #8B4513);
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.tcs-measurement-section:hover .tcs-diagram-sleeve {
+    transform: rotateY(15deg);
+}
+
+.tcs-diagram-logo {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Measurement lines */
+.tcs-diagram-line {
+    position: absolute;
+    background: #FF8C42;
+    z-index: 10;
+}
+
+.tcs-diagram-line-h {
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+}
+
+.tcs-diagram-line-v {
+    width: 2px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+}
+
+.tcs-diagram-label {
+    position: absolute;
+    background: #FF8C42;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.tcs-label-width {
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tcs-label-height {
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Fitting Instructions */
+.tcs-fitting-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.tcs-fitting-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.tcs-fitting-card:nth-child(1) { animation-delay: 0.1s; }
+.tcs-fitting-card:nth-child(2) { animation-delay: 0.2s; }
+.tcs-fitting-card:nth-child(3) { animation-delay: 0.3s; }
+.tcs-fitting-card:nth-child(4) { animation-delay: 0.4s; }
+
+.tcs-fitting-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(255, 140, 66, 0.2);
+}
+
+.tcs-fitting-number {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(255, 140, 66, 0.4);
+}
+
+.tcs-fitting-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #2C1810;
+    margin-bottom: 10px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-fitting-desc {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.6;
+}
+
+/* Size Comparison */
+.tcs-comparison-section {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+    animation: fadeInScale 0.8s ease-out 0.6s backwards;
+}
+
+.tcs-comparison-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #2C1810;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-comparison-visual {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px 0;
+}
+
+.tcs-comparison-cup {
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.tcs-comparison-cup:hover {
+    transform: translateY(-10px);
+}
+
+.tcs-cup-visual {
+    background: linear-gradient(135deg, #D2691E, #8B4513);
+    border-radius: 10px;
+    margin: 0 auto 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tcs-comparison-cup:hover .tcs-cup-visual {
+    box-shadow: 0 15px 35px rgba(255, 140, 66, 0.4);
+    transform: scale(1.05);
+}
+
+.tcs-cup-8oz {
+    width: 60px;
+    height: 80px;
+}
+
+.tcs-cup-12oz {
+    width: 75px;
+    height: 100px;
+}
+
+.tcs-cup-16oz {
+    width: 90px;
+    height: 120px;
+}
+
+.tcs-cup-20oz {
+    width: 105px;
+    height: 140px;
+}
+
+.tcs-cup-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2C1810;
+}
+
+.tcs-cup-size {
+    font-size: 0.85rem;
+    color: #666666;
+}
+
+/* Download Template */
+.tcs-download-section {
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 20px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(255, 140, 66, 0.5);
+    animation: fadeInScale 0.8s ease-out 0.8s backwards;
+}
+
+.tcs-download-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.tcs-download-icon {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tcs-download-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: #FF8C42;
+}
+
+.tcs-download-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 15px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-download-text {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.tcs-download-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tcs-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 30px;
+    background: white;
+    color: #2C1810;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tcs-download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.tcs-download-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .tcs-size-guide-title {
+        font-size: 2.5rem;
+    }
+    
+    .tcs-measurement-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tcs-size-guide {
+        padding: 60px 0;
+    }
+    
+    .tcs-size-guide-title {
+        font-size: 2rem;
+    }
+    
+    .tcs-size-chart-wrapper,
+    .tcs-measurement-section,
+    .tcs-comparison-section,
+    .tcs-download-section {
+        padding: 30px 25px;
+    }
+    
+    .tcs-size-table {
+        font-size: 0.85rem;
+    }
+    
+    .tcs-size-table th,
+    .tcs-size-table td {
+        padding: 12px 10px;
+    }
+    
+    .tcs-compatibility-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tcs-comparison-visual {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .tcs-download-buttons {
+        flex-direction: column;
+    }
+    
+    .tcs-download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .tcs-size-guide-title {
+        font-size: 1.75rem;
+    }
+    
+    .tcs-fitting-section {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<!-- Size Guide Section HTML -->
+<section class="tcs-size-guide" id="tcsSizeGuide">
+    <div class="tcs-size-guide-container">
+        
+        <!-- Section Header -->
+        <div class="tcs-size-guide-header">
+            <div class="tcs-size-guide-badge">📏 Size Guide</div>
+            <h2 class="tcs-size-guide-title">Find Your Perfect Fit</h2>
+            <p class="tcs-size-guide-subtitle">
+                Choose the right size for your cups. Our comprehensive guide ensures a perfect fit every time.
+            </p>
+        </div>
+        
+        <!-- Size Chart Table -->
+        <div class="tcs-size-chart-wrapper">
+            <h3 class="tcs-size-chart-title">
+                <div class="tcs-size-chart-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                    </svg>
+                </div>
+                Complete Size Chart
+            </h3>
+            <div style="overflow-x: auto;">
+                <table class="tcs-size-table">
+                    <thead>
+                        <tr>
+                            <th>Size</th>
+                            <th>Cup Volume</th>
+                            <th>Height</th>
+                            <th>Width</th>
+                            <th>Top Diameter</th>
+                            <th>Bottom Diameter</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tcs-size-name">
+                                8oz
+                                <span class="tcs-size-badge eco">Eco</span>
+                            </td>
+                            <td>8 oz / 240 ml</td>
+                            <td>3.5" / 89mm</td>
+                            <td>2.5" / 64mm</td>
+                            <td>3.0" / 76mm</td>
+                            <td>2.25" / 57mm</td>
+                            <td>Espresso, Small Coffee</td>
+                        </tr>
+                        <tr>
+                            <td class="tcs-size-name">
+                                12oz
+                                <span class="tcs-size-badge popular">Popular</span>
+                            </td>
+                            <td>12 oz / 355 ml</td>
+                            <td>4.0" / 102mm</td>
+                            <td>3.0" / 76mm</td>
+                            <td>3.5" / 89mm</td>
+                            <td>2.5" / 64mm</td>
+                            <td>Regular Coffee, Cappuccino</td>
+                        </tr>
+                        <tr>
+                            <td class="tcs-size-name">16oz</td>
+                            <td>16 oz / 473 ml</td>
+                            <td>5.0" / 127mm</td>
+                            <td>3.5" / 89mm</td>
+                            <td>3.75" / 95mm</td>
+                            <td>2.75" / 70mm</td>
+                            <td>Large Coffee, Latte</td>
+                        </tr>
+                        <tr>
+                            <td class="tcs-size-name">20oz</td>
+                            <td>20 oz / 591 ml</td>
+                            <td>6.0" / 152mm</td>
+                            <td>3.75" / 95mm</td>
+                            <td>4.0" / 102mm</td>
+                            <td>3.0" / 76mm</td>
+                            <td>XL Coffee, Iced Drinks</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Compatibility Guide -->
+        <div class="tcs-compatibility-grid">
+            
+            <div class="tcs-compatibility-card">
+                <div class="tcs-compatibility-header">
+                    <div class="tcs-compatibility-icon">☕</div>
+                    <div class="tcs-compatibility-name">8oz Small</div>
+                </div>
+                <ul class="tcs-compatibility-list">
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Espresso cups</span>
+                    </li>
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Small paper cups</span>
+                    </li>
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Sample size cups</span>
+                    </li>
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Kids' hot chocolate</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="tcs-compatibility-card">
+                <div class="tcs-compatibility-header">
+                    <div class="tcs-compatibility-icon">☕</div>
+                    <div class="tcs-compatibility-name">12oz Regular</div>
+                </div>
+                <ul class="tcs-compatibility-list">
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Standard coffee cups</span>
+                    </li>
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Cappuccino cups</span>
+                    </li>
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Medium hot drinks</span>
+                    </li>
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Most cafe takeaway</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="tcs-compatibility-card">
+                <div class="tcs-compatibility-header">
+                    <div class="tcs-compatibility-icon">☕</div>
+                    <div class="tcs-compatibility-name">16oz Large</div>
+                </div>
+                <ul class="tcs-compatibility-list">
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Large coffee cups</span>
+                    </li>
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Latte cups</span>
+                    </li>
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Americano cups</span>
+                    </li>
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Standard to-go size</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="tcs-compatibility-card">
+                <div class="tcs-compatibility-header">
+                    <div class="tcs-compatibility-icon">☕</div>
+                    <div class="tcs-compatibility-name">20oz XL</div>
+                </div>
+                <ul class="tcs-compatibility-list">
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Extra large cups</span>
+                    </li>
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Iced coffee cups</span>
+                    </li>
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Travel mugs</span>
+                    </li>
+                    <li class="tcs-compatibility-item">
+                        <div class="tcs-check-icon"></div>
+                        <span>Venti size drinks</span>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <!-- Measurement Diagram -->
+        <div class="tcs-measurement-section">
+            <div class="tcs-measurement-grid">
+                <div class="tcs-measurement-content">
+                    <h3>Understanding Measurements</h3>
+                    <ul class="tcs-measurement-list">
+                        <li class="tcs-measurement-item">
+                            <div class="tcs-measurement-label">H</div>
+                            <div class="tcs-measurement-text">
+                                <strong>Height</strong>
+                                <span>Measured from bottom to top of the sleeve</span>
+                            </div>
+                        </li>
+                        <li class="tcs-measurement-item">
+                            <div class="tcs-measurement-label">W</div>
+                            <div class="tcs-measurement-text">
+                                <strong>Width</strong>
+                                <span>Sleeve width when laid flat (circumference/2)</span>
+                            </div>
+                        </li>
+                        <li class="tcs-measurement-item">
+                            <div class="tcs-measurement-label">⌀</div>
+                            <div class="tcs-measurement-text">
+                                <strong>Diameter</strong>
+                                <span>Top and bottom opening measurements</span>
+                            </div>
+                        </li>
+                        <li class="tcs-measurement-item">
+                            <div class="tcs-measurement-label">±</div>
+                            <div class="tcs-measurement-text">
+                                <strong>Tolerance</strong>
+                                <span>±2mm variance for perfect fit</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tcs-measurement-diagram">
+                    <div class="tcs-diagram-sleeve">
+                        <div class="tcs-diagram-logo">YOUR BRAND</div>
+                        <div class="tcs-diagram-line tcs-diagram-line-h"></div>
+                        <div class="tcs-diagram-line tcs-diagram-line-v"></div>
+                        <div class="tcs-diagram-label tcs-label-width">W: 3.0"</div>
+                        <div class="tcs-diagram-label tcs-label-height">H: 4.0"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Fitting Instructions -->
+        <div class="tcs-fitting-section">
+            
+            <div class="tcs-fitting-card">
+                <div class="tcs-fitting-number">1</div>
+                <h4 class="tcs-fitting-title">Measure Your Cup</h4>
+                <p class="tcs-fitting-desc">
+                    Measure the height and diameter of your cup at the widest point using a ruler or tape measure.
+                </p>
+            </div>
+            
+            <div class="tcs-fitting-card">
+                <div class="tcs-fitting-number">2</div>
+                <h4 class="tcs-fitting-title">Check Our Chart</h4>
+                <p class="tcs-fitting-desc">
+                    Compare your measurements with our size chart to find the perfect sleeve size for your cups.
+                </p>
+            </div>
+            
+            <div class="tcs-fitting-card">
+                <div class="tcs-fitting-number">3</div>
+                <h4 class="tcs-fitting-title">Order Sample</h4>
+                <p class="tcs-fitting-desc">
+                    Not sure? Order a free sample pack to test the fit before placing your bulk order.
+                </p>
+            </div>
+            
+            <div class="tcs-fitting-card">
+                <div class="tcs-fitting-number">4</div>
+                <h4 class="tcs-fitting-title">Perfect Fit!</h4>
+                <p class="tcs-fitting-desc">
+                    Enjoy perfectly fitted sleeves that protect hands and showcase your brand beautifully.
+                </p>
+            </div>
+            
+        </div>
+        
+        <!-- Size Comparison Visual -->
+        <div class="tcs-comparison-section">
+            <h3 class="tcs-comparison-title">Size Comparison</h3>
+            <div class="tcs-comparison-visual">
+                
+                <div class="tcs-comparison-cup">
+                    <div class="tcs-cup-visual tcs-cup-8oz"></div>
+                    <div class="tcs-cup-label">8oz</div>
+                    <div class="tcs-cup-size">Small</div>
+                </div>
+                
+                <div class="tcs-comparison-cup">
+                    <div class="tcs-cup-visual tcs-cup-12oz"></div>
+                    <div class="tcs-cup-label">12oz</div>
+                    <div class="tcs-cup-size">Regular</div>
+                </div>
+                
+                <div class="tcs-comparison-cup">
+                    <div class="tcs-cup-visual tcs-cup-16oz"></div>
+                    <div class="tcs-cup-label">16oz</div>
+                    <div class="tcs-cup-size">Large</div>
+                </div>
+                
+                <div class="tcs-comparison-cup">
+                    <div class="tcs-cup-visual tcs-cup-20oz"></div>
+                    <div class="tcs-cup-label">20oz</div>
+                    <div class="tcs-cup-size">Extra Large</div>
+                </div>
+                
+            </div>
+        </div>
+
+        </div>
+</section>
+
+<script is:inline>
+(function() {
+    'use strict';
+    
+    // Download template handlers
+    function initDownloadButtons() {
+        const downloadAI = document.getElementById('tcsDownloadAI');
+        const downloadPDF = document.getElementById('tcsDownloadPDF');
+        
+        if (downloadAI) {
+            downloadAI.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Replace with actual file path
+                window.location.href = '/wp-content/uploads/templates/coffee-sleeve-template.ai';
+            });
+        }
+        
+        if (downloadPDF) {
+            downloadPDF.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Replace with actual file path
+                window.location.href = '/wp-content/uploads/templates/coffee-sleeve-size-guide.pdf';
+            });
+        }
+    }
+    
+    // Table row hover effect
+    function initTableInteraction() {
+        const tableRows = document.querySelectorAll('.tcs-size-table tbody tr');
+        
+        tableRows.forEach(row => {
+            row.addEventListener('click', function() {
+                // Optional: scroll to customization section with this size selected
+                console.log('Size selected:', this.querySelector('.tcs-size-name').textContent.trim());
+            });
+        });
+    }
+    
+    // Size comparison interaction
+    function initSizeComparison() {
+        const comparisonCups = document.querySelectorAll('.tcs-comparison-cup');
+        
+        comparisonCups.forEach(cup => {
+            cup.addEventListener('click', function() {
+                const size = this.querySelector('.tcs-cup-label').textContent;
+                console.log('Comparison size clicked:', size);
+                // Optional: highlight in size table
+            });
+        });
+    }
+    
+    // Animate measurements on scroll
+    function initMeasurementAnimation() {
+        const measurementSection = document.querySelector('.tcs-measurement-section');
+        
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const diagram = entry.target.querySelector('.tcs-diagram-sleeve');
+                    if (diagram) {
+                        diagram.style.animation = 'pulse 1s ease';
+                        setTimeout(() => {
+                            diagram.style.animation = '';
+                        }, 1000);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        if (measurementSection) {
+            observer.observe(measurementSection);
+        }
+    }
+    
+    // Pulse animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Initialize
+    function init() {
+        initDownloadButtons();
+        initTableInteraction();
+        initSizeComparison();
+        initMeasurementAnimation();
+        
+        console.log('The Coffee Sleeves Size Guide - Initialized');
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    
+})();
+</script>

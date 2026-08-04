@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArchiveGrid from '../components/ArchiveGrid.astro';
+import { products, site } from '../utils/site';
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: products.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${site.url}/product/${p.slug}/`,
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="Shop - The Coffee Sleeves"
+  description="Browse all custom coffee sleeves and cup sleeves from The Coffee Sleeves — cardboard, kraft, paper, printed, branded and more. Request a free quote."
+  path="/shop/"
+  schemas={schemas}
+>
+  <ArchiveGrid heading="Shop" products={products} />
+</BaseLayout>

@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GetQuoteBody from '../components/pagebody/GetQuoteBody.astro';
+import { site } from '../utils/site';
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Get Quote', item: `${site.url}/get-quote/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title='Get Quote - The Coffee Sleeves'
+  description="Request a free custom coffee sleeve quote. Tell us your quantity, material and design and we'll get back to you within 24 hours."
+  path="/get-quote/"
+  schemas={schemas}
+  offsetHeader={false}
+>
+  <GetQuoteBody />
+</BaseLayout>
+

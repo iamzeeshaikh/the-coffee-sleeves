@@ -1,0 +1,187 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductGallery from '../../components/product/ProductGallery.astro';
+import QuoteSidebar from '../../components/product/QuoteSidebar.astro';
+import ProductTabs from '../../components/product/ProductTabs.astro';
+import ProductFeatures from '../../components/product/ProductFeatures.astro';
+import ProductCustomization from '../../components/product/ProductCustomization.astro';
+import SizeGuide from '../../components/product/SizeGuide.astro';
+import MaterialsQuality from '../../components/product/MaterialsQuality.astro';
+import OrderProcess from '../../components/product/OrderProcess.astro';
+import DesignTemplates from '../../components/product/DesignTemplates.astro';
+import BulkOrder from '../../components/product/BulkOrder.astro';
+import { products, categories, localImage, site } from '../../utils/site';
+
+export function getStaticPaths() {
+  return products.map((product) => ({ params: { slug: product.slug }, props: { product } }));
+}
+
+const { product } = Astro.props;
+const path = `/product/${product.slug}/`;
+
+const primaryCategory = categories.find((c) => product.categories.includes(c.name));
+const mainImage = product.images[0] ? localImage(product.images[0].url) : null;
+
+const schemas: object[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+      ...(primaryCategory
+        ? [
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: primaryCategory.name,
+              item: `${site.url}/product-category/${primaryCategory.slug}/`,
+            },
+          ]
+        : []),
+      {
+        '@type': 'ListItem',
+        position: primaryCategory ? 3 : 2,
+        name: product.name,
+        item: `${site.url}${path}`,
+      },
+    ],
+  },
+  // Product schema without offers/ratings: catalog prices are quote-based and
+  // no genuine review data exists (see STRUCTURED_DATA_REPORT.md).
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': `${site.url}${path}#product`,
+    name: product.name,
+    url: `${site.url}${path}`,
+    sku: product.sku,
+    description: product.metaDescription,
+    brand: { '@type': 'Brand', name: site.name },
+    ...(mainImage ? { image: [`${site.url}${mainImage.src}`] } : {}),
+  },
+];
+---
+
+<BaseLayout
+  title={product.metaTitle}
+  description={product.metaDescription}
+  path={path}
+  ogImage={mainImage?.src}
+  ogType="product"
+  schemas={schemas}
+>
+  <article>
+    <div class="tcs-product-top">
+      <h1 class="tcs-product-title">{product.name}</h1>
+      <nav class="tcs-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        {
+          primaryCategory && (
+            <>
+              <span aria-hidden="true">›</span>
+              <a href={`/product-category/${primaryCategory.slug}/`}>{primaryCategory.name}</a>
+            </>
+          )
+        }
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{product.name}</span>
+      </nav>
+
+      <div class="tcs-product-grid">
+        <div class="tcs-product-gallery-col">
+          <ProductGallery images={product.images} productName={product.name} />
+        </div>
+        <div class="tcs-product-summary-col">
+          <div class="entry-content" set:html={product.shortDescription} />
+          <a class="tcs-product-cta" href="#instant-quote">Get a Quote</a>
+        </div>
+        <div class="tcs-product-form-col" id="instant-quote">
+          <QuoteSidebar productName={product.name} />
+        </div>
+      </div>
+    </div>
+
+    <ProductTabs
+      description={product.description}
+      specifications={product.specifications}
+      faqs={product.faqs}
+    />
+  </article>
+
+  <ProductFeatures />
+  <ProductCustomization />
+  <SizeGuide />
+  <MaterialsQuality />
+  <OrderProcess />
+  <DesignTemplates />
+  <BulkOrder />
+</BaseLayout>
+
+<style>
+  .tcs-product-top {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 20px 0;
+  }
+  .tcs-product-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #2c1810;
+    margin: 0 0 8px;
+  }
+  .tcs-breadcrumbs {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #8a6f5c;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tcs-breadcrumbs a {
+    color: #b45309;
+    text-decoration: none;
+  }
+  .tcs-breadcrumbs a:hover {
+    text-decoration: underline;
+  }
+  .tcs-product-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr);
+    gap: 28px;
+    align-items: start;
+  }
+  .tcs-product-cta {
+    display: inline-block;
+    margin-top: 18px;
+    background: #7e4a25;
+    color: #fff;
+    padding: 12px 26px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .tcs-product-cta:hover {
+    background: #6f4e37;
+  }
+  @media (max-width: 1024px) {
+    .tcs-product-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+    .tcs-product-form-col {
+      grid-column: 1 / -1;
+      max-width: 560px;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+  @media (max-width: 768px) {
+    .tcs-product-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .tcs-product-title {
+      font-size: 1.5rem;
+    }
+  }
+</style>

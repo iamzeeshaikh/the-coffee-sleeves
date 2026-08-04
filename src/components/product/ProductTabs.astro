@@ -1,0 +1,186 @@
+---
+// Description / Specifications / Faqs tabs — reproduction of the WooCommerce
+// product data tabs used on the live product pages.
+import type { Faq } from '../../utils/site';
+
+interface Props {
+  description: string;
+  specifications: string;
+  faqs: Faq[];
+}
+
+const { description, specifications, faqs } = Astro.props;
+
+const tabs = [
+  { id: 'description', label: 'Description', show: Boolean(description) },
+  { id: 'specifications', label: 'Specifications', show: Boolean(specifications) },
+  { id: 'faqs', label: 'Faqs', show: faqs.length > 0 },
+].filter((t) => t.show);
+---
+
+{
+  tabs.length > 0 && (
+    <section class="tcs-product-tabs" aria-label="Product information tabs">
+      <div class="tcs-tabs-list" role="tablist">
+        {tabs.map((tab, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-btn-${tab.id}`}
+            aria-controls={`tab-${tab.id}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            tabindex={i === 0 ? 0 : -1}
+            class={`tcs-tab-btn${i === 0 ? ' active' : ''}`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {description && (
+        <div
+          class={`tcs-tab-panel entry-content${tabs[0]?.id === 'description' ? ' active' : ''}`}
+          id="tab-description"
+          role="tabpanel"
+          aria-labelledby="tab-btn-description"
+        >
+          <div set:html={description} />
+        </div>
+      )}
+      {specifications && (
+        <div
+          class="tcs-tab-panel entry-content"
+          id="tab-specifications"
+          role="tabpanel"
+          aria-labelledby="tab-btn-specifications"
+        >
+          <div class="table-wrapper" set:html={specifications} />
+        </div>
+      )}
+      {faqs.length > 0 && (
+        <div class="tcs-tab-panel entry-content" id="tab-faqs" role="tabpanel" aria-labelledby="tab-btn-faqs">
+          {faqs.map((faq, i) => (
+            <details class="tcs-product-faq">
+              <summary>
+                <span class="tcs-product-faq-num">{i + 1}.</span> {faq.q}
+              </summary>
+              <p>{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      )}
+    </section>
+  )
+}
+
+<style>
+  .tcs-product-tabs {
+    max-width: 1200px;
+    margin: 30px auto 0;
+    padding: 0 20px 40px;
+  }
+  .tcs-tabs-list {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    border-bottom: 1px solid #e8ddd3;
+    flex-wrap: wrap;
+  }
+  .tcs-tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #5d4636;
+    padding: 12px 18px;
+    cursor: pointer;
+  }
+  .tcs-tab-btn.active {
+    color: #2c1810;
+    border-bottom-color: #6f4e37;
+    font-weight: 600;
+  }
+  .tcs-tab-btn:focus-visible {
+    outline: 2px solid #ff8c42;
+    outline-offset: 2px;
+  }
+  .tcs-tab-panel {
+    display: none;
+    padding-top: 24px;
+  }
+  .tcs-tab-panel.active {
+    display: block;
+  }
+  .tcs-product-faq {
+    border: 1px solid #e8ddd3;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+    background: #fffdfa;
+  }
+  .tcs-product-faq summary {
+    cursor: pointer;
+    padding: 14px 18px;
+    font-weight: 600;
+    color: #2c1810;
+    list-style: none;
+    position: relative;
+    padding-right: 40px;
+  }
+  .tcs-product-faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .tcs-product-faq summary::after {
+    content: '+';
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #d2691e;
+    font-size: 1.2rem;
+  }
+  .tcs-product-faq[open] summary::after {
+    content: '−';
+  }
+  .tcs-product-faq-num {
+    color: #d2691e;
+    margin-right: 4px;
+  }
+  .tcs-product-faq p {
+    margin: 0;
+    padding: 0 18px 16px;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.tcs-product-tabs').forEach((root) => {
+    const btns = Array.from(root.querySelectorAll<HTMLButtonElement>('.tcs-tab-btn'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('.tcs-tab-panel'));
+    function activate(btn: HTMLButtonElement) {
+      btns.forEach((b) => {
+        const active = b === btn;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-selected', active ? 'true' : 'false');
+        b.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach((p) => {
+        p.classList.toggle('active', p.id === btn.getAttribute('aria-controls'));
+      });
+    }
+    btns.forEach((btn, i) => {
+      btn.addEventListener('click', () => activate(btn));
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const dir = e.key === 'ArrowRight' ? 1 : -1;
+          const next = btns[(i + dir + btns.length) % btns.length];
+          if (next) {
+            next.focus();
+            activate(next);
+          }
+        }
+      });
+    });
+  });
+</script>

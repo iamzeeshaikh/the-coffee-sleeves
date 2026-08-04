@@ -1,0 +1,281 @@
+<style is:global>
+/* CRITICAL FIX - Force everything to be clickable */
+.tcs-how-works,
+.tcs-how-works * {
+    pointer-events: auto !important;
+}
+
+.tcs-how-works a,
+.tcs-how-works button {
+    cursor: pointer !important;
+}
+
+/* Section Styles */
+.tcs-how-works {
+    background: linear-gradient(180deg, #FFFFFF, #FFF8F0);
+    padding: 80px 0;
+}
+
+.tcs-how-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tcs-how-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.tcs-how-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.tcs-how-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 15px;
+}
+
+.tcs-how-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.tcs-how-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.tcs-how-step {
+    background: white;
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.tcs-how-step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.tcs-how-number {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 900;
+    color: white;
+    box-shadow: 0 8px 20px rgba(255, 140, 66, 0.4);
+}
+
+.tcs-how-icon-svg {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.tcs-how-step-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #2C1810;
+    margin-bottom: 12px;
+}
+
+.tcs-how-step-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.tcs-how-cta {
+    text-align: center;
+}
+
+.tcs-how-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #6F4E37, #8B4513);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    box-shadow: 0 8px 25px rgba(111, 78, 55, 0.4);
+    transition: all 0.3s ease;
+}
+
+.tcs-how-btn:hover {
+    background: linear-gradient(135deg, #8B4513, #3E2723);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(111, 78, 55, 0.5);
+    color: white;
+}
+
+@media (max-width: 1024px) {
+    .tcs-how-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tcs-how-title {
+        font-size: 2rem;
+    }
+    .tcs-how-steps {
+        grid-template-columns: 1fr;
+    }
+    .tcs-how-icon-svg {
+        width: 65px;
+        height: 65px;
+    }
+}
+</style>
+
+<section class="tcs-how-works">
+    <div class="tcs-how-container">
+        
+        <div class="tcs-how-header">
+            <div class="tcs-how-badge">Simple Process</div>
+            <h2 class="tcs-how-title">How It Works</h2>
+            <p class="tcs-how-subtitle">
+                Get your custom coffee sleeves in just 4 easy steps - from order to delivery
+            </p>
+        </div>
+        
+        <div class="tcs-how-steps">
+            
+            <!-- Step 1: Place Order -->
+            <div class="tcs-how-step">
+                <div class="tcs-how-number">01</div>
+                
+                <svg class="tcs-how-icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="cart1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF8C42"/>
+                            <stop offset="100%" style="stop-color:#D2691E"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M20 20 L30 20 L40 70 L80 70 L85 40 L35 40" stroke="url(#cart1)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="45" cy="80" r="5" fill="url(#cart1)"/>
+                    <circle cx="75" cy="80" r="5" fill="url(#cart1)"/>
+                </svg>
+                
+                <h3 class="tcs-how-step-title">Place Order</h3>
+                <p class="tcs-how-step-description">
+                    Choose your sleeve type, quantity, and specifications. Get instant quote and place your order online.
+                </p>
+            </div>
+            
+            <!-- Step 2: Free Design -->
+            <div class="tcs-how-step">
+                <div class="tcs-how-number">02</div>
+                
+                <svg class="tcs-how-icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="design1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF8C42"/>
+                            <stop offset="100%" style="stop-color:#D2691E"/>
+                        </linearGradient>
+                    </defs>
+                    <ellipse cx="50" cy="50" rx="30" ry="25" fill="none" stroke="url(#design1)" stroke-width="4"/>
+                    <circle cx="35" cy="40" r="4" fill="url(#design1)"/>
+                    <circle cx="50" cy="35" r="4" fill="url(#design1)"/>
+                    <circle cx="65" cy="40" r="4" fill="url(#design1)"/>
+                    <circle cx="60" cy="55" r="4" fill="url(#design1)"/>
+                    <circle cx="40" cy="55" r="4" fill="url(#design1)"/>
+                    <path d="M50 65 L45 85 L55 85 Z" fill="url(#design1)"/>
+                </svg>
+                
+                <h3 class="tcs-how-step-title">Free Design</h3>
+                <p class="tcs-how-step-description">
+                    Our expert designers create your custom artwork. Review and approve the design before production.
+                </p>
+            </div>
+            
+            <!-- Step 3: Quality Print -->
+            <div class="tcs-how-step">
+                <div class="tcs-how-number">03</div>
+                
+                <svg class="tcs-how-icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="print1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF8C42"/>
+                            <stop offset="100%" style="stop-color:#D2691E"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="30" y="15" width="40" height="20" fill="url(#print1)" rx="3"/>
+                    <rect x="20" y="35" width="60" height="30" fill="none" stroke="url(#print1)" stroke-width="4" rx="5"/>
+                    <rect x="30" y="55" width="40" height="30" fill="url(#print1)" rx="3"/>
+                    <circle cx="70" cy="45" r="3" fill="#FFFFFF"/>
+                    <line x1="35" y1="65" x2="65" y2="65" stroke="#FFFFFF" stroke-width="2"/>
+                    <line x1="35" y1="72" x2="55" y2="72" stroke="#FFFFFF" stroke-width="2"/>
+                </svg>
+                
+                <h3 class="tcs-how-step-title">Quality Print</h3>
+                <p class="tcs-how-step-description">
+                    High-quality printing on premium materials. Strict quality control ensures perfect results every time.
+                </p>
+            </div>
+            
+            <!-- Step 4: Fast Delivery -->
+            <div class="tcs-how-step">
+                <div class="tcs-how-number">04</div>
+                
+                <svg class="tcs-how-icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="truck1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF8C42"/>
+                            <stop offset="100%" style="stop-color:#D2691E"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="10" y="35" width="45" height="30" fill="url(#truck1)" rx="3"/>
+                    <polygon points="55,35 55,65 75,65 85,50 75,35" fill="url(#truck1)"/>
+                    <rect x="15" y="40" width="15" height="15" fill="#FFFFFF" opacity="0.3"/>
+                    <circle cx="30" cy="70" r="7" fill="#2C1810"/>
+                    <circle cx="30" cy="70" r="3" fill="#FFFFFF"/>
+                    <circle cx="70" cy="70" r="7" fill="#2C1810"/>
+                    <circle cx="70" cy="70" r="3" fill="#FFFFFF"/>
+                </svg>
+                
+                <h3 class="tcs-how-step-title">Fast Delivery</h3>
+                <p class="tcs-how-step-description">
+                    Your order ships within 7-10 business days. Track your shipment and receive it at your doorstep.
+                </p>
+            </div>
+            
+        </div>
+        
+        <div class="tcs-how-cta">
+            <a href="/get-quote/" class="tcs-how-btn">
+                Start Your Order Now →
+            </a>
+        </div>
+        
+    </div>
+</section>

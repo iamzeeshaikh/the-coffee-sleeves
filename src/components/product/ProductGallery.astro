@@ -1,0 +1,146 @@
+---
+import { localImage } from '../../utils/site';
+import type { ProductImage } from '../../utils/site';
+
+interface Props {
+  images: ProductImage[];
+  productName: string;
+}
+
+const { images, productName } = Astro.props;
+
+const resolved = images
+  .map((img) => {
+    const local = localImage(img.url);
+    if (!local) return null;
+    return { ...local, alt: img.alt || productName };
+  })
+  .filter((img) => img !== null);
+
+const main = resolved[0] ?? null;
+---
+
+<div class="tcs-gallery">
+  {
+    main ? (
+      <>
+        <div class="tcs-gallery-main">
+          <picture>
+            {main.webp && <source srcset={main.webp} type="image/webp" />}
+            <img
+              id="tcs-gallery-main-img"
+              src={main.src}
+              alt={main.alt}
+              width={main.width}
+              height={main.height}
+              fetchpriority="high"
+            />
+          </picture>
+        </div>
+        {resolved.length > 1 && (
+          <div class="tcs-gallery-thumbs" role="list">
+            {resolved.map((img, i) => (
+              <button
+                type="button"
+                class={`tcs-gallery-thumb${i === 0 ? ' active' : ''}`}
+                data-full={img.src}
+                data-webp={img.webp}
+                data-alt={img.alt}
+                aria-label={`Show image: ${img.alt}`}
+              >
+                <img
+                  src={img.thumb ?? img.src}
+                  alt=""
+                  width="96"
+                  height="96"
+                  loading="lazy"
+                />
+              </button>
+            ))}
+          </div>
+        )}
+      </>
+    ) : (
+      <div class="tcs-gallery-placeholder" role="img" aria-label={`${productName} — product image coming soon`}>
+        <span>☕</span>
+        <p>Product image coming soon</p>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .tcs-gallery-main {
+    background: #faf0e6;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .tcs-gallery-main img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .tcs-gallery-thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .tcs-gallery-thumb {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 0;
+    background: #faf0e6;
+    cursor: pointer;
+    overflow: hidden;
+    width: 72px;
+    height: 72px;
+  }
+  .tcs-gallery-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .tcs-gallery-thumb.active,
+  .tcs-gallery-thumb:hover {
+    border-color: #d2691e;
+  }
+  .tcs-gallery-thumb:focus-visible {
+    outline: 2px solid #ff8c42;
+    outline-offset: 2px;
+  }
+  .tcs-gallery-placeholder {
+    background: #faf0e6;
+    border: 1px dashed #d9c7b8;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    color: #8a6f5c;
+  }
+  .tcs-gallery-placeholder span {
+    font-size: 3rem;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.tcs-gallery-thumb').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const main = document.getElementById('tcs-gallery-main-img') as HTMLImageElement | null;
+      const source = main?.parentElement?.querySelector('source');
+      if (!main) return;
+      main.src = btn.dataset.full ?? main.src;
+      main.alt = btn.dataset.alt ?? main.alt;
+      main.removeAttribute('width');
+      main.removeAttribute('height');
+      if (source && btn.dataset.webp) source.setAttribute('srcset', btn.dataset.webp);
+      document
+        .querySelectorAll('.tcs-gallery-thumb.active')
+        .forEach((el) => el.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>

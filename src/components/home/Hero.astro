@@ -1,0 +1,756 @@
+<style is:global>
+/* Hero Section Styles */
+.tcs-hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #FFF8F0 0%, #FAF0E6 100%);
+    overflow: hidden;
+    padding: 120px 0 80px;
+}
+
+/* Background Pattern */
+.tcs-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(111, 78, 55, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 140, 66, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Floating Coffee Beans Animation */
+.tcs-hero::after {
+    content: '☕';
+    position: absolute;
+    font-size: 60px;
+    opacity: 0.05;
+    animation: float 20s infinite ease-in-out;
+    top: 20%;
+    left: 10%;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(180deg); }
+}
+
+.tcs-hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.tcs-hero-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Left Content */
+.tcs-hero-left {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.tcs-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.tcs-hero-badge svg {
+    width: 16px;
+    height: 16px;
+}
+
+.tcs-hero-headline {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #2C1810;
+    margin-bottom: 20px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-hero-headline .highlight {
+    color: #6F4E37;
+    position: relative;
+    display: inline-block;
+}
+
+.tcs-hero-headline .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 140, 66, 0.3);
+    z-index: -1;
+    transform: skew(-12deg);
+}
+
+.tcs-hero-subheadline {
+    font-size: 1.25rem;
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    max-width: 90%;
+}
+
+/* USPs */
+.tcs-hero-usps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.tcs-hero-usp {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.tcs-hero-usp:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.tcs-hero-usp-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #6F4E37, #8B4513);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.tcs-hero-usp-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.tcs-hero-usp-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #2C1810;
+    line-height: 1.2;
+}
+
+.tcs-hero-usp-desc {
+    font-size: 0.8rem;
+    color: #666666;
+}
+
+/* CTA Buttons */
+.tcs-hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.tcs-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+.tcs-hero-btn-primary {
+    background: linear-gradient(135deg, #6F4E37, #8B4513);
+    color: white;
+    box-shadow: 0 8px 25px rgba(111, 78, 55, 0.4);
+}
+
+.tcs-hero-btn-primary:hover {
+    background: linear-gradient(135deg, #8B4513, #3E2723);
+    box-shadow: 0 12px 35px rgba(111, 78, 55, 0.5);
+    transform: translateY(-3px);
+}
+
+.tcs-hero-btn-secondary {
+    background: white;
+    color: #6F4E37;
+    border: 2px solid #6F4E37;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tcs-hero-btn-secondary:hover {
+    background: #6F4E37;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(111, 78, 55, 0.3);
+}
+
+.tcs-hero-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Trust Indicators */
+.tcs-hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(111, 78, 55, 0.2);
+}
+
+.tcs-hero-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tcs-hero-trust-icon {
+    color: #FF8C42;
+    font-size: 24px;
+}
+
+.tcs-hero-trust-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.tcs-hero-trust-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #6F4E37;
+    line-height: 1;
+}
+
+.tcs-hero-trust-label {
+    font-size: 0.8rem;
+    color: #666666;
+}
+
+/* Right Side - 3D Product Showcase */
+.tcs-hero-right {
+    position: relative;
+    animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.tcs-hero-3d-container {
+    position: relative;
+    perspective: 1000px;
+}
+
+.tcs-hero-product-showcase {
+    position: relative;
+    width: 100%;
+    height: 600px;
+}
+
+/* Main Product Image with 3D Effect */
+.tcs-hero-product-main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 450px;
+    animation: float3D 6s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+@keyframes float3D {
+    0%, 100% {
+        transform: translate(-50%, -50%) rotateY(0deg) translateZ(0px);
+    }
+    50% {
+        transform: translate(-50%, -52%) rotateY(5deg) translateZ(20px);
+    }
+}
+
+.tcs-hero-product-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+    border-radius: 20px;
+}
+
+/* Secondary Product Image */
+.tcs-hero-product-secondary {
+    position: absolute;
+    bottom: 10%;
+    right: -5%;
+    width: 250px;
+    height: 250px;
+    animation: floatSecondary 8s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes floatSecondary {
+    0%, 100% {
+        transform: translateY(0px) rotateZ(-10deg) scale(0.9);
+    }
+    50% {
+        transform: translateY(-20px) rotateZ(-5deg) scale(0.95);
+    }
+}
+
+.tcs-hero-product-secondary img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15));
+    border-radius: 15px;
+}
+
+/* Decorative Elements */
+.tcs-hero-circle-1 {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255, 140, 66, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.tcs-hero-circle-2 {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(111, 78, 55, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 6s ease-in-out infinite;
+}
+
+/* Product Badge */
+.tcs-hero-product-badge {
+    position: absolute;
+    top: 15%;
+    left: -5%;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 8px 20px rgba(255, 140, 66, 0.4);
+    animation: bounce 3s infinite;
+    z-index: 10;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .tcs-hero-content-wrapper {
+        gap: 40px;
+    }
+    
+    .tcs-hero-headline {
+        font-size: 3rem;
+    }
+    
+    .tcs-hero-product-main {
+        width: 380px;
+        height: 380px;
+    }
+    
+    .tcs-hero-product-secondary {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tcs-hero {
+        min-height: auto;
+        padding: 100px 0 60px;
+    }
+    
+    .tcs-hero-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+    
+    .tcs-hero-headline {
+        font-size: 2.5rem;
+    }
+    
+    .tcs-hero-subheadline {
+        font-size: 1.1rem;
+        max-width: 100%;
+    }
+    
+    .tcs-hero-usps {
+        justify-content: center;
+    }
+    
+    .tcs-hero-cta-group {
+        justify-content: center;
+    }
+    
+    .tcs-hero-trust {
+        justify-content: center;
+    }
+    
+    .tcs-hero-product-showcase {
+        height: 450px;
+    }
+    
+    .tcs-hero-product-main {
+        width: 320px;
+        height: 320px;
+    }
+    
+    .tcs-hero-product-secondary {
+        width: 180px;
+        height: 180px;
+        bottom: 5%;
+        right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .tcs-hero-headline {
+        font-size: 2rem;
+    }
+    
+    .tcs-hero-subheadline {
+        font-size: 1rem;
+    }
+    
+    .tcs-hero-usp {
+        width: 100%;
+    }
+    
+    .tcs-hero-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .tcs-hero-product-showcase {
+        height: 350px;
+    }
+    
+    .tcs-hero-product-main {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .tcs-hero-product-secondary {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .tcs-hero-product-badge {
+        font-size: 0.8rem;
+        padding: 10px 16px;
+    }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+    .tcs-hero-left,
+    .tcs-hero-right,
+    .tcs-hero-product-main,
+    .tcs-hero-product-secondary,
+    .tcs-hero-badge,
+    .tcs-hero-product-badge {
+        animation: none !important;
+    }
+}
+</style>
+
+<!-- Hero Section HTML -->
+<section class="tcs-hero" id="tcsHero">
+    <div class="tcs-hero-container">
+        <div class="tcs-hero-content-wrapper">
+            
+            <!-- Left Content -->
+            <div class="tcs-hero-left">
+                <!-- Badge -->
+                <div class="tcs-hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 11l3 3L22 4"/>
+                        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                    </svg>
+                    Trusted by Coffee Shops & Brands Worldwide
+                </div>
+                
+                <!-- Headline -->
+                <h1 class="tcs-hero-headline">
+                    Custom Coffee Sleeves<br>
+                    <span class="highlight">Made Perfect</span> For Your Brand
+                </h1>
+                
+                <!-- Subheadline -->
+                <p class="tcs-hero-subheadline">
+                    Premium wholesale coffee sleeves with free design consultation. From eco-friendly kraft to branded custom prints - we deliver quality that protects hands and promotes your business.
+                </p>
+                
+                <!-- USPs -->
+                <div class="tcs-hero-usps">
+                    <div class="tcs-hero-usp">
+                        <div class="tcs-hero-usp-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <div class="tcs-hero-usp-text">
+                            <span class="tcs-hero-usp-title">Free Design Service</span>
+                            <span class="tcs-hero-usp-desc">Expert design consultation included</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tcs-hero-usp">
+                        <div class="tcs-hero-usp-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="tcs-hero-usp-text">
+                            <span class="tcs-hero-usp-title">Fast Turnaround</span>
+                            <span class="tcs-hero-usp-desc">Custom orders processed in 3–7 business days</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tcs-hero-usp">
+                        <div class="tcs-hero-usp-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"/>
+                                <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+                            </svg>
+                        </div>
+                        <div class="tcs-hero-usp-text">
+                            <span class="tcs-hero-usp-title">Wholesale Pricing</span>
+                            <span class="tcs-hero-usp-desc">Best rates for bulk orders</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="tcs-hero-cta-group">
+                    <a href="/get-quote/" class="tcs-hero-btn tcs-hero-btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Get Free Quote
+                    </a>
+                    
+                    <a href="tel:5033580443" class="tcs-hero-btn tcs-hero-btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                        Call Now
+                    </a>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="tcs-hero-trust">
+                    <div class="tcs-hero-trust-item">
+                        <span class="tcs-hero-trust-icon">⭐</span>
+                        <div class="tcs-hero-trust-text">
+                            <span class="tcs-hero-trust-number">Free</span>
+                            <span class="tcs-hero-trust-label">Design Service</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tcs-hero-trust-item">
+                        <span class="tcs-hero-trust-icon">✓</span>
+                        <div class="tcs-hero-trust-text">
+                            <span class="tcs-hero-trust-number">Bulk</span>
+                            <span class="tcs-hero-trust-label">Wholesale Pricing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tcs-hero-trust-item">
+                        <span class="tcs-hero-trust-icon">🚚</span>
+                        <div class="tcs-hero-trust-text">
+                            <span class="tcs-hero-trust-number">Worldwide</span>
+                            <span class="tcs-hero-trust-label">Shipping Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Side - 3D Product Showcase -->
+            <div class="tcs-hero-right">
+                <div class="tcs-hero-3d-container">
+                    <div class="tcs-hero-product-showcase">
+                        
+                        <!-- Decorative Circles -->
+                        <div class="tcs-hero-circle-1"></div>
+                        <div class="tcs-hero-circle-2"></div>
+                        
+                        <!-- Product Badge -->
+                        <div class="tcs-hero-product-badge">
+                            🔥 Premium Quality
+                        </div>
+                        
+                        <!-- Main Product Image -->
+                        <div class="tcs-hero-product-main">
+                            <img src="/images/Coffee-cup-sleeves-reusable.jpg" 
+                                 alt="Custom Coffee Sleeves - Premium Quality" 
+                                 loading="eager">
+                        </div>
+                        
+                        <!-- Secondary Product Image -->
+                        <div class="tcs-hero-product-secondary">
+                            <img src="/images/Cardboard-coffee-sleeves-wholesale.jpg" 
+                                 alt="Wholesale Coffee Sleeves - Cardboard" 
+                                 loading="lazy">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<script is:inline>
+(function() {
+    'use strict';
+    
+    // 3D Tilt Effect on Mouse Move
+    const productMain = document.querySelector('.tcs-hero-product-main');
+    const productSecondary = document.querySelector('.tcs-hero-product-secondary');
+    const hero3D = document.querySelector('.tcs-hero-3d-container');
+    
+    if (hero3D && window.innerWidth > 768) {
+        hero3D.addEventListener('mousemove', function(e) {
+            const rect = hero3D.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            if (productMain) {
+                productMain.style.transform = `translate(-50%, -50%) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+            }
+            
+            if (productSecondary) {
+                productSecondary.style.transform = `translateY(-10px) rotateZ(-8deg) scale(0.92) rotateX(${rotateX * 0.5}deg) rotateY(${rotateY * 0.5}deg)`;
+            }
+        });
+        
+        hero3D.addEventListener('mouseleave', function() {
+            if (productMain) {
+                productMain.style.transform = '';
+            }
+            if (productSecondary) {
+                productSecondary.style.transform = '';
+            }
+        });
+    }
+    
+    // Scroll Animation for Hero Elements
+    function initScrollAnimations() {
+        const heroLeft = document.querySelector('.tcs-hero-left');
+        const heroRight = document.querySelector('.tcs-hero-right');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        if (heroLeft) observer.observe(heroLeft);
+        if (heroRight) observer.observe(heroRight);
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+    } else {
+        initScrollAnimations();
+    }
+    
+    console.log('The Coffee Sleeves Hero - Initialized');
+})();
+</script>

@@ -1,0 +1,191 @@
+---
+// Instant Quote sidebar form — reproduction of the Elementor "Instant Quote" form
+// (dark fields #2A1C19, 19px radius, #7E4A25 submit) posting to /api/quote.
+interface Props {
+  productName: string;
+}
+const { productName } = Astro.props;
+---
+
+<aside class="tcs-quote-sidebar" aria-label="Instant quote form">
+  <form class="tcs-quote-form" method="post" action="/api/quote/" enctype="multipart/form-data" novalidate>
+    <input type="hidden" name="form_source" value={`product:${productName}`} />
+    <input type="hidden" name="page_url" value="" data-page-url />
+    <label class="sr-only" for="tcs-q-name">Name</label>
+    <input id="tcs-q-name" type="text" name="name" placeholder="Name" autocomplete="name" />
+    <label class="sr-only" for="tcs-q-email">Email</label>
+    <input id="tcs-q-email" type="email" name="email" placeholder="Email" required autocomplete="email" />
+    <label class="sr-only" for="tcs-q-phone">Phone</label>
+    <input id="tcs-q-phone" type="tel" name="phone" placeholder="Phone" required autocomplete="tel" />
+    <label class="sr-only" for="tcs-q-product">Product</label>
+    <input id="tcs-q-product" type="text" name="product" placeholder="Product" value={productName} />
+    <label class="sr-only" for="tcs-q-message">Message</label>
+    <textarea id="tcs-q-message" name="message" placeholder="Message" rows="5"></textarea>
+    <label class="tcs-quote-file-label" for="tcs-q-file">Artwork / design file (optional)</label>
+    <input id="tcs-q-file" type="file" name="artwork" accept=".pdf,.png,.jpg,.jpeg,.ai,.eps,.svg,.zip" />
+    <div class="tcs-hp" aria-hidden="true">
+      <label for="tcs-q-website">Leave this field empty</label>
+      <input id="tcs-q-website" type="text" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+    <button type="submit" class="tcs-quote-submit">Submit</button>
+    <p class="tcs-quote-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <div class="tcs-quote-badges">
+    <img src="/images/secure-icons.png" alt="Secure checkout badges" width="220" height="76" loading="lazy" />
+    <img src="/images/payments.png" alt="Accepted payment methods including Visa, Mastercard, American Express, Apple Pay and Google Pay" width="220" height="76" loading="lazy" />
+    <img src="/images/payment-image.jpeg" alt="PayPal and card payments accepted over SSL secured connection" width="220" height="76" loading="lazy" />
+  </div>
+</aside>
+
+<style>
+  .tcs-quote-sidebar {
+    background: #fff8f0;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 10px 30px rgba(62, 39, 35, 0.18);
+  }
+  .tcs-quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tcs-quote-form input[type='text'],
+  .tcs-quote-form input[type='email'],
+  .tcs-quote-form input[type='tel'],
+  .tcs-quote-form textarea {
+    background: #2a1c19;
+    color: #ffffff;
+    border: 1px solid #1e3b8b;
+    border-radius: 19px;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    width: 100%;
+  }
+  .tcs-quote-form input::placeholder,
+  .tcs-quote-form textarea::placeholder {
+    color: #d8cfca;
+  }
+  .tcs-quote-form input:focus,
+  .tcs-quote-form textarea:focus {
+    outline: 2px solid #ff8c42;
+    outline-offset: 1px;
+  }
+  .tcs-quote-file-label {
+    font-size: 0.85rem;
+    color: #5d4636;
+  }
+  .tcs-quote-form input[type='file'] {
+    background: #2a1c19;
+    color: #fff;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+  .tcs-hp {
+    position: absolute;
+    left: -9999px;
+    height: 0;
+    overflow: hidden;
+  }
+  .tcs-quote-submit {
+    background: #7e4a25;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: center;
+    min-width: 160px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .tcs-quote-submit:hover {
+    background: #6f4e37;
+    transform: translateY(-1px);
+  }
+  .tcs-quote-submit:focus-visible {
+    outline: 2px solid #ff8c42;
+    outline-offset: 2px;
+  }
+  .tcs-quote-submit[disabled] {
+    opacity: 0.6;
+    cursor: wait;
+  }
+  .tcs-quote-status {
+    margin: 0;
+    font-size: 0.9rem;
+    text-align: center;
+    display: none;
+  }
+  .tcs-quote-status.success {
+    display: block;
+    color: #1b6e3c;
+  }
+  .tcs-quote-status.error {
+    display: block;
+    color: #b3261e;
+  }
+  .tcs-quote-badges {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .tcs-quote-badges img {
+    max-width: 220px;
+    height: auto;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.tcs-quote-form').forEach((form) => {
+    const pageUrl = form.querySelector<HTMLInputElement>('[data-page-url]');
+    if (pageUrl) pageUrl.value = window.location.href;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = form.querySelector<HTMLParagraphElement>('.tcs-quote-status');
+      const submit = form.querySelector<HTMLButtonElement>('.tcs-quote-submit');
+      if (!form.reportValidity()) return;
+      if (submit) submit.disabled = true;
+      if (status) {
+        status.className = 'tcs-quote-status';
+        status.textContent = '';
+      }
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) {
+          window.location.assign('/get-quote/?sent=1#quote-thanks');
+        } else if (status) {
+          status.className = 'tcs-quote-status error';
+          status.textContent =
+            data.message ?? 'Sorry, your request could not be sent. Please call (503) 358-0443 or email info@thecoffeesleeves.com.';
+        }
+      } catch {
+        if (status) {
+          status.className = 'tcs-quote-status error';
+          status.textContent =
+            'Network error — please try again, or email info@thecoffeesleeves.com.';
+        }
+      } finally {
+        if (submit) submit.disabled = false;
+      }
+    });
+  });
+</script>

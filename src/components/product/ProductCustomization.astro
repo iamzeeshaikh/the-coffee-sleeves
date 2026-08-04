@@ -1,0 +1,1562 @@
+<style is:global>
+/* Customization Section */
+.tcs-customization {
+    position: relative;
+    background: linear-gradient(180deg, #FFF8F0 0%, #FFFFFF 100%);
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Background Decoration */
+.tcs-customization::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(255, 140, 66, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(210, 105, 30, 0.05) 0%, transparent 50%);
+    animation: bgRotate 30s linear infinite;
+}
+
+@keyframes bgRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.tcs-customization-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Section Header */
+.tcs-customization-header {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tcs-customization-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(255, 140, 66, 0.4);
+}
+
+.tcs-customization-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 15px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    line-height: 1.2;
+}
+
+.tcs-customization-subtitle {
+    font-size: 1.2rem;
+    color: #666666;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Main Grid */
+.tcs-customization-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    animation: fadeInScale 0.8s ease-out 0.3s backwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Options Column */
+.tcs-customization-options {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Option Card */
+.tcs-option-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tcs-option-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    border-color: rgba(255, 140, 66, 0.2);
+    transform: translateY(-3px);
+}
+
+.tcs-option-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2C1810;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tcs-option-label-icon {
+    width: 24px;
+    height: 24px;
+    fill: #FF8C42;
+}
+
+.tcs-option-required {
+    color: #FF8C42;
+    font-size: 0.75rem;
+}
+
+/* Contact Info Fields */
+.tcs-contact-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.tcs-contact-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.tcs-contact-input:focus {
+    outline: none;
+    border-color: #FF8C42;
+    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.1);
+}
+
+.tcs-contact-input.error {
+    border-color: #F44336;
+}
+
+/* Design Upload */
+.tcs-design-upload {
+    position: relative;
+    border: 3px dashed rgba(255, 140, 66, 0.3);
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    background: rgba(255, 140, 66, 0.03);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tcs-design-upload:hover {
+    border-color: #FF8C42;
+    background: rgba(255, 140, 66, 0.08);
+    transform: scale(1.02);
+}
+
+.tcs-design-upload.active {
+    border-color: #FF8C42;
+    background: rgba(255, 140, 66, 0.1);
+}
+
+.tcs-upload-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(255, 140, 66, 0.4);
+}
+
+.tcs-upload-icon svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+
+.tcs-upload-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2C1810;
+    margin-bottom: 5px;
+}
+
+.tcs-upload-subtext {
+    font-size: 0.85rem;
+    color: #666666;
+}
+
+.tcs-upload-input {
+    display: none;
+}
+
+.tcs-uploaded-file {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.tcs-uploaded-file.show {
+    display: flex;
+}
+
+.tcs-uploaded-file svg {
+    width: 20px;
+    height: 20px;
+    fill: #4CAF50;
+}
+
+.tcs-uploaded-filename {
+    flex: 1;
+    font-size: 0.9rem;
+    color: #2C1810;
+    font-weight: 600;
+}
+
+.tcs-remove-file {
+    background: none;
+    border: none;
+    color: #F44336;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0 5px;
+}
+
+/* Material Selector Cards */
+.tcs-material-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.tcs-material-card {
+    position: relative;
+    padding: 20px 15px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: white;
+}
+
+.tcs-material-card:hover {
+    border-color: #FF8C42;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 140, 66, 0.2);
+}
+
+.tcs-material-card.selected {
+    border-color: #FF8C42;
+    background: rgba(255, 140, 66, 0.05);
+    box-shadow: 0 5px 20px rgba(255, 140, 66, 0.3);
+}
+
+.tcs-material-card.selected::before {
+    content: '✓';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: #FF8C42;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.tcs-material-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.tcs-material-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #2C1810;
+    margin-bottom: 4px;
+}
+
+.tcs-material-desc {
+    font-size: 0.75rem;
+    color: #666666;
+}
+
+/* Size Selector */
+.tcs-size-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.tcs-size-option {
+    padding: 15px 10px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.tcs-size-option:hover {
+    border-color: #FF8C42;
+    transform: scale(1.05);
+}
+
+.tcs-size-option.selected {
+    border-color: #FF8C42;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+}
+
+.tcs-size-value {
+    font-size: 1.1rem;
+    font-weight: 800;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-size-label {
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
+
+/* Quantity Selector */
+.tcs-quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.tcs-quantity-btn {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 140, 66, 0.3);
+}
+
+.tcs-quantity-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 140, 66, 0.5);
+}
+
+.tcs-quantity-btn:active {
+    transform: scale(0.95);
+}
+
+.tcs-quantity-input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2C1810;
+    background: white;
+}
+
+.tcs-quantity-input:focus {
+    outline: none;
+    border-color: #FF8C42;
+}
+
+/* Printing Type Selector */
+.tcs-printing-types {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tcs-printing-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.tcs-printing-option:hover {
+    border-color: #FF8C42;
+    background: rgba(255, 140, 66, 0.03);
+}
+
+.tcs-printing-option.selected {
+    border-color: #FF8C42;
+    background: rgba(255, 140, 66, 0.05);
+}
+
+.tcs-radio {
+    width: 22px;
+    height: 22px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tcs-printing-option.selected .tcs-radio {
+    border-color: #FF8C42;
+}
+
+.tcs-printing-option.selected .tcs-radio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: #FF8C42;
+    border-radius: 50%;
+}
+
+.tcs-printing-info {
+    flex: 1;
+}
+
+.tcs-printing-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #2C1810;
+    margin-bottom: 3px;
+}
+
+.tcs-printing-desc {
+    font-size: 0.8rem;
+    color: #666666;
+}
+
+/* Finish Options */
+.tcs-finish-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.tcs-finish-option {
+    padding: 15px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.tcs-finish-option:hover {
+    border-color: #FF8C42;
+    transform: translateY(-3px);
+}
+
+.tcs-finish-option.selected {
+    border-color: #FF8C42;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+}
+
+.tcs-finish-icon {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.tcs-finish-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* Color Picker */
+.tcs-color-picker-wrapper {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.tcs-color-preview {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    background: #D2691E;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tcs-color-preview:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tcs-color-input {
+    flex: 1;
+    height: 50px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.tcs-color-presets {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.tcs-color-preset {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tcs-color-preset:hover {
+    transform: scale(1.15);
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+.tcs-color-preset.selected {
+    border-color: #2C1810;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #2C1810;
+}
+
+/* Preview Column */
+.tcs-customization-preview {
+    position: sticky;
+    top: 100px;
+    perspective: 1500px;
+}
+
+.tcs-preview-card {
+    background: linear-gradient(135deg, #2C1810, #3E2723);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+}
+
+.tcs-preview-card:hover {
+    transform: rotateY(5deg) rotateX(5deg);
+}
+
+.tcs-preview-label {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.tcs-preview-mockup {
+    position: relative;
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 140, 66, 0.2);
+}
+
+.tcs-mockup-sleeve {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #D2691E, #8B4513);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tcs-mockup-design {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+    text-align: center;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Preview Details */
+.tcs-preview-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tcs-preview-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.tcs-preview-detail-label {
+    font-weight: 600;
+}
+
+.tcs-preview-detail-value {
+    font-weight: 700;
+    color: #FF8C42;
+}
+
+/* Price Display */
+.tcs-preview-price {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 140, 66, 0.1);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 140, 66, 0.3);
+}
+
+.tcs-price-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.tcs-price-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-align: center;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-price-unit {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Add to Quote Button */
+.tcs-add-quote-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255, 140, 66, 0.5);
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    position: relative;
+}
+
+.tcs-add-quote-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 140, 66, 0.7);
+}
+
+.tcs-add-quote-btn:active:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.tcs-add-quote-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.tcs-add-quote-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    right: 20px;
+    margin-top: -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Success/Error Messages */
+.tcs-message {
+    display: none;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    font-weight: 600;
+    text-align: center;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tcs-message.show {
+    display: block;
+}
+
+.tcs-message.success {
+    background: rgba(76, 175, 80, 0.1);
+    border: 2px solid rgba(76, 175, 80, 0.3);
+    color: #2E7D32;
+}
+
+.tcs-message.error {
+    background: rgba(244, 67, 54, 0.1);
+    border: 2px solid rgba(244, 67, 54, 0.3);
+    color: #C62828;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .tcs-customization-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tcs-customization {
+        padding: 60px 0;
+    }
+    
+    .tcs-customization-title {
+        font-size: 2rem;
+    }
+    
+    .tcs-customization-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .tcs-customization-preview {
+        position: relative;
+        top: 0;
+        order: -1;
+    }
+    
+    .tcs-contact-fields {
+        grid-template-columns: 1fr;
+    }
+    
+    .tcs-material-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .tcs-size-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tcs-finish-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .tcs-customization-title {
+        font-size: 1.75rem;
+    }
+    
+    .tcs-option-card {
+        padding: 20px;
+    }
+}
+</style>
+
+<!-- Customization Section HTML -->
+<section class="tcs-customization" id="tcsCustomization">
+    <div class="tcs-customization-container">
+        
+        <!-- Section Header -->
+        <div class="tcs-customization-header">
+            <div class="tcs-customization-badge">🎨 Customize Your Sleeves</div>
+            <h2 class="tcs-customization-title">Build Your Perfect Coffee Sleeves</h2>
+            <p class="tcs-customization-subtitle">
+                Customize every detail to match your brand. See your design come to life with our interactive preview.
+            </p>
+        </div>
+        
+        <!-- Quote Form -->
+        <form id="tcsQuoteForm" class="tcs-customization-grid">
+            
+            <!-- Options Column -->
+            <div class="tcs-customization-options">
+                
+                <!-- Contact Information -->
+                <div class="tcs-option-card">
+                    <div class="tcs-option-label">
+                        <svg class="tcs-option-label-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <span>Your Information</span>
+                        <span class="tcs-option-required">*Required</span>
+                    </div>
+                    <div class="tcs-contact-fields">
+                        <input 
+                            type="text" 
+                            name="name" 
+                            class="tcs-contact-input" 
+                            placeholder="Your Name *" 
+                            required
+                        >
+                        <input 
+                            type="email" 
+                            name="email" 
+                            class="tcs-contact-input" 
+                            placeholder="Email Address *" 
+                            required
+                        >
+                        <input 
+                            type="tel" 
+                            name="phone" 
+                            class="tcs-contact-input" 
+                            placeholder="Phone Number *" 
+                            required
+                        >
+                        <input 
+                            type="text" 
+                            name="company" 
+                            class="tcs-contact-input" 
+                            placeholder="Company Name" 
+                        >
+                    </div>
+                </div>
+                
+                <!-- Design Upload -->
+                <div class="tcs-option-card">
+                    <div class="tcs-option-label">
+                        <svg class="tcs-option-label-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                        <span>Upload Your Design</span>
+                        <span class="tcs-option-required">(Optional)</span>
+                    </div>
+                    <div class="tcs-design-upload" id="tcsDesignUpload">
+                        <div class="tcs-upload-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                        </div>
+                        <div class="tcs-upload-text">Click or drag to upload</div>
+                        <div class="tcs-upload-subtext">AI, PDF, PNG, JPG (Max 10MB)</div>
+                        <input type="file" name="design_file" class="tcs-upload-input" id="tcsUploadInput" accept=".ai,.pdf,.png,.jpg,.jpeg">
+                    </div>
+                    <div class="tcs-uploaded-file" id="tcsUploadedFile">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 11l3 3L22 4"/>
+                        </svg>
+                        <span class="tcs-uploaded-filename" id="tcsFilename">design.pdf</span>
+                        <button type="button" class="tcs-remove-file" id="tcsRemoveFile">×</button>
+                    </div>
+                </div>
+                
+                <!-- Material Selector -->
+                <div class="tcs-option-card">
+                    <div class="tcs-option-label">
+                        <svg class="tcs-option-label-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <line x1="3" y1="9" x2="21" y2="9"/>
+                            <line x1="3" y1="15" x2="21" y2="15"/>
+                        </svg>
+                        <span>Material</span>
+                        <span class="tcs-option-required">*Required</span>
+                    </div>
+                    <input type="hidden" name="material" value="kraft" id="tcsMaterialInput">
+                    <div class="tcs-material-cards">
+                        <div class="tcs-material-card selected" data-material="kraft">
+                            <div class="tcs-material-icon">🌾</div>
+                            <div class="tcs-material-name">Kraft Paper</div>
+                            <div class="tcs-material-desc">Eco-friendly</div>
+                        </div>
+                        <div class="tcs-material-card" data-material="cardboard">
+                            <div class="tcs-material-icon">📄</div>
+                            <div class="tcs-material-name">White Cardboard</div>
+                            <div class="tcs-material-desc">Premium</div>
+                        </div>
+                        <div class="tcs-material-card" data-material="corrugated">
+                            <div class="tcs-material-icon">📦</div>
+                            <div class="tcs-material-name">Corrugated</div>
+                            <div class="tcs-material-desc">Extra insulation</div>
+                        </div>
+                        <div class="tcs-material-card" data-material="recycled">
+                            <div class="tcs-material-icon">♻️</div>
+                            <div class="tcs-material-name">Recycled</div>
+                            <div class="tcs-material-desc">100% recycled</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Size Selector -->
+                <div class="tcs-option-card">
+                    <div class="tcs-option-label">
+                        <svg class="tcs-option-label-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                        <span>Cup Size</span>
+                        <span class="tcs-option-required">*Required</span>
+                    </div>
+                    <input type="hidden" name="size" value="12oz" id="tcsSizeInput">
+                    <div class="tcs-size-options">
+                        <div class="tcs-size-option" data-size="8oz">
+                            <div class="tcs-size-value">8oz</div>
+                            <div class="tcs-size-label">Small</div>
+                        </div>
+                        <div class="tcs-size-option selected" data-size="12oz">
+                            <div class="tcs-size-value">12oz</div>
+                            <div class="tcs-size-label">Regular</div>
+                        </div>
+                        <div class="tcs-size-option" data-size="16oz">
+                            <div class="tcs-size-value">16oz</div>
+                            <div class="tcs-size-label">Large</div>
+                        </div>
+                        <div class="tcs-size-option" data-size="20oz">
+                            <div class="tcs-size-value">20oz</div>
+                            <div class="tcs-size-label">XL</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quantity Selector -->
+                <div class="tcs-option-card">
+                    <div class="tcs-option-label">
+                        <svg class="tcs-option-label-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="8" y1="6" x2="21" y2="6"/>
+                            <line x1="8" y1="12" x2="21" y2="12"/>
+                            <line x1="8" y1="18" x2="21" y2="18"/>
+                            <line x1="3" y1="6" x2="3.01" y2="6"/>
+                            <line x1="3" y1="12" x2="3.01" y2="12"/>
+                            <line x1="3" y1="18" x2="3.01" y2="18"/>
+                        </svg>
+                        <span>Quantity</span>
+                        <span class="tcs-option-required">*Required</span>
+                    </div>
+                    <div class="tcs-quantity-selector">
+                        <button type="button" class="tcs-quantity-btn" id="tcsQuantityMinus">−</button>
+                        <input type="number" name="quantity" class="tcs-quantity-input" id="tcsQuantityInput" value="1000" min="500" step="100" required>
+                        <button type="button" class="tcs-quantity-btn" id="tcsQuantityPlus">+</button>
+                    </div>
+                </div>
+                
+                <!-- Printing Type -->
+                <div class="tcs-option-card">
+                    <div class="tcs-option-label">
+                        <svg class="tcs-option-label-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polyline points="6 9 6 2 18 2 18 9"/>
+                            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                            <rect x="6" y="14" width="12" height="8"/>
+                        </svg>
+                        <span>Printing Type</span>
+                        <span class="tcs-option-required">*Required</span>
+                    </div>
+                    <input type="hidden" name="printing" value="digital" id="tcsPrintingInput">
+                    <div class="tcs-printing-types">
+                        <div class="tcs-printing-option selected" data-printing="digital">
+                            <div class="tcs-radio"></div>
+                            <div class="tcs-printing-info">
+                                <div class="tcs-printing-name">Digital Print</div>
+                                <div class="tcs-printing-desc">Full color, perfect for small batches</div>
+                            </div>
+                        </div>
+                        <div class="tcs-printing-option" data-printing="offset">
+                            <div class="tcs-radio"></div>
+                            <div class="tcs-printing-info">
+                                <div class="tcs-printing-name">Offset Print</div>
+                                <div class="tcs-printing-desc">Best for large quantities, premium quality</div>
+                            </div>
+                        </div>
+                        <div class="tcs-printing-option" data-printing="screen">
+                            <div class="tcs-radio"></div>
+                            <div class="tcs-printing-info">
+                                <div class="tcs-printing-name">Screen Print</div>
+                                <div class="tcs-printing-desc">Vibrant colors, durable finish</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Finish Options -->
+                <div class="tcs-option-card">
+                    <div class="tcs-option-label">
+                        <svg class="tcs-option-label-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                        <span>Finish</span>
+                        <span class="tcs-option-required">*Required</span>
+                    </div>
+                    <input type="hidden" name="finish" value="gloss" id="tcsFinishInput">
+                    <div class="tcs-finish-options">
+                        <div class="tcs-finish-option selected" data-finish="gloss">
+                            <div class="tcs-finish-icon">✨</div>
+                            <div class="tcs-finish-name">Gloss</div>
+                        </div>
+                        <div class="tcs-finish-option" data-finish="matte">
+                            <div class="tcs-finish-icon">🎨</div>
+                            <div class="tcs-finish-name">Matte</div>
+                        </div>
+                        <div class="tcs-finish-option" data-finish="uv">
+                            <div class="tcs-finish-icon">💎</div>
+                            <div class="tcs-finish-name">Spot UV</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Color Picker -->
+                <div class="tcs-option-card">
+                    <div class="tcs-option-label">
+                        <svg class="tcs-option-label-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                        </svg>
+                        <span>Base Color</span>
+                    </div>
+                    <div class="tcs-color-picker-wrapper">
+                        <div class="tcs-color-preview" id="tcsColorPreview"></div>
+                        <input type="color" name="color" class="tcs-color-input" id="tcsColorInput" value="#D2691E">
+                    </div>
+                    <div class="tcs-color-presets">
+                        <div class="tcs-color-preset selected" data-color="#D2691E" style="background: #D2691E;"></div>
+                        <div class="tcs-color-preset" data-color="#8B4513" style="background: #8B4513;"></div>
+                        <div class="tcs-color-preset" data-color="#2C1810" style="background: #2C1810;"></div>
+                        <div class="tcs-color-preset" data-color="#FF8C42" style="background: #FF8C42;"></div>
+                        <div class="tcs-color-preset" data-color="#FFFFFF" style="background: #FFFFFF; border: 1px solid #ddd;"></div>
+                        <div class="tcs-color-preset" data-color="#000000" style="background: #000000;"></div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Preview Column -->
+            <div class="tcs-customization-preview">
+                <div class="tcs-preview-card">
+                    <div class="tcs-preview-label">Live Preview</div>
+                    
+                    <div class="tcs-preview-mockup">
+                        <div class="tcs-mockup-sleeve" id="tcsMockupSleeve">
+                            <div class="tcs-mockup-design" id="tcsMockupDesign">
+                                Your Brand Here
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tcs-preview-details">
+                        <div class="tcs-preview-detail">
+                            <span class="tcs-preview-detail-label">Material:</span>
+                            <span class="tcs-preview-detail-value" id="tcsPreviewMaterial">Kraft Paper</span>
+                        </div>
+                        <div class="tcs-preview-detail">
+                            <span class="tcs-preview-detail-label">Size:</span>
+                            <span class="tcs-preview-detail-value" id="tcsPreviewSize">12oz</span>
+                        </div>
+                        <div class="tcs-preview-detail">
+                            <span class="tcs-preview-detail-label">Quantity:</span>
+                            <span class="tcs-preview-detail-value" id="tcsPreviewQuantity">1,000 units</span>
+                        </div>
+                        <div class="tcs-preview-detail">
+                            <span class="tcs-preview-detail-label">Printing:</span>
+                            <span class="tcs-preview-detail-value" id="tcsPreviewPrinting">Digital Print</span>
+                        </div>
+                        <div class="tcs-preview-detail">
+                            <span class="tcs-preview-detail-label">Finish:</span>
+                            <span class="tcs-preview-detail-value" id="tcsPreviewFinish">Gloss</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tcs-preview-price">
+                        <div class="tcs-price-label">Pricing</div>
+                        <div class="tcs-price-value" id="tcsPriceValue">Custom Quote</div>
+                        <div class="tcs-price-unit" id="tcsPriceUnit">(quoted within 24 hours)</div>
+                    </div>
+                    
+                    <button type="submit" class="tcs-add-quote-btn" id="tcsAddQuoteBtn">
+                        Request Quote
+                    </button>
+                    
+                    <div class="tcs-message" id="tcsMessage"></div>
+                </div>
+            </div>
+            
+        </form>
+        
+    </div>
+</section>
+
+<script is:inline>
+(function() {
+    'use strict';
+    
+    // Configuration
+    const config = {
+        material: 'kraft',
+        size: '12oz',
+        quantity: 1000,
+        printing: 'digital',
+        finish: 'gloss',
+        color: '#D2691E'
+    };
+    
+    // Pricing logic
+    function calculatePrice() {
+        const basePrice = 0.80;
+        let price = basePrice;
+        
+        if (config.material === 'cardboard') price += 0.03;
+        if (config.material === 'corrugated') price += 0.05;
+        if (config.finish === 'uv') price += 0.05;
+        
+        if (config.quantity >= 5000) price *= 0.85;
+        else if (config.quantity >= 2000) price *= 0.90;
+        else if (config.quantity >= 1000) price *= 0.95;
+        
+        const total = price * config.quantity;
+        
+        return {
+            perUnit: price.toFixed(2),
+            total: total.toFixed(0)
+        };
+    }
+    
+    // Update preview
+    function updatePreview() {
+        const mockup = document.getElementById('tcsMockupSleeve');
+        if (mockup) {
+            mockup.style.background = `linear-gradient(135deg, ${config.color}, ${adjustBrightness(config.color, -30)})`;
+        }
+        
+        document.getElementById('tcsPreviewMaterial').textContent = getReadableMaterial();
+        document.getElementById('tcsPreviewSize').textContent = config.size;
+        document.getElementById('tcsPreviewQuantity').textContent = config.quantity.toLocaleString() + ' units';
+        document.getElementById('tcsPreviewPrinting').textContent = getReadablePrinting();
+        document.getElementById('tcsPreviewFinish').textContent = getReadableFinish();
+        
+        // Pricing is quoted per order; the preview intentionally shows no computed price.
+    }
+    
+    // Helper functions
+    function getReadableMaterial() {
+        const materials = {
+            kraft: 'Kraft Paper',
+            cardboard: 'White Cardboard',
+            corrugated: 'Corrugated',
+            recycled: 'Recycled'
+        };
+        return materials[config.material] || config.material;
+    }
+    
+    function getReadablePrinting() {
+        const printing = {
+            digital: 'Digital Print',
+            offset: 'Offset Print',
+            screen: 'Screen Print'
+        };
+        return printing[config.printing] || config.printing;
+    }
+    
+    function getReadableFinish() {
+        const finish = {
+            gloss: 'Gloss',
+            matte: 'Matte',
+            uv: 'Spot UV'
+        };
+        return finish[config.finish] || config.finish;
+    }
+    
+    function adjustBrightness(color, percent) {
+        const num = parseInt(color.replace("#",""), 16);
+        const amt = Math.round(2.55 * percent);
+        const R = (num >> 16) + amt;
+        const G = (num >> 8 & 0x00FF) + amt;
+        const B = (num & 0x0000FF) + amt;
+        return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 +
+            (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255))
+            .toString(16).slice(1);
+    }
+    
+    // Form submission
+    function initFormSubmission() {
+        const form = document.getElementById('tcsQuoteForm');
+        const submitBtn = document.getElementById('tcsAddQuoteBtn');
+        const message = document.getElementById('tcsMessage');
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Hide previous messages
+            message.classList.remove('show', 'success', 'error');
+            
+            // Validate required fields
+            const name = form.querySelector('[name="name"]').value.trim();
+            const email = form.querySelector('[name="email"]').value.trim();
+            const phone = form.querySelector('[name="phone"]').value.trim();
+            
+            if (!name || !email || !phone) {
+                showMessage('Please fill in all required fields.', 'error');
+                return;
+            }
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            submitBtn.textContent = 'Sending...';
+            
+            try {
+                // Prepare form data
+                const formData = new FormData(form);
+                
+                // Add preview details
+                formData.append('material_name', getReadableMaterial());
+                formData.append('printing_name', getReadablePrinting());
+                formData.append('finish_name', getReadableFinish());
+
+                
+                // Send to server
+                const response = await fetch('/api/quote/', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showMessage('✓ Quote request sent successfully! We\'ll contact you within 24 hours.', 'success');
+                    form.reset();
+                    // Reset selections to default
+                    resetToDefaults();
+                } else {
+                    showMessage('✗ ' + (result.message || 'Something went wrong. Please try again.'), 'error');
+                }
+                
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showMessage('✗ Unable to send request. Please try again or contact us directly at info@thecoffeesleeves.com', 'error');
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+                submitBtn.textContent = 'Request Quote';
+            }
+        });
+    }
+    
+    function showMessage(text, type) {
+        const message = document.getElementById('tcsMessage');
+        message.textContent = text;
+        message.className = 'tcs-message show ' + type;
+        
+        // Scroll to message
+        message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Auto-hide after 10 seconds
+        if (type === 'success') {
+            setTimeout(() => {
+                message.classList.remove('show');
+            }, 10000);
+        }
+    }
+    
+    function resetToDefaults() {
+        config.material = 'kraft';
+        config.size = '12oz';
+        config.quantity = 1000;
+        config.printing = 'digital';
+        config.finish = 'gloss';
+        config.color = '#D2691E';
+        
+        document.querySelectorAll('.tcs-material-card').forEach(c => c.classList.remove('selected'));
+        document.querySelector('[data-material="kraft"]').classList.add('selected');
+        
+        document.querySelectorAll('.tcs-size-option').forEach(o => o.classList.remove('selected'));
+        document.querySelector('[data-size="12oz"]').classList.add('selected');
+        
+        document.getElementById('tcsQuantityInput').value = 1000;
+        
+        document.querySelectorAll('.tcs-printing-option').forEach(o => o.classList.remove('selected'));
+        document.querySelector('[data-printing="digital"]').classList.add('selected');
+        
+        document.querySelectorAll('.tcs-finish-option').forEach(o => o.classList.remove('selected'));
+        document.querySelector('[data-finish="gloss"]').classList.add('selected');
+        
+        document.getElementById('tcsColorInput').value = '#D2691E';
+        document.getElementById('tcsColorPreview').style.background = '#D2691E';
+        
+        updatePreview();
+    }
+    
+    // File Upload
+    function initFileUpload() {
+        const uploadArea = document.getElementById('tcsDesignUpload');
+        const uploadInput = document.getElementById('tcsUploadInput');
+        const uploadedFile = document.getElementById('tcsUploadedFile');
+        const filename = document.getElementById('tcsFilename');
+        const removeBtn = document.getElementById('tcsRemoveFile');
+        
+        uploadArea.addEventListener('click', () => uploadInput.click());
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('active');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('active');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('active');
+            if (e.dataTransfer.files.length) {
+                uploadInput.files = e.dataTransfer.files;
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+        
+        uploadInput.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                handleFile(e.target.files[0]);
+            }
+        });
+        
+        removeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            uploadedFile.classList.remove('show');
+            uploadInput.value = '';
+        });
+        
+        function handleFile(file) {
+            filename.textContent = file.name;
+            uploadedFile.classList.add('show');
+        }
+    }
+    
+    // Material Selection
+    function initMaterialSelection() {
+        const cards = document.querySelectorAll('.tcs-material-card');
+        const input = document.getElementById('tcsMaterialInput');
+        
+        cards.forEach(card => {
+            card.addEventListener('click', function() {
+                cards.forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                config.material = this.dataset.material;
+                input.value = config.material;
+                updatePreview();
+            });
+        });
+    }
+    
+    // Size Selection
+    function initSizeSelection() {
+        const options = document.querySelectorAll('.tcs-size-option');
+        const input = document.getElementById('tcsSizeInput');
+        
+        options.forEach(option => {
+            option.addEventListener('click', function() {
+                options.forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                config.size = this.dataset.size;
+                input.value = config.size;
+                updatePreview();
+            });
+        });
+    }
+    
+    // Quantity Selection
+    function initQuantitySelection() {
+        const input = document.getElementById('tcsQuantityInput');
+        const minusBtn = document.getElementById('tcsQuantityMinus');
+        const plusBtn = document.getElementById('tcsQuantityPlus');
+        
+        minusBtn.addEventListener('click', () => {
+            const current = parseInt(input.value);
+            if (current > 500) {
+                input.value = current - 100;
+                config.quantity = parseInt(input.value);
+                updatePreview();
+            }
+        });
+        
+        plusBtn.addEventListener('click', () => {
+            const current = parseInt(input.value);
+            input.value = current + 100;
+            config.quantity = parseInt(input.value);
+            updatePreview();
+        });
+        
+        input.addEventListener('change', () => {
+            config.quantity = parseInt(input.value);
+            updatePreview();
+        });
+    }
+    
+    // Printing Type Selection
+    function initPrintingSelection() {
+        const options = document.querySelectorAll('.tcs-printing-option');
+        const input = document.getElementById('tcsPrintingInput');
+        
+        options.forEach(option => {
+            option.addEventListener('click', function() {
+                options.forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                config.printing = this.dataset.printing;
+                input.value = config.printing;
+                updatePreview();
+            });
+        });
+    }
+    
+    // Finish Selection
+    function initFinishSelection() {
+        const options = document.querySelectorAll('.tcs-finish-option');
+        const input = document.getElementById('tcsFinishInput');
+        
+        options.forEach(option => {
+            option.addEventListener('click', function() {
+                options.forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                config.finish = this.dataset.finish;
+                input.value = config.finish;
+                updatePreview();
+            });
+        });
+    }
+    
+    // Color Picker
+    function initColorPicker() {
+        const preview = document.getElementById('tcsColorPreview');
+        const input = document.getElementById('tcsColorInput');
+        const presets = document.querySelectorAll('.tcs-color-preset');
+        
+        preview.addEventListener('click', () => input.click());
+        
+        input.addEventListener('input', (e) => {
+            config.color = e.target.value;
+            preview.style.background = config.color;
+            updatePreview();
+        });
+        
+        presets.forEach(preset => {
+            preset.addEventListener('click', function() {
+                presets.forEach(p => p.classList.remove('selected'));
+                this.classList.add('selected');
+                config.color = this.dataset.color;
+                preview.style.background = config.color;
+                input.value = config.color;
+                updatePreview();
+            });
+        });
+    }
+    
+    // Initialize
+    function init() {
+        initFormSubmission();
+        initFileUpload();
+        initMaterialSelection();
+        initSizeSelection();
+        initQuantitySelection();
+        initPrintingSelection();
+        initFinishSelection();
+        initColorPicker();
+        updatePreview();
+        
+        console.log('The Coffee Sleeves Customization - Initialized');
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    
+})();
+</script>

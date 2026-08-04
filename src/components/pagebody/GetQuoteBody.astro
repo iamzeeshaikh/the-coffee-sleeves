@@ -1,0 +1,1522 @@
+<div class="elementor-element elementor-element-a084515 e-con-full e-flex e-con e-parent" data-id="a084515" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-3b58e0d elementor-widget elementor-widget-html" data-id="3b58e0d" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
+					
+
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2C1810;
+            background: #FFFFFF;
+        }
+
+        /* Hero Section */
+        .tcs-quote-hero {
+            position: relative;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #CD853F 100%);
+            padding: 100px 0 80px;
+            overflow: hidden;
+        }
+
+        /* Animated Background */
+        .tcs-quote-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: bgPulse 15s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* Coffee Cup Pattern */
+        .tcs-quote-hero::after {
+            content: '☕';
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            font-size: 150px;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        .tcs-quote-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tcs-hero-content {
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tcs-hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .tcs-hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 20px;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            line-height: 1.2;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .tcs-hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+
+        .tcs-hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .tcs-hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .tcs-hero-feature::before {
+            content: '✓';
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* Main Content */
+        .tcs-quote-main {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FFF8F0 50%, #FFFFFF 100%);
+        }
+
+        .tcs-quote-layout {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Form Section */
+        .tcs-form-section {
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .tcs-form-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tcs-form-card:hover {
+            border-color: rgba(139, 69, 19, 0.2);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+        }
+
+        .tcs-form-header {
+            margin-bottom: 40px;
+        }
+
+        .tcs-form-title {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #8B4513;
+            margin-bottom: 10px;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+        }
+
+        .tcs-form-description {
+            font-size: 1rem;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        /* Form Styles */
+        .tcs-quote-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .tcs-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .tcs-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tcs-form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .tcs-form-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #8B4513;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tcs-required {
+            color: #FF6B6B;
+        }
+
+        .tcs-form-input,
+        .tcs-form-textarea,
+        .tcs-form-select {
+            padding: 15px 20px;
+            border: 2px solid rgba(139, 69, 19, 0.2);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            font-family: inherit;
+        }
+
+        .tcs-form-input:focus,
+        .tcs-form-textarea:focus,
+        .tcs-form-select:focus {
+            outline: none;
+            border-color: #D2691E;
+            box-shadow: 0 5px 20px rgba(210, 105, 30, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .tcs-form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .tcs-form-select {
+            cursor: pointer;
+        }
+
+        /* File Upload */
+        .tcs-file-upload {
+            position: relative;
+            border: 3px dashed rgba(139, 69, 19, 0.3);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            background: rgba(139, 69, 19, 0.02);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tcs-file-upload:hover {
+            border-color: #D2691E;
+            background: rgba(139, 69, 19, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .tcs-file-upload input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .tcs-upload-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .tcs-upload-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .tcs-upload-text {
+            font-weight: 600;
+            color: #8B4513;
+            margin-bottom: 5px;
+        }
+
+        .tcs-upload-hint {
+            font-size: 0.85rem;
+            color: #999999;
+        }
+
+        /* Guarantee Badge */
+        .tcs-form-guarantee {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 12px;
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            margin-top: 10px;
+        }
+
+        .tcs-guarantee-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4CAF50, #388E3C);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .tcs-guarantee-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            fill: none;
+        }
+
+        .tcs-guarantee-text {
+            font-weight: 700;
+            color: #2E7D32;
+        }
+
+        /* Submit Button */
+        .tcs-submit-btn {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.4);
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            margin-top: 10px;
+        }
+
+        .tcs-submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.6);
+        }
+
+        .tcs-submit-btn:active {
+            transform: translateY(-2px);
+        }
+
+        /* Sidebar */
+        .tcs-quote-sidebar {
+            animation: fadeInRight 0.8s ease-out;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Contact Card */
+        .tcs-contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .tcs-contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .tcs-contact-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .tcs-contact-title {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #8B4513;
+            margin-bottom: 10px;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+        }
+
+        .tcs-contact-text {
+            font-size: 0.95rem;
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .tcs-contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tcs-contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #8B4513;
+            font-weight: 600;
+            padding: 12px;
+            background: rgba(139, 69, 19, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .tcs-contact-item:hover {
+            background: rgba(139, 69, 19, 0.1);
+            transform: translateX(5px);
+        }
+
+        .tcs-contact-item svg {
+            width: 20px;
+            height: 20px;
+            fill: #D2691E;
+        }
+
+        /* Benefits Card */
+        .tcs-benefits-card {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tcs-benefits-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg"><circle cx="25" cy="25" r="20" fill="rgba(255,255,255,0.05)"/></svg>');
+            animation: bgMove 20s linear infinite;
+        }
+
+        @keyframes bgMove {
+            from { transform: translateX(0); }
+            to { transform: translateX(50px); }
+        }
+
+        .tcs-benefits-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tcs-benefits-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 25px;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            text-align: center;
+        }
+
+        .tcs-benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .tcs-benefit-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .tcs-benefit-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .tcs-benefit-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .tcs-benefit-text {
+            color: white;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        /* Trust Badges */
+        .tcs-trust-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .tcs-trust-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #8B4513;
+            margin-bottom: 20px;
+        }
+
+        .tcs-trust-badges {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .tcs-trust-badge {
+            padding: 15px;
+            background: rgba(139, 69, 19, 0.05);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .tcs-trust-badge:hover {
+            background: rgba(139, 69, 19, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .tcs-trust-badge-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tcs-trust-badge-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .tcs-trust-badge-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #8B4513;
+        }
+
+        /* Bottom CTA Section */
+        .tcs-bottom-cta {
+            background: linear-gradient(135deg, #2C1810, #3D2817);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .tcs-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .tcs-cta-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 20px;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+        }
+
+        .tcs-cta-text {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .tcs-cta-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 40px;
+            background: white;
+            color: #8B4513;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .tcs-cta-phone:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .tcs-cta-phone svg {
+            width: 24px;
+            height: 24px;
+            fill: #D2691E;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .tcs-quote-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .tcs-quote-sidebar {
+                order: -1;
+            }
+
+            .tcs-trust-card,
+            .tcs-benefits-card,
+            .tcs-contact-card {
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tcs-hero-title {
+                font-size: 2.5rem;
+            }
+
+            .tcs-hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .tcs-hero-features {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .tcs-quote-main {
+                padding: 60px 0;
+            }
+
+            .tcs-form-card {
+                padding: 30px 20px;
+            }
+
+            .tcs-form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .tcs-contact-card,
+            .tcs-benefits-card,
+            .tcs-trust-card {
+                padding: 30px 20px;
+            }
+
+            .tcs-trust-badges {
+                grid-template-columns: 1fr;
+            }
+
+            .tcs-cta-title {
+                font-size: 2rem;
+            }
+
+            .tcs-cta-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tcs-hero-title {
+                font-size: 2rem;
+            }
+
+            .tcs-form-title {
+                font-size: 1.5rem;
+            }
+
+            .tcs-cta-phone {
+                font-size: 1.1rem;
+                padding: 15px 30px;
+            }
+        }
+
+        /* Performance Optimizations */
+        @media (prefers-reduced-motion: reduce) {
+            .tcs-quote-hero::before,
+            .tcs-quote-hero::after,
+            .tcs-contact-icon,
+            .tcs-guarantee-icon,
+            .tcs-benefits-card::before {
+                animation: none !important;
+            }
+        }
+    </style>
+
+
+    
+    <section class="tcs-quote-hero">
+        <div class="tcs-quote-container">
+            <div class="tcs-hero-content">
+                <div class="tcs-hero-badge">☕ Free Quote in Minutes</div>
+                <h1 class="tcs-hero-title">Get Your Custom Quote Today</h1>
+                <p class="tcs-hero-subtitle">
+                    Tell us about your project and receive a detailed quote within 24 hours. No commitment required.
+                </p>
+                <div class="tcs-hero-features">
+                    <div class="tcs-hero-feature">Free Design Consultation</div>
+                    <div class="tcs-hero-feature">No Minimum Order</div>
+                    <div class="tcs-hero-feature">Fast Response</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    
+    <section class="tcs-bottom-cta">
+        <div class="tcs-cta-content">
+            <h2 class="tcs-cta-title">Prefer to Talk?</h2>
+            <p class="tcs-cta-text">
+                Call us now and speak with a coffee sleeve specialist who can answer your questions immediately.
+            </p>
+            <a href="tel:5033580443" class="tcs-cta-phone">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                (503) 358-0443
+            </a>
+        </div>
+    </section>
+
+    <script is:inline>
+        (function() {
+            'use strict';
+            
+            // FORM SUBMISSION CONFIGURATION
+            // Choose one of these methods:
+            
+            // METHOD 1: PHP EMAIL (Most Common)
+            // Set this to your PHP handler file:
+            const PHP_HANDLER = '/api/quote/';
+            
+            // METHOD 2: Formspree (Easy, no coding)
+            // Sign up at formspree.io and get your form ID
+            const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'; // Replace with your ID
+            
+            // METHOD 3: Custom API endpoint
+            const CUSTOM_API = 'https://yoursite.com/api/quote';
+            
+            // Select which method to use:
+            const SUBMISSION_METHOD = 'php'; // Options: 'php', 'formspree', 'custom'
+            
+            // Form submission handler
+            function initFormSubmission() {
+                const form = document.getElementById('tcsQuoteForm');
+                
+                if (form) {
+                    form.addEventListener('submit', async function(e) {
+                        e.preventDefault();
+                        
+                        // Disable submit button
+                        const submitBtn = form.querySelector('.tcs-submit-btn');
+                        const originalText = submitBtn.textContent;
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Sending...';
+                        
+                        // Get form data
+                        const formData = new FormData(form);
+                        
+                        try {
+                            let response;
+                            
+                            if (SUBMISSION_METHOD === 'php') {
+                                // PHP Method
+                                response = await fetch(PHP_HANDLER, {
+                                    method: 'POST',
+                                    body: formData
+                                });
+                            } else if (SUBMISSION_METHOD === 'formspree') {
+                                // Formspree Method
+                                response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                                    method: 'POST',
+                                    body: formData,
+                                    headers: {
+                                        'Accept': 'application/json'
+                                    }
+                                });
+                            } else if (SUBMISSION_METHOD === 'custom') {
+                                // Custom API Method
+                                response = await fetch(CUSTOM_API, {
+                                    method: 'POST',
+                                    body: formData
+                                });
+                            }
+                            
+                            if (response && response.ok) {
+                                // Success
+                                alert('Thank you! Your quote request has been received. We\'ll get back to you within 24 hours.');
+                                form.reset();
+                                
+                                // Optional: Redirect to thank you page
+                                // window.location.href = '/thank-you';
+                            } else {
+                                throw new Error('Submission failed');
+                            }
+                        } catch (error) {
+                            console.error('Error:', error);
+                            alert('There was an error sending your request. Please call us at (503) 358-0443 or email info@thecoffeesleeves.com');
+                        } finally {
+                            // Re-enable button
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalText;
+                        }
+                    });
+                }
+            }
+            
+            // File upload handler
+            function initFileUpload() {
+                const fileInput = document.querySelector('.tcs-file-upload input[type="file"]');
+                const uploadArea = document.querySelector('.tcs-file-upload');
+                
+                if (fileInput && uploadArea) {
+                    fileInput.addEventListener('change', function(e) {
+                        const files = e.target.files;
+                        if (files.length > 0) {
+                            const fileNames = Array.from(files).map(f => f.name).join(', ');
+                            uploadArea.querySelector('.tcs-upload-text').textContent = 
+                                `${files.length} file(s) selected`;
+                            uploadArea.querySelector('.tcs-upload-hint').textContent = fileNames;
+                            console.log('Files uploaded:', fileNames);
+                        }
+                    });
+                    
+                    // Drag and drop
+                    uploadArea.addEventListener('dragover', function(e) {
+                        e.preventDefault();
+                        this.style.borderColor = '#D2691E';
+                        this.style.background = 'rgba(139, 69, 19, 0.1)';
+                    });
+                    
+                    uploadArea.addEventListener('dragleave', function(e) {
+                        e.preventDefault();
+                        this.style.borderColor = '';
+                        this.style.background = '';
+                    });
+                    
+                    uploadArea.addEventListener('drop', function(e) {
+                        e.preventDefault();
+                        this.style.borderColor = '';
+                        this.style.background = '';
+                        
+                        const files = e.dataTransfer.files;
+                        fileInput.files = files;
+                        
+                        // Trigger change event
+                        const event = new Event('change', { bubbles: true });
+                        fileInput.dispatchEvent(event);
+                    });
+                }
+            }
+            
+            // Form field animations
+            function initFieldAnimations() {
+                const inputs = document.querySelectorAll('.tcs-form-input, .tcs-form-textarea, .tcs-form-select');
+                
+                inputs.forEach(input => {
+                    input.addEventListener('focus', function() {
+                        this.parentElement.style.transform = 'translateX(5px)';
+                    });
+                    
+                    input.addEventListener('blur', function() {
+                        this.parentElement.style.transform = '';
+                    });
+                });
+            }
+            
+            // Initialize
+            function init() {
+                initFormSubmission();
+                initFileUpload();
+                initFieldAnimations();
+                
+                console.log('The Coffee Sleeves Quote Page - Initialized');
+            }
+            
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+            
+        })();
+    </script>
+
+
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-80084fc e-con-full e-flex e-con e-parent" data-id="80084fc" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-d811068 elementor-widget elementor-widget-html" data-id="d811068" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
+					
+
+<style>
+/* Force everything clickable */
+.tcs-lead-section,
+.tcs-lead-section * {
+    pointer-events: auto !important;
+}
+
+.tcs-lead-section input,
+.tcs-lead-section select,
+.tcs-lead-section textarea,
+.tcs-lead-section button {
+    cursor: pointer !important;
+}
+
+/* Section Container */
+.tcs-lead-section {
+    background: linear-gradient(135deg, #FFF8F0, #FFFFFF);
+    padding: 80px 0;
+}
+
+.tcs-lead-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tcs-lead-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: start;
+}
+
+/* LEFT SIDE - Benefits */
+.tcs-lead-benefits {
+    position: sticky;
+    top: 100px;
+}
+
+.tcs-lead-main-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tcs-lead-icon-badge {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 10px 30px rgba(255, 140, 66, 0.4);
+}
+
+.tcs-lead-icon-badge svg {
+    width: 40px;
+    height: 40px;
+    fill: white;
+}
+
+.tcs-lead-main-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.tcs-lead-main-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.tcs-benefit-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.tcs-benefit-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+}
+
+.tcs-benefit-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.tcs-benefit-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(255, 140, 66, 0.3);
+}
+
+.tcs-benefit-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+.tcs-benefit-content h4 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #2C1810;
+    margin-bottom: 8px;
+}
+
+.tcs-benefit-content p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* RIGHT SIDE - Form */
+.tcs-lead-form-wrapper {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.tcs-form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tcs-form-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 10px;
+}
+
+.tcs-form-subtitle {
+    font-size: 1rem;
+    color: #666;
+}
+
+.tcs-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.tcs-form-group {
+    margin-bottom: 20px;
+}
+
+.tcs-form-group label {
+    display: block;
+    font-weight: 700;
+    color: #2C1810;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.tcs-form-group label .required {
+    color: #FF8C42;
+}
+
+.tcs-form-input,
+.tcs-form-select,
+.tcs-form-textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #E5E5E5;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background: white;
+    font-family: inherit;
+}
+
+.tcs-form-input:focus,
+.tcs-form-select:focus,
+.tcs-form-textarea:focus {
+    outline: none;
+    border-color: #FF8C42;
+    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.1);
+}
+
+.tcs-form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.tcs-form-submit {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 8px 20px rgba(255, 140, 66, 0.4);
+}
+
+.tcs-form-submit:hover {
+    background: linear-gradient(135deg, #D2691E, #8B4513);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 140, 66, 0.5);
+}
+
+.tcs-form-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.tcs-form-message {
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    display: none;
+}
+
+.tcs-form-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block;
+}
+
+.tcs-form-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block;
+}
+
+.tcs-form-privacy {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.tcs-form-privacy a {
+    color: #FF8C42;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .tcs-lead-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .tcs-lead-benefits {
+        position: static;
+    }
+    
+    .tcs-lead-main-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tcs-lead-section {
+        padding: 60px 0;
+    }
+    
+    .tcs-lead-form-wrapper {
+        padding: 30px 20px;
+    }
+    
+    .tcs-form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .tcs-benefit-cards {
+        margin-top: 30px;
+    }
+}
+</style>
+
+<section class="tcs-lead-section">
+    <div class="tcs-lead-container">
+        
+        <div class="tcs-lead-grid">
+            
+            
+            <div class="tcs-lead-benefits">
+                
+                
+                <div class="tcs-lead-main-heading">
+                    <div class="tcs-lead-icon-badge">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 11l3 3L22 4M5 11l3 3" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h2 class="tcs-lead-main-title">Request Your Free Quote</h2>
+                    <p class="tcs-lead-main-subtitle">
+                        Fill out the form below and our team will get back to you within 24 hours with a custom quote
+                    </p>
+                </div>
+                
+                
+                <div class="tcs-benefit-cards">
+                    
+                    
+                    <div class="tcs-benefit-card">
+                        <div class="tcs-benefit-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                            </svg>
+                        </div>
+                        <div class="tcs-benefit-content">
+                            <h4>Free Design Service</h4>
+                            <p>Our expert designers will create your custom artwork at no additional cost.</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="tcs-benefit-card">
+                        <div class="tcs-benefit-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z"/>
+                            </svg>
+                        </div>
+                        <div class="tcs-benefit-content">
+                            <h4>Fast Turnaround</h4>
+                            <p>Standard production in 7-10 business days with rush options available.</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="tcs-benefit-card">
+                        <div class="tcs-benefit-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                            </svg>
+                        </div>
+                        <div class="tcs-benefit-content">
+                            <h4>Premium Quality</h4>
+                            <p>100% satisfaction guarantee with the highest quality materials and printing.</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="tcs-benefit-card">
+                        <div class="tcs-benefit-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="9" y1="9" x2="15" y2="9"/>
+                                <line x1="9" y1="15" x2="15" y2="15"/>
+                            </svg>
+                        </div>
+                        <div class="tcs-benefit-content">
+                            <h4>24/7 Support</h4>
+                            <p>Dedicated support team ready to assist you throughout the entire process.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            
+            <div class="tcs-lead-form-wrapper">
+                
+                <div class="tcs-form-header">
+                    <h3 class="tcs-form-title">Get Your Free Quote</h3>
+                    <p class="tcs-form-subtitle">Fill out the form and we'll get back to you within 24 hours</p>
+                </div>
+                
+                
+                <div id="formMessage" class="tcs-form-message"></div>
+                
+                
+                <form id="quoteForm" method="POST">
+                    
+                    
+                    <div class="tcs-form-row">
+                        <div class="tcs-form-group">
+                            <label for="name">Your Name <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" class="tcs-form-input" placeholder="James Taylor" required>
+                        </div>
+                        
+                        <div class="tcs-form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" class="tcs-form-input" placeholder="james@company.com" required>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="tcs-form-row">
+                        <div class="tcs-form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" class="tcs-form-input" placeholder="(503) 358-0443" required>
+                        </div>
+                        
+                        <div class="tcs-form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company" class="tcs-form-input" placeholder="Your Company">
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="tcs-form-row">
+                        <div class="tcs-form-group">
+                            <label for="quantity">Estimated Quantity <span class="required">*</span></label>
+                            <select id="quantity" name="quantity" class="tcs-form-select" required>
+                                <option value="">Select quantity</option>
+                                <option value="100-500">100 - 500 units</option>
+                                <option value="500-1000">500 - 1,000 units</option>
+                                <option value="1000-5000">1,000 - 5,000 units</option>
+                                <option value="5000-10000">5,000 - 10,000 units</option>
+                                <option value="10000+">10,000+ units</option>
+                            </select>
+                        </div>
+                        
+                        <div class="tcs-form-group">
+                            <label for="material">Preferred Material</label>
+                            <select id="material" name="material" class="tcs-form-select">
+                                <option value="">Select material</option>
+                                <option value="Kraft Paper">Kraft Paper</option>
+                                <option value="Cardboard">Cardboard</option>
+                                <option value="Corrugated">Corrugated</option>
+                                <option value="Custom">Custom Material</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="tcs-form-group">
+                        <label for="details">Project Details</label>
+                        <textarea id="details" name="details" class="tcs-form-textarea" placeholder="Tell us about your project, design requirements, deadlines, etc."></textarea>
+                    </div>
+                    
+                    
+                    <button type="submit" class="tcs-form-submit" id="submitBtn">
+                        Get My Free Quote
+                    </button>
+                    
+                    
+                    <div class="tcs-form-privacy">
+                        Your information is secure and will never be shared. Read our <a href="/privacy-policy/">Privacy Policy</a>.
+                    </div>
+                    
+                </form>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+</section>
+
+<script is:inline>
+(function() {
+    'use strict';
+    
+    const form = document.getElementById('quoteForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const messageDiv = document.getElementById('formMessage');
+    
+    if (!form) return;
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Disable submit button
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        
+        // Hide previous messages
+        messageDiv.style.display = 'none';
+        messageDiv.className = 'tcs-form-message';
+        
+        // Get form data
+        const formData = new FormData(form);
+        
+        // Send AJAX request
+        fetch('/api/quote/', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Success
+                messageDiv.className = 'tcs-form-message success';
+                messageDiv.textContent = data.message || 'Thank you! Your quote request has been sent successfully. We\'ll contact you within 24 hours.';
+                messageDiv.style.display = 'block';
+                
+                // Reset form
+                form.reset();
+                
+                // Scroll to message
+                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+            } else {
+                // Error from server
+                throw new Error(data.message || 'Failed to send request');
+            }
+        })
+        .catch(error => {
+            // Error
+            messageDiv.className = 'tcs-form-message error';
+            messageDiv.textContent = error.message || 'Oops! Something went wrong. Please try again or call us at (503) 358-0443.';
+            messageDiv.style.display = 'block';
+            
+            console.error('Form error:', error);
+        })
+        .finally(() => {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Get My Free Quote';
+        });
+    });
+    
+    console.log('Lead form section initialized');
+    
+})();
+</script>
+</div></div>

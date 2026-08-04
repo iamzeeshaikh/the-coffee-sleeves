@@ -1,0 +1,135 @@
+---
+// Archive product card — mirrors the WooCommerce loop card (image, category
+// tag, title) with a quote CTA instead of the placeholder price/add-to-cart.
+import { categories, localImage } from '../utils/site';
+import type { Product } from '../utils/site';
+
+interface Props {
+  product: Product;
+  lazy?: boolean;
+  /** Slug of the category page this card is rendered on (renders the tag as text to avoid self-links) */
+  currentCategorySlug?: string | undefined;
+}
+
+const { product, lazy = true, currentCategorySlug } = Astro.props;
+const primaryCategory = categories.find((c) => product.categories.includes(c.name));
+const img = product.images[0] ? localImage(product.images[0].url) : null;
+---
+
+<li class="tcs-card">
+  <a class="tcs-card-image-link" href={`/product/${product.slug}/`} tabindex="-1" aria-hidden="true">
+    {
+      img ? (
+        <picture>
+          {img.thumb && <source srcset={img.thumb} type="image/webp" />}
+          <img
+            src={img.src}
+            alt={product.images[0]?.alt || product.name}
+            width="300"
+            height="300"
+            loading={lazy ? 'lazy' : 'eager'}
+          />
+        </picture>
+      ) : (
+        <span class="tcs-card-placeholder" role="img" aria-label={`${product.name} — image coming soon`}>
+          ☕
+        </span>
+      )
+    }
+  </a>
+  <div class="tcs-card-body">
+    {
+      primaryCategory &&
+        (primaryCategory.slug === currentCategorySlug ? (
+          <span class="tcs-card-cat">{primaryCategory.name}</span>
+        ) : (
+          <a class="tcs-card-cat" href={`/product-category/${primaryCategory.slug}/`} rel="tag">
+            {primaryCategory.name}
+          </a>
+        ))
+    }
+    <h2 class="tcs-card-title">
+      <a href={`/product/${product.slug}/`}>{product.name}</a>
+    </h2>
+    <a class="tcs-card-btn" href={`/product/${product.slug}/`}>Get a Quote</a>
+  </div>
+</li>
+
+<style>
+  .tcs-card {
+    list-style: none;
+    background: #fff;
+    border: 1px solid #f0e5da;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .tcs-card:hover {
+    box-shadow: 0 12px 30px rgba(62, 39, 35, 0.14);
+    transform: translateY(-4px);
+  }
+  .tcs-card-image-link {
+    display: block;
+    aspect-ratio: 1 / 1;
+    background: #faf0e6;
+  }
+  .tcs-card-image-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .tcs-card-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 3rem;
+  }
+  .tcs-card-body {
+    padding: 14px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+  .tcs-card-cat {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #d2691e;
+    text-decoration: none;
+  }
+  .tcs-card-cat:hover {
+    text-decoration: underline;
+  }
+  .tcs-card-title {
+    font-size: 1.05rem;
+    margin: 0;
+    line-height: 1.35;
+  }
+  .tcs-card-title a {
+    color: #2c1810;
+    text-decoration: none;
+  }
+  .tcs-card-title a:hover {
+    color: #6f4e37;
+  }
+  .tcs-card-btn {
+    margin-top: auto;
+    align-self: flex-start;
+    background: #7e4a25;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .tcs-card-btn:hover {
+    background: #6f4e37;
+  }
+</style>

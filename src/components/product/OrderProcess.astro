@@ -1,0 +1,885 @@
+<style is:global>
+/* How to Order Section */
+.tcs-order-process {
+    position: relative;
+    background: linear-gradient(180deg, #FFF8F0 0%, #FFFFFF 100%);
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Background Decoration */
+.tcs-order-process::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 15% 30%, rgba(255, 140, 66, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 85% 70%, rgba(76, 175, 80, 0.05) 0%, transparent 50%);
+    animation: bgFloat 25s ease-in-out infinite;
+}
+
+@keyframes bgFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.1); }
+}
+
+.tcs-order-process-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Section Header */
+.tcs-order-header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tcs-order-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(255, 140, 66, 0.4);
+}
+
+.tcs-order-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 15px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    line-height: 1.2;
+}
+
+.tcs-order-subtitle {
+    font-size: 1.2rem;
+    color: #666666;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Timeline Container */
+.tcs-timeline-wrapper {
+    position: relative;
+    margin: 60px 0;
+}
+
+/* Timeline Line */
+.tcs-timeline-line {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        rgba(255, 140, 66, 0.2) 0%,
+        rgba(255, 140, 66, 0.8) 50%,
+        rgba(76, 175, 80, 0.8) 100%
+    );
+    z-index: 0;
+    animation: lineGrow 2s ease-out 0.5s backwards;
+}
+
+@keyframes lineGrow {
+    from {
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.tcs-timeline-line::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: inherit;
+    filter: blur(10px);
+    opacity: 0.5;
+}
+
+/* Timeline Steps */
+.tcs-timeline-steps {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Step Card */
+.tcs-step-card {
+    perspective: 1500px;
+    animation: fadeInScale 0.8s ease-out backwards;
+}
+
+.tcs-step-card:nth-child(1) { animation-delay: 0.2s; }
+.tcs-step-card:nth-child(2) { animation-delay: 0.4s; }
+.tcs-step-card:nth-child(3) { animation-delay: 0.6s; }
+.tcs-step-card:nth-child(4) { animation-delay: 0.8s; }
+.tcs-step-card:nth-child(5) { animation-delay: 1s; }
+.tcs-step-card:nth-child(6) { animation-delay: 1.2s; }
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.tcs-step-inner {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 3px solid transparent;
+    position: relative;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.tcs-step-card:hover .tcs-step-inner {
+    transform: translateY(-20px) rotateY(5deg) scale(1.05);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 140, 66, 0.3);
+}
+
+/* Step Number Badge */
+.tcs-step-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: white;
+    box-shadow: 0 5px 20px rgba(255, 140, 66, 0.5);
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.tcs-step-card:hover .tcs-step-number {
+    transform: translateX(-50%) scale(1.2) rotateY(180deg);
+    box-shadow: 0 10px 30px rgba(255, 140, 66, 0.7);
+}
+
+/* Step Icon */
+.tcs-step-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.tcs-step-icon {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(210, 105, 30, 0.1));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(255, 140, 66, 0.2);
+}
+
+.tcs-step-icon::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 50%;
+    opacity: 0;
+    filter: blur(20px);
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.tcs-step-card:hover .tcs-step-icon {
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    transform: rotateY(180deg) scale(1.1);
+    box-shadow: 0 15px 40px rgba(255, 140, 66, 0.5);
+}
+
+.tcs-step-card:hover .tcs-step-icon::before {
+    opacity: 0.6;
+}
+
+.tcs-step-icon svg {
+    width: 50px;
+    height: 50px;
+    fill: #FF8C42;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.tcs-step-card:hover .tcs-step-icon svg {
+    fill: white;
+    transform: scale(1.1);
+}
+
+/* Step Title */
+.tcs-step-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #2C1810;
+    margin-bottom: 10px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.tcs-step-card:hover .tcs-step-title {
+    color: #FF8C42;
+}
+
+/* Step Description */
+.tcs-step-description {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.tcs-step-card:hover .tcs-step-description {
+    color: #2C1810;
+}
+
+/* Step Duration */
+.tcs-step-duration {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 6px 15px;
+    background: rgba(255, 140, 66, 0.1);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #FF8C42;
+    transition: all 0.3s ease;
+}
+
+.tcs-step-card:hover .tcs-step-duration {
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Process Summary */
+.tcs-process-summary {
+    background: white;
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    margin-top: 60px;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out 1.4s backwards;
+}
+
+.tcs-summary-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 20px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-summary-text {
+    font-size: 1.1rem;
+    color: #666666;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.tcs-summary-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.tcs-summary-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.tcs-summary-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(255, 140, 66, 0.4);
+    transition: all 0.3s ease;
+}
+
+.tcs-summary-feature:hover .tcs-summary-icon {
+    transform: scale(1.15) rotateY(180deg);
+    box-shadow: 0 10px 30px rgba(255, 140, 66, 0.6);
+}
+
+.tcs-summary-icon svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+
+.tcs-summary-feature-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2C1810;
+}
+
+/* CTA Button */
+.tcs-order-cta {
+    margin-top: 40px;
+}
+
+.tcs-order-btn {
+    display: inline-block;
+    padding: 18px 45px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255, 140, 66, 0.5);
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-order-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 140, 66, 0.7);
+}
+
+.tcs-order-btn:active {
+    transform: translateY(-2px);
+}
+
+/* Alternative Layout - Mobile First */
+.tcs-mobile-timeline {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .tcs-order-title {
+        font-size: 2.5rem;
+    }
+    
+    .tcs-timeline-steps {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tcs-order-process {
+        padding: 60px 0;
+    }
+    
+    .tcs-order-title {
+        font-size: 2rem;
+    }
+    
+    .tcs-order-subtitle {
+        font-size: 1rem;
+    }
+    
+    /* Hide desktop timeline */
+    .tcs-timeline-line {
+        display: none;
+    }
+    
+    .tcs-timeline-steps {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Mobile timeline connector */
+    .tcs-step-card::after {
+        content: '';
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 30px;
+        background: linear-gradient(180deg, #FF8C42, rgba(255, 140, 66, 0.2));
+    }
+    
+    .tcs-step-card:last-child::after {
+        display: none;
+    }
+    
+    .tcs-step-card:hover .tcs-step-inner {
+        transform: translateY(-10px) scale(1.02);
+    }
+    
+    .tcs-process-summary {
+        padding: 40px 25px;
+    }
+    
+    .tcs-summary-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .tcs-order-title {
+        font-size: 1.75rem;
+    }
+    
+    .tcs-step-inner {
+        padding: 25px 15px;
+    }
+    
+    .tcs-step-icon-wrapper {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .tcs-step-icon svg {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+    .tcs-step-card,
+    .tcs-timeline-line,
+    .tcs-order-header,
+    .tcs-process-summary,
+    .tcs-order-process::before {
+        animation: none !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .tcs-order-process {
+        background: white;
+    }
+    
+    .tcs-step-card:hover .tcs-step-inner {
+        transform: none;
+    }
+}
+</style>
+
+<!-- How to Order Process Section HTML -->
+<section class="tcs-order-process" id="tcsOrderProcess">
+    <div class="tcs-order-process-container">
+        
+        <!-- Section Header -->
+        <div class="tcs-order-header">
+            <div class="tcs-order-badge">📋 Simple Process</div>
+            <h2 class="tcs-order-title">How to Order Your Coffee Sleeves</h2>
+            <p class="tcs-order-subtitle">
+                From design to delivery, we've streamlined the entire process to make ordering custom coffee sleeves quick, easy, and hassle-free.
+            </p>
+        </div>
+        
+        <!-- Timeline -->
+        <div class="tcs-timeline-wrapper">
+            <div class="tcs-timeline-line"></div>
+            
+            <div class="tcs-timeline-steps">
+                
+                <!-- Step 1: Choose Specifications -->
+                <div class="tcs-step-card">
+                    <div class="tcs-step-inner">
+                        <div class="tcs-step-number">1</div>
+                        <div class="tcs-step-icon-wrapper">
+                            <div class="tcs-step-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="tcs-step-title">Choose Specifications</h3>
+                        <p class="tcs-step-description">
+                            Select your material, size, quantity, printing type, and finish options
+                        </p>
+                        <span class="tcs-step-duration">5 minutes</span>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Upload Design -->
+                <div class="tcs-step-card">
+                    <div class="tcs-step-inner">
+                        <div class="tcs-step-number">2</div>
+                        <div class="tcs-step-icon-wrapper">
+                            <div class="tcs-step-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="17 8 12 3 7 8"/>
+                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="tcs-step-title">Upload Design</h3>
+                        <p class="tcs-step-description">
+                            Upload your artwork or work with our free design team
+                        </p>
+                        <span class="tcs-step-duration">Instant</span>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Get Instant Quote -->
+                <div class="tcs-step-card">
+                    <div class="tcs-step-inner">
+                        <div class="tcs-step-number">3</div>
+                        <div class="tcs-step-icon-wrapper">
+                            <div class="tcs-step-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="12" y1="1" x2="12" y2="23"/>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="tcs-step-title">Get Instant Quote</h3>
+                        <p class="tcs-step-description">
+                            Receive transparent pricing with bulk discounts instantly
+                        </p>
+                        <span class="tcs-step-duration">Instant</span>
+                    </div>
+                </div>
+                
+                <!-- Step 4: Approve Proof -->
+                <div class="tcs-step-card">
+                    <div class="tcs-step-inner">
+                        <div class="tcs-step-number">4</div>
+                        <div class="tcs-step-icon-wrapper">
+                            <div class="tcs-step-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 11l3 3L22 4"/>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="tcs-step-title">Approve Proof</h3>
+                        <p class="tcs-step-description">
+                            Review and approve your digital proof before production
+                        </p>
+                        <span class="tcs-step-duration">24-48 hours</span>
+                    </div>
+                </div>
+                
+                <!-- Step 5: Production Begins -->
+                <div class="tcs-step-card">
+                    <div class="tcs-step-inner">
+                        <div class="tcs-step-number">5</div>
+                        <div class="tcs-step-icon-wrapper">
+                            <div class="tcs-step-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M3 9h18M9 21V9"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="tcs-step-title">Production Begins</h3>
+                        <p class="tcs-step-description">
+                            Your order enters our quality-controlled production line
+                        </p>
+                        <span class="tcs-step-duration">7-10 days</span>
+                    </div>
+                </div>
+                
+                <!-- Step 6: Delivery -->
+                <div class="tcs-step-card">
+                    <div class="tcs-step-inner">
+                        <div class="tcs-step-number">6</div>
+                        <div class="tcs-step-icon-wrapper">
+                            <div class="tcs-step-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="1" y="3" width="15" height="13"/>
+                                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                                    <circle cx="5.5" cy="18.5" r="2.5"/>
+                                    <circle cx="18.5" cy="18.5" r="2.5"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="tcs-step-title">Fast Delivery</h3>
+                        <p class="tcs-step-description">
+                            Receive your custom sleeves with tracking updates
+                        </p>
+                        <span class="tcs-step-duration">2-5 days</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Process Summary -->
+        <div class="tcs-process-summary">
+            <h3 class="tcs-summary-title">Why Our Process Works</h3>
+            <p class="tcs-summary-text">
+                We've designed our ordering process to be transparent, efficient, and customer-focused. From instant quotes to quality guarantees, every step is optimized for your convenience and satisfaction.
+            </p>
+            
+            <div class="tcs-summary-features">
+                <div class="tcs-summary-feature">
+                    <div class="tcs-summary-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <span class="tcs-summary-feature-text">No Hidden Fees</span>
+                </div>
+                
+                <div class="tcs-summary-feature">
+                    <div class="tcs-summary-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <span class="tcs-summary-feature-text">Fast Turnaround</span>
+                </div>
+                
+                <div class="tcs-summary-feature">
+                    <div class="tcs-summary-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                        </svg>
+                    </div>
+                    <span class="tcs-summary-feature-text">Quality Guaranteed</span>
+                </div>
+                
+                <div class="tcs-summary-feature">
+                    <div class="tcs-summary-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
+                    </div>
+                    <span class="tcs-summary-feature-text">Responsive Support</span>
+                </div>
+            </div>
+            
+            <div class="tcs-order-cta">
+                <a href="#tcsCustomization" class="tcs-order-btn">Start Your Order Now</a>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<script is:inline>
+(function() {
+    'use strict';
+    
+    // Animate timeline line on scroll
+    function initTimelineAnimation() {
+        const timeline = document.querySelector('.tcs-timeline-line');
+        
+        if (!timeline) return;
+        
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    timeline.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+        
+        observer.observe(timeline);
+    }
+    
+    // Animate step cards on scroll
+    function initStepAnimations() {
+        const steps = document.querySelectorAll('.tcs-step-card');
+        
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+        
+        steps.forEach(step => {
+            observer.observe(step);
+        });
+    }
+    
+    // 3D Tilt effect for step cards
+    function init3DTilt() {
+        const cards = document.querySelectorAll('.tcs-step-inner');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                if (window.innerWidth <= 768) return;
+                
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `translateY(-20px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = '';
+            });
+        });
+    }
+    
+    // Smooth scroll to customization section
+    function initCTAButton() {
+        const ctaBtn = document.querySelector('.tcs-order-btn');
+        
+        if (ctaBtn) {
+            ctaBtn.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        }
+    }
+    
+    // Highlight active step on scroll
+    function initProgressTracking() {
+        const steps = document.querySelectorAll('.tcs-step-card');
+        
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add subtle pulse to icon
+                    const icon = entry.target.querySelector('.tcs-step-icon');
+                    if (icon) {
+                        icon.style.animation = 'pulse 0.6s ease';
+                        setTimeout(() => {
+                            icon.style.animation = '';
+                        }, 600);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        steps.forEach(step => {
+            observer.observe(step);
+        });
+    }
+    
+    // Add pulse animation for icons
+    function addPulseAnimation() {
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    // Initialize
+    function init() {
+        addPulseAnimation();
+        initTimelineAnimation();
+        initStepAnimations();
+        
+        if (window.innerWidth > 768) {
+            init3DTilt();
+        }
+        
+        initCTAButton();
+        initProgressTracking();
+        
+        console.log('The Coffee Sleeves Order Process - Initialized');
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    
+})();
+</script>

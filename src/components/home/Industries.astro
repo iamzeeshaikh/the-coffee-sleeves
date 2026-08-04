@@ -1,0 +1,817 @@
+<style is:global>
+/* Industries Section */
+.tcs-industries {
+    position: relative;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF8F0 100%);
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Background Decoration */
+.tcs-industries::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(255, 140, 66, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(210, 105, 30, 0.05) 0%, transparent 50%);
+    animation: bgMove 15s ease-in-out infinite;
+}
+
+@keyframes bgMove {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.tcs-industries-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Section Header */
+.tcs-industries-header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tcs-industries-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(255, 140, 66, 0.4);
+}
+
+.tcs-industries-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #2C1810;
+    margin-bottom: 15px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    line-height: 1.2;
+}
+
+.tcs-industries-subtitle {
+    font-size: 1.2rem;
+    color: #666666;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Industries Grid */
+.tcs-industries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+}
+
+/* 3D Industry Card */
+.tcs-industry-card {
+    perspective: 1200px;
+    animation: fadeInScale 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.tcs-industry-card:nth-child(1) { animation-delay: 0.1s; }
+.tcs-industry-card:nth-child(2) { animation-delay: 0.2s; }
+.tcs-industry-card:nth-child(3) { animation-delay: 0.3s; }
+.tcs-industry-card:nth-child(4) { animation-delay: 0.4s; }
+.tcs-industry-card:nth-child(5) { animation-delay: 0.5s; }
+.tcs-industry-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.tcs-industry-card-inner {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    height: 100%;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.tcs-industry-card:hover .tcs-industry-card-inner {
+    transform: translateY(-15px) rotateX(5deg) scale(1.05);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(255, 140, 66, 0.2);
+}
+
+/* Background Gradient on Hover */
+.tcs-industry-card-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 140, 66, 0.05), rgba(210, 105, 30, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 20px;
+    z-index: 0;
+}
+
+.tcs-industry-card:hover .tcs-industry-card-inner::before {
+    opacity: 1;
+}
+
+/* Content Wrapper */
+.tcs-industry-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* 3D Icon Container */
+.tcs-industry-icon-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 25px;
+    perspective: 1000px;
+}
+
+.tcs-industry-icon {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 10px 30px rgba(255, 140, 66, 0.4),
+        inset 0 -5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+/* Icon Glow Effect */
+.tcs-industry-icon::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(135deg, #FF8C42, #D2691E);
+    border-radius: 20px;
+    opacity: 0.5;
+    filter: blur(20px);
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.tcs-industry-card:hover .tcs-industry-icon {
+    transform: translateZ(30px) rotateY(15deg) scale(1.1);
+    animation: iconBounce 0.6s ease;
+}
+
+.tcs-industry-card:hover .tcs-industry-icon::before {
+    opacity: 0.8;
+    filter: blur(25px);
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateZ(30px) rotateY(15deg) scale(1.1); }
+    50% { transform: translateZ(40px) rotateY(20deg) scale(1.15); }
+}
+
+/* SVG Icon Styling */
+.tcs-industry-icon svg {
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Industry Name */
+.tcs-industry-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #2C1810;
+    margin-bottom: 12px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.tcs-industry-card:hover .tcs-industry-name {
+    color: #FF8C42;
+}
+
+/* Industry Description */
+.tcs-industry-description {
+    font-size: 0.95rem;
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.tcs-industry-card:hover .tcs-industry-description {
+    color: #2C1810;
+}
+
+/* Industry Stats */
+.tcs-industry-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tcs-industry-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tcs-industry-stat-number {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #FF8C42;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-industry-stat-label {
+    font-size: 0.75rem;
+    color: #999999;
+    text-transform: uppercase;
+}
+
+/* Decorative Circle */
+.tcs-industry-decoration {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255, 140, 66, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.tcs-industry-card:hover .tcs-industry-decoration {
+    transform: scale(1.5);
+    opacity: 0.6;
+}
+
+/* Shine Effect */
+.tcs-industry-card-inner::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.tcs-industry-card:hover .tcs-industry-card-inner::after {
+    opacity: 1;
+    animation: shine 0.8s ease;
+}
+
+@keyframes shine {
+    from { left: -50%; }
+    to { left: 150%; }
+}
+
+/* CTA Section */
+.tcs-industries-cta {
+    text-align: center;
+    margin-top: 60px;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(210, 105, 30, 0.1));
+    border-radius: 20px;
+    border: 2px dashed rgba(255, 140, 66, 0.3);
+    animation: fadeInUp 1s ease-out 0.8s backwards;
+}
+
+.tcs-industries-cta-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #2C1810;
+    margin-bottom: 15px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.tcs-industries-cta-text {
+    font-size: 1.1rem;
+    color: #666666;
+    margin-bottom: 25px;
+}
+
+.tcs-industries-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #6F4E37, #8B4513);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 25px rgba(111, 78, 55, 0.4);
+    transition: all 0.3s ease;
+}
+
+.tcs-industries-cta-btn:hover {
+    background: linear-gradient(135deg, #8B4513, #3E2723);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(111, 78, 55, 0.5);
+    color: white;
+}
+
+.tcs-industries-cta-btn svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.tcs-industries-cta-btn:hover svg {
+    transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .tcs-industries-title {
+        font-size: 2.5rem;
+    }
+    
+    .tcs-industries-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tcs-industries {
+        padding: 60px 0;
+    }
+    
+    .tcs-industries-header {
+        margin-bottom: 50px;
+    }
+    
+    .tcs-industries-title {
+        font-size: 2rem;
+    }
+    
+    .tcs-industries-subtitle {
+        font-size: 1rem;
+    }
+    
+    .tcs-industries-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .tcs-industry-icon-container {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .tcs-industry-icon svg {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .tcs-industries-cta {
+        margin-top: 50px;
+        padding: 30px 20px;
+    }
+    
+    .tcs-industries-cta-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tcs-industries-title {
+        font-size: 1.75rem;
+    }
+    
+    .tcs-industry-card-inner {
+        padding: 30px 25px;
+    }
+    
+    .tcs-industry-name {
+        font-size: 1.3rem;
+    }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+    .tcs-industry-card,
+    .tcs-industries-header,
+    .tcs-industry-icon,
+    .tcs-industries::before {
+        animation: none !important;
+    }
+}
+</style>
+
+<!-- Industries We Serve Section HTML -->
+<section class="tcs-industries" id="tcsIndustries">
+    <div class="tcs-industries-container">
+        
+        <!-- Section Header -->
+        <div class="tcs-industries-header">
+            <div class="tcs-industries-badge">Industries</div>
+            <h2 class="tcs-industries-title">Industries We Serve</h2>
+            <p class="tcs-industries-subtitle">
+                Trusted by businesses across multiple industries for premium custom coffee sleeves
+            </p>
+        </div>
+        
+        <!-- Industries Grid -->
+        <div class="tcs-industries-grid">
+            
+            <!-- Industry 1: Coffee Shops -->
+            <div class="tcs-industry-card">
+                <div class="tcs-industry-card-inner">
+                    <div class="tcs-industry-decoration"></div>
+                    <div class="tcs-industry-content">
+                        <div class="tcs-industry-icon-container">
+                            <div class="tcs-industry-icon">
+                                <!-- Coffee Shop SVG Icon -->
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="white">
+                                    <path d="M25 40 L75 40 L75 80 L25 80 Z" stroke="white" stroke-width="3" fill="none"/>
+                                    <path d="M75 50 L85 50 Q90 50 90 55 L90 65 Q90 70 85 70 L75 70" stroke="white" stroke-width="3" fill="none"/>
+                                    <line x1="35" y1="25" x2="35" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="50" y1="20" x2="50" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="65" y1="25" x2="65" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                    <ellipse cx="50" cy="85" rx="25" ry="5" fill="white" opacity="0.3"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="tcs-industry-name">Coffee Shops</h3>
+                        <p class="tcs-industry-description">
+                            Custom sleeves that showcase your brand identity while keeping customers' hands protected and comfortable.
+                        </p>
+                        <div class="tcs-industry-stats">
+                            <div class="tcs-industry-stat">
+                                <span class="tcs-industry-stat-number">Custom</span>
+                                <span class="tcs-industry-stat-label">Branding</span>
+                            </div>
+                            <div class="tcs-industry-stat">
+                                <span class="tcs-industry-stat-number">Bulk</span>
+                                <span class="tcs-industry-stat-label">Pricing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Industry 2: Cafes -->
+            <div class="tcs-industry-card">
+                <div class="tcs-industry-card-inner">
+                    <div class="tcs-industry-decoration"></div>
+                    <div class="tcs-industry-content">
+                        <div class="tcs-industry-icon-container">
+                            <div class="tcs-industry-icon">
+                                <!-- Cafe SVG Icon -->
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="white">
+                                    <rect x="20" y="35" width="60" height="50" rx="5" stroke="white" stroke-width="3" fill="none"/>
+                                    <path d="M30 50 Q50 60 70 50" stroke="white" stroke-width="2" fill="none"/>
+                                    <circle cx="35" cy="25" r="3" fill="white"/>
+                                    <circle cx="50" cy="20" r="3" fill="white"/>
+                                    <circle cx="65" cy="25" r="3" fill="white"/>
+                                    <line x1="35" y1="85" x2="65" y2="85" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="tcs-industry-name">Cafes</h3>
+                        <p class="tcs-industry-description">
+                            Elegant sleeve designs that match your cafe's aesthetic and create a memorable customer experience.
+                        </p>
+                        <div class="tcs-industry-stats">
+                            <div class="tcs-industry-stat">
+                                <span class="tcs-industry-stat-number">Kraft</span>
+                                <span class="tcs-industry-stat-label">&amp; White Board</span>
+                            </div>
+                            <div class="tcs-industry-stat">
+                                <span class="tcs-industry-stat-number">Full</span>
+                                <span class="tcs-industry-stat-label">Color Print</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Industry 3: Restaurants -->
+            <div class="tcs-industry-card">
+                <div class="tcs-industry-card-inner">
+                    <div class="tcs-industry-decoration"></div>
+                    <div class="tcs-industry-content">
+                        <div class="tcs-industry-icon-container">
+                            <div class="tcs-industry-icon">
+                                <!-- Restaurant SVG Icon -->
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="white">
+                                    <line x1="30" y1="20" x2="30" y2="80" stroke="white" stroke-width="4"/>
+                                    <line x1="25" y1="30" x2="30" y2="30" stroke="white" stroke-width="2"/>
+                                    <line x1="25" y1="40" x2="30" y2="40" stroke="white" stroke-width="2"/>
+                                    <line x1="25" y1="50" x2="30" y2="50" stroke="white" stroke-width="2"/>
+                                    <path d="M60 20 L60 45 Q60 50 65 50 L65 80" stroke="white" stroke-width="4" fill="none"/>
+                                    <path d="M70 20 L70 45 Q70 50 65 50" stroke="white" stroke-width="4" fill="none"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="tcs-industry-name">Restaurants</h3>
+                        <p class="tcs-industry-description">
+                            Professional beverage sleeves for dine-in and takeout orders that elevate your restaurant's presentation.
+                        </p>
+                        <div class="tcs-industry-stats">
+                            <div class="tcs-industry-stat">
+                                <span class="tcs-industry-stat-number">Menu</span>
+                                <span class="tcs-industry-stat-label">Identifiers</span>
+                            </div>
+                            <div class="tcs-industry-stat">
+                                <span class="tcs-industry-stat-number">Easy</span>
+                                <span class="tcs-industry-stat-label">Reorders</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Industry 4: Events -->
+            <div class="tcs-industry-card">
+                <div class="tcs-industry-card-inner">
+                    <div class="tcs-industry-decoration"></div>
+                    <div class="tcs-industry-content">
+                        <div class="tcs-industry-icon-container">
+                            <div class="tcs-industry-icon">
+                                <!-- Events SVG Icon -->
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="white">
+                                    <path d="M50 20 L60 40 L85 45 L67 62 L72 88 L50 76 L28 88 L33 62 L15 45 L40 40 Z" stroke="white" stroke-width="2" fill="none"/>
+                                    <circle cx="50" cy="50" r="8" fill="white"/>
+                                    <circle cx="30" cy="30" r="3" fill="white"/>
+                                    <circle cx="70" cy="30" r="3" fill="white"/>
+                                    <circle cx="25" cy="70" r="3" fill="white"/>
+                                    <circle cx="75" cy="70" r="3" fill="white"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="tcs-industry-name">Events</h3>
+                        <p class="tcs-industry-description">
+                            Customized sleeves for weddings, corporate events, and special occasions that add a personalized touch.
+                        </p>
+                        <div class="tcs-industry-stats">
+                            <div class="tcs-industry-stat">
+                                <span class="tcs-industry-stat-number">Event</span>
+                                <span class="tcs-industry-stat-label">Packages</span>
+                            </div>
+                            <div class="tcs-industry-stat">
+                                <span class="tcs-industry-stat-number">Fully</span>
+                                <span class="tcs-industry-stat-label">Custom</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Industry 5: Hotels -->
+            <div class="tcs-industry-card">
+                <div class="tcs-industry-card-inner">
+                    <div class="tcs-industry-decoration"></div>
+                    <div class="tcs-industry-content">
+                        <div class="tcs-industry-icon-container">
+                            <div class="tcs-industry-icon">
+                                <!-- Hotel SVG Icon -->
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="white">
+                                    <rect x="20" y="30" width="60" height="55" stroke="white" stroke-width="3" fill="none"/>
+                                    <rect x="30" y="40" width="15" height="15" fill="white"/>
+                                    <rect x="55" y="40" width="15" height="15" fill="white"/>
+                                    <rect x="30" y="60" width="15" height="15" fill="white"/>
+                                    <rect x="55" y="60" width="15" height="15" fill="white"/>
+                                    <rect x="40" y="70" width="20" height="15" fill="white"/>
+                                    <path d="M15 30 L50 10 L85 30" stroke="white" stroke-width="3" fill="none"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="tcs-industry-name">Hotels</h3>
+                        <p class="tcs-industry-description">
+                            Premium quality sleeves that reflect your hotel's luxury standards and enhance guest experience.
+                        </p>
+                        <div class="tcs-industry-stats">
+                            <div class="tcs-industry-stat">
+                                <span class="tcs-industry-stat-number">Luxury</span>
+                                <span class="tcs-industry-stat-label">Finishes</span>
+                            </div>
+                            <div class="tcs-industry-stat">
+                                <span class="tcs-industry-stat-number">Premium</span>
+                                <span class="tcs-industry-stat-label">Materials</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Industry 6: Catering -->
+            <div class="tcs-industry-card">
+                <div class="tcs-industry-card-inner">
+                    <div class="tcs-industry-decoration"></div>
+                    <div class="tcs-industry-content">
+                        <div class="tcs-industry-icon-container">
+                            <div class="tcs-industry-icon">
+                                <!-- Catering SVG Icon -->
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="white">
+                                    <ellipse cx="50" cy="45" rx="30" ry="15" stroke="white" stroke-width="3" fill="none"/>
+                                    <path d="M20 45 L20 55 Q20 65 30 65 L70 65 Q80 65 80 55 L80 45" stroke="white" stroke-width="3" fill="none"/>
+                                    <line x1="35" y1="35" x2="35" y2="25" stroke="white" stroke-width="2"/>
+                                    <line x1="50" y1="30" x2="50" y2="20" stroke="white" stroke-width="2"/>
+                                    <line x1="65" y1="35" x2="65" y2="25" stroke="white" stroke-width="2"/>
+                                    <ellipse cx="50" cy="75" rx="35" ry="5" fill="white" opacity="0.3"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="tcs-industry-name">Catering</h3>
+                        <p class="tcs-industry-description">
+                            Versatile sleeves for catering services that maintain beverage temperature and professional appearance.
+                        </p>
+                        <div class="tcs-industry-stats">
+                            <div class="tcs-industry-stat">
+                                <span class="tcs-industry-stat-number">Insulated</span>
+                                <span class="tcs-industry-stat-label">Options</span>
+                            </div>
+                            <div class="tcs-industry-stat">
+                                <span class="tcs-industry-stat-number">Reliable</span>
+                                <span class="tcs-industry-stat-label">Turnaround</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="tcs-industries-cta">
+            <h3 class="tcs-industries-cta-title">Your Industry Not Listed?</h3>
+            <p class="tcs-industries-cta-text">
+                We work with businesses of all types and sizes. Let's discuss your custom coffee sleeve needs!
+            </p>
+            <a href="/contact/" class="tcs-industries-cta-btn">
+                <span>Contact Us Today</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </a>
+        </div>
+        
+    </div>
+</section>
+
+<script is:inline>
+(function() {
+    'use strict';
+    
+    // 3D Tilt Effect for Industry Cards
+    function init3DTilt() {
+        const industryCards = document.querySelectorAll('.tcs-industry-card-inner');
+        
+        industryCards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                
+                card.style.transform = `translateY(-15px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = '';
+            });
+        });
+    }
+    
+    // Icon Animation on Scroll
+    function initIconAnimation() {
+        const cards = document.querySelectorAll('.tcs-industry-card');
+        
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const icon = entry.target.querySelector('.tcs-industry-icon');
+                    if (icon) {
+                        icon.style.animation = 'iconBounce 0.6s ease';
+                        setTimeout(() => {
+                            icon.style.animation = '';
+                        }, 600);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+    }
+    
+    // Scroll Animations
+    function initScrollAnimations() {
+        const cards = document.querySelectorAll('.tcs-industry-card');
+        
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+        
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+    }
+    
+    // Initialize
+    function init() {
+        if (window.innerWidth > 768) {
+            init3DTilt();
+        }
+        
+        initIconAnimation();
+        initScrollAnimations();
+        
+        console.log('The Coffee Sleeves Industries - Initialized');
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    
+})();
+</script>

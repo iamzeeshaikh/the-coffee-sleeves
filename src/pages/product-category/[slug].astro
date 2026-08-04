@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArchiveGrid from '../../components/ArchiveGrid.astro';
+import { categories, productsInCategory, site } from '../../utils/site';
+
+export function getStaticPaths() {
+  return categories.map((category) => ({ params: { slug: category.slug }, props: { category } }));
+}
+
+const { category } = Astro.props;
+const path = `/product-category/${category.slug}/`;
+const items = productsInCategory(category.name);
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: category.name, item: `${site.url}${path}` },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: items.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${site.url}/product/${p.slug}/`,
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={category.metaTitle}
+  description={category.metaDescription}
+  path={path}
+  schemas={schemas}
+>
+  <ArchiveGrid heading={category.name} intro={category.blurb} products={items} currentCategorySlug={category.slug} />
+</BaseLayout>

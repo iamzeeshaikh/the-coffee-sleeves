@@ -1,0 +1,72 @@
+[
+ {
+  "name": "Sleeve Materials",
+  "slug": "sleeve-materials",
+  "blurb": "Premium quality materials including cardboard, paper, kraft, and corrugated sleeves.",
+  "metaTitle": "Coffee Sleeve Materials | Cardboard, Kraft, Paper & Corrugated",
+  "metaDescription": "Shop coffee sleeve materials including cardboard, kraft, paper & corrugated options. Custom printing available with bulk pricing. Get a free quote.",
+  "products": [
+   "cardboard-coffee-sleeves",
+   "corrugated-coffee-sleeves",
+   "kraft-coffee-sleeves",
+   "paper-coffee-sleeves"
+  ],
+  "count": 4
+ },
+ {
+  "name": "Sleeve Usage",
+  "slug": "sleeve-usage",
+  "blurb": "Hot coffee sleeves, beverage sleeves, and specialized options for various applications.",
+  "metaTitle": "Cup Sleeves by Usage | Cafes & Promotions | The Coffee Sleeves",
+  "metaDescription": "Shop cup sleeves by usage. Perfect for cafes, coffee shops, events & promotions. Custom printing, eco-friendly options. Wholesale prices & delivery.",
+  "products": [
+   "beverage-sleeves",
+   "disposable-coffee-sleeves",
+   "hot-beverage-sleeves",
+   "hot-coffee-sleeves",
+   "reusable-coffee-sleeves"
+  ],
+  "count": 5
+ },
+ {
+  "name": "Sleeve Styles",
+  "slug": "sleeve-styles",
+  "blurb": "Custom printed, branded, blank, and colored sleeves in various designs.",
+  "metaTitle": "Cup Sleeve Styles | Kraft & Embossed Sleeve | The Coffee Sleeves",
+  "metaDescription": "Explore cup sleeve styles including kraft, white & embossed designs. Custom printing on all styles. Wholesale pricing, low MOQs & fast delivery.",
+  "products": [
+   "8-oz-coffee-sleeves",
+   "black-coffee-sleeves",
+   "blank-coffee-sleeves",
+   "branded-coffee-sleeves",
+   "christmas-coffee-sleeves",
+   "cute-coffee-sleeves",
+   "funny-coffee-sleeves",
+   "holiday-coffee-cup-sleeves",
+   "holiday-coffee-sleeves",
+   "pink-coffee-sleeves",
+   "printed-coffee-sleeves",
+   "white-coffee-sleeves"
+  ],
+  "count": 12
+ },
+ {
+  "name": "Cup Sleeves",
+  "slug": "cup-sleeves",
+  "blurb": "Complete cup sleeve solutions including cups with lids and custom designs.",
+  "metaTitle": "Cup Sleeves Wholesale | Printed Sleeves | The Coffee Sleeves",
+  "metaDescription": "Order custom cup sleeves in bulk. Kraft & white options, full colour printing. Fits 8oz-20oz cups. Low MOQs, free design support & fast delivery.",
+  "products": [
+   "8oz-cup-sleeves",
+   "branded-cup-sleeves",
+   "christmas-cup-sleeves",
+   "coffee-cups-with-sleeves-and-lids",
+   "cup-sleeves-for-hot-drinks",
+   "custom-cup-sleeves",
+   "hot-cup-sleeves",
+   "solo-cup-sleeves",
+   "white-cup-sleeves"
+  ],
+  "count": 9
+ }
+]
