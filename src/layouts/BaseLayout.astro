@@ -15,6 +15,8 @@ interface Props {
   schemas?: object[];
   /** When true, <main> gets top padding to clear the fixed header */
   offsetHeader?: boolean;
+  /** Pages that must never be indexed (e.g. post-submission thank-you) */
+  noindex?: boolean;
 }
 
 const {
@@ -25,13 +27,14 @@ const {
   ogType = 'website',
   schemas = [],
   offsetHeader = true,
+  noindex = false,
 } = Astro.props;
 
 const canonical = new URL(path, site.url).href;
 // Vercel preview deployments must not be indexed; production must be.
 const vercelEnv = process.env.VERCEL_ENV ?? import.meta.env.VERCEL_ENV;
 const isPreview = vercelEnv && vercelEnv !== 'production';
-const robots = isPreview ? 'noindex, nofollow' : 'index, follow';
+const robots = isPreview || noindex ? 'noindex, nofollow' : 'index, follow';
 const ogImageAbs = ogImage ? new URL(ogImage, site.url).href : undefined;
 ---
 

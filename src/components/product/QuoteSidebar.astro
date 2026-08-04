@@ -171,7 +171,7 @@ const { productName } = Astro.props;
         const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
         const data = await res.json().catch(() => ({}));
         if (res.ok && data.success) {
-          window.location.assign('/get-quote/?sent=1#quote-thanks');
+          window.location.assign('/thank-you/');
         } else if (status) {
           status.className = 'tcs-quote-status error';
           status.textContent =

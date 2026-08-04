@@ -1064,8 +1064,7 @@
                     const res = await fetch('/api/quote/', { method: 'POST', body: formData });
                     const data = await res.json().catch(function() { return {}; });
                     if (res.ok && data.success) {
-                        alert('Thank you! Your quote request has been received. Our team will contact you within 24 hours.');
-                        form.reset();
+                        window.location.assign('/thank-you/');
                     } else {
                         alert(data.message || 'Sorry, your request could not be sent. Please call (503) 358-0443 or email info@thecoffeesleeves.com.');
                     }

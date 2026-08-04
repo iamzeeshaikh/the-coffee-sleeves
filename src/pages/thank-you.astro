@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Thank You - The Coffee Sleeves"
+  description="Your quote request has been sent. Our team will contact you within 24 hours."
+  path="/thank-you/"
+  offsetHeader={true}
+  noindex={true}
+>
+  <section class="tcs-thanks">
+    <p class="tcs-thanks-icon" aria-hidden="true">✓</p>
+    <h1>Thank You!</h1>
+    <p>
+      Your request has been sent successfully. Our team will review it and get back to you
+      within 24 hours.
+    </p>
+    <p>
+      Need something urgently? Call us at <a href="tel:+15033580443">(503) 358-0443</a> or email
+      <a href="mailto:info@thecoffeesleeves.com">info@thecoffeesleeves.com</a>.
+    </p>
+    <div class="tcs-thanks-actions">
+      <a class="tcs-thanks-btn primary" href="/">Back to Home</a>
+      <a class="tcs-thanks-btn" href="/shop/">Browse Products</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tcs-thanks {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 60px 20px 100px;
+    text-align: center;
+  }
+  .tcs-thanks-icon {
+    width: 84px;
+    height: 84px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #fff;
+    background: #7e4a25;
+    border-radius: 50%;
+    line-height: 1;
+  }
+  .tcs-thanks h1 {
+    color: #2c1810;
+    margin: 22px 0 12px;
+  }
+  .tcs-thanks p {
+    color: #5a4636;
+  }
+  .tcs-thanks a {
+    color: #7e4a25;
+  }
+  .tcs-thanks-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+  .tcs-thanks-btn {
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #6f4e37;
+    border: 1px solid #d9c7b8;
+  }
+  .tcs-thanks-btn.primary {
+    background: #7e4a25;
+    color: #fff;
+    border-color: #7e4a25;
+  }
+  .tcs-thanks-btn:hover {
+    background: #faf0e6;
+  }
+  .tcs-thanks-btn.primary:hover {
+    background: #6f4e37;
+  }
+</style>

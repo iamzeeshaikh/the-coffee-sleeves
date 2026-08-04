@@ -126,8 +126,17 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     });
   }
 
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, QUOTE_TO_EMAIL, QUOTE_FROM_EMAIL } =
-    process.env;
+  const {
+    SMTP_HOST,
+    SMTP_PORT,
+    SMTP_USER,
+    SMTP_PASS,
+    SMTP_TO,
+    SMTP_FROM_EMAIL,
+    SMTP_FROM_NAME,
+    QUOTE_TO_EMAIL,
+    QUOTE_FROM_EMAIL,
+  } = process.env;
   if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
     console.error('quote endpoint: SMTP env vars missing');
     return json(500, {
@@ -159,8 +168,11 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
   try {
     await transporter.sendMail({
-      from: QUOTE_FROM_EMAIL ?? SMTP_USER,
-      to: QUOTE_TO_EMAIL ?? 'info@thecoffeesleeves.com',
+      from: {
+        name: SMTP_FROM_NAME ?? 'The Coffee Sleeves',
+        address: SMTP_FROM_EMAIL ?? QUOTE_FROM_EMAIL ?? SMTP_USER,
+      },
+      to: SMTP_TO ?? QUOTE_TO_EMAIL ?? 'info@thecoffeesleeves.com',
       replyTo: email,
       subject: `Quote request${product ? ` — ${product}` : ''} (thecoffeesleeves.com)`,
       text: lines.join('\n'),

@@ -1309,10 +1309,7 @@
                 const result = await response.json();
                 
                 if (result.success) {
-                    showMessage('✓ Quote request sent successfully! We\'ll contact you within 24 hours.', 'success');
-                    form.reset();
-                    // Reset selections to default
-                    resetToDefaults();
+                    window.location.assign('/thank-you/');
                 } else {
                     showMessage('✗ ' + (result.message || 'Something went wrong. Please try again.'), 'error');
                 }

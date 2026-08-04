@@ -837,17 +837,7 @@ NY 10030 United States
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Success
-                messageDiv.className = 'tcs-form-message success';
-                messageDiv.textContent = data.message || 'Thank you! Your quote request has been sent successfully. We\'ll contact you within 24 hours.';
-                messageDiv.style.display = 'block';
-                
-                // Reset form
-                form.reset();
-                
-                // Scroll to message
-                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
+                window.location.assign('/thank-you/');
             } else {
                 // Error from server
                 throw new Error(data.message || 'Failed to send request');
