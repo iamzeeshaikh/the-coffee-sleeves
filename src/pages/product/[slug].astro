@@ -21,6 +21,24 @@ const path = `/product/${product.slug}/`;
 
 const primaryCategory = categories.find((c) => product.categories.includes(c.name));
 const mainImage = product.images[0] ? localImage(product.images[0].url) : null;
+const imageUrls = product.images
+  .map((img) => localImage(img.url))
+  .filter((img): img is NonNullable<typeof img> => Boolean(img))
+  .map((img) => `${site.url}${img.src}`);
+
+// Wholesale price range for the AggregateOffer. The catalog export only carries a
+// $0.50 placeholder, so pricing comes from what the site actually advertises:
+// homepage "Starting at" unit prices ($0.12-$0.18, FeaturedProducts.astro) and the
+// product configurator's per-sleeve pricing logic (base $0.80 + material/finish
+// add-ons, ProductCustomization.astro).
+const STARTING_PRICES: Record<string, string> = {
+  'custom-cup-sleeves': '0.15',
+  'kraft-coffee-sleeves': '0.12',
+  'printed-coffee-sleeves': '0.18',
+  'branded-cup-sleeves': '0.16',
+};
+const lowPrice = STARTING_PRICES[product.slug] ?? '0.12';
+const highPrice = '0.90';
 
 const schemas: object[] = [
   {
@@ -46,9 +64,10 @@ const schemas: object[] = [
       },
     ],
   },
-  // Offer uses the unit price from the WooCommerce catalog export; shipping and
-  // return details mirror the published shipping-policy and refund_returns pages.
-  // No aggregateRating: the store has no genuine review data (see STRUCTURED_DATA_REPORT.md).
+  // Shipping and return details mirror the published shipping-policy and
+  // refund_returns pages. No aggregateRating: the store has no genuine review
+  // data anywhere (0 comments in the WP export; the old site's 5/5 rating was a
+  // fabricated single "webmaster" review — see reports/STRUCTURED_DATA_REPORT.md).
   {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -58,47 +77,44 @@ const schemas: object[] = [
     sku: product.sku,
     description: product.metaDescription,
     brand: { '@type': 'Brand', name: site.name },
-    ...(mainImage ? { image: [`${site.url}${mainImage.src}`] } : {}),
-    ...(product.price
-      ? {
-          offers: {
-            '@type': 'Offer',
-            url: `${site.url}${path}`,
-            price: product.price,
-            priceCurrency: 'USD',
-            availability: 'https://schema.org/InStock',
-            itemCondition: 'https://schema.org/NewCondition',
-            priceValidUntil: '2027-12-31',
-            shippingDetails: {
-              '@type': 'OfferShippingDetails',
-              shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
-              deliveryTime: {
-                '@type': 'ShippingDeliveryTime',
-                handlingTime: {
-                  '@type': 'QuantitativeValue',
-                  minValue: 1,
-                  maxValue: 3,
-                  unitCode: 'DAY',
-                },
-                transitTime: {
-                  '@type': 'QuantitativeValue',
-                  minValue: 3,
-                  maxValue: 7,
-                  unitCode: 'DAY',
-                },
-              },
-            },
-            hasMerchantReturnPolicy: {
-              '@type': 'MerchantReturnPolicy',
-              applicableCountry: 'US',
-              returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-              merchantReturnDays: 10,
-              returnMethod: 'https://schema.org/ReturnByMail',
-              returnFees: 'https://schema.org/FreeReturn',
-            },
+    ...(imageUrls.length ? { image: imageUrls } : {}),
+    offers: {
+      '@type': 'AggregateOffer',
+      url: `${site.url}${path}`,
+      lowPrice,
+      highPrice,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      priceValidUntil: '2027-08-04',
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
+        deliveryTime: {
+          '@type': 'ShippingDeliveryTime',
+          handlingTime: {
+            '@type': 'QuantitativeValue',
+            minValue: 1,
+            maxValue: 3,
+            unitCode: 'DAY',
           },
-        }
-      : {}),
+          transitTime: {
+            '@type': 'QuantitativeValue',
+            minValue: 3,
+            maxValue: 7,
+            unitCode: 'DAY',
+          },
+        },
+      },
+      hasMerchantReturnPolicy: {
+        '@type': 'MerchantReturnPolicy',
+        applicableCountry: 'US',
+        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+        merchantReturnDays: 10,
+        returnMethod: 'https://schema.org/ReturnByMail',
+        returnFees: 'https://schema.org/FreeReturn',
+      },
+    },
   },
 ];
 ---
