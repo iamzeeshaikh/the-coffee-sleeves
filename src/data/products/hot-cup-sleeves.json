@@ -73,6 +73,19 @@
    "a": "Most brands place a logo, brand color, and a short message such as a tagline or social handle. You can also add cup size markers, recycling notes, or seasonal artwork for promotions. Keeping text minimal helps readability and avoids clutter when the sleeve is in-hand."
   }
  ],
- "images": [],
+ "images": [
+  {
+   "url": "https://thecoffeesleeves.com/wp-content/uploads/2025/12/Cup-Sleeves-For-Hot-Drinks.jpg",
+   "alt": "Hot Cup Sleeves"
+  },
+  {
+   "url": "https://thecoffeesleeves.com/wp-content/uploads/2025/12/Custom-Cup-Sleeves-For-Hot-Drinks.jpg",
+   "alt": "Custom Hot Cup Sleeves"
+  },
+  {
+   "url": "https://thecoffeesleeves.com/wp-content/uploads/2025/12/Cup-Sleeves-For-Hot-Drinks-In-Bulk.jpg",
+   "alt": "Hot Cup Sleeves in Bulk"
+  }
+ ],
  "price": "0.50"
 }

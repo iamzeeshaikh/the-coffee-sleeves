@@ -36,9 +36,12 @@ const productModules = import.meta.glob<Product>('../data/products/*.json', {
   import: 'default',
 });
 
-export const products: Product[] = Object.values(productModules).sort((a, b) =>
-  a.name.localeCompare(b.name),
-);
+export const products: Product[] = Object.entries(productModules)
+  // Ignore macOS AppleDouble sidecar files (._foo.json) that can appear on
+  // exFAT/network volumes and would otherwise be picked up by the glob.
+  .filter(([path]) => !(path.split('/').pop() ?? '').startsWith('._'))
+  .map(([, product]) => product)
+  .sort((a, b) => a.name.localeCompare(b.name));
 
 export function productBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);

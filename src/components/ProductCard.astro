@@ -28,6 +28,8 @@ const img = product.images[0] ? localImage(product.images[0].url) : null;
             width="300"
             height="300"
             loading={lazy ? 'lazy' : 'eager'}
+            fetchpriority={lazy ? undefined : 'high'}
+            decoding="async"
           />
         </picture>
       ) : (

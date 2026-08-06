@@ -33,7 +33,9 @@ const main = resolved[0] ?? null;
               alt={main.alt}
               width={main.width}
               height={main.height}
+              loading="eager"
               fetchpriority="high"
+              decoding="async"
             />
           </picture>
         </div>
@@ -52,10 +54,11 @@ const main = resolved[0] ?? null;
               >
                 <img
                   src={img.thumb ?? img.src}
-                  alt=""
+                  alt={`${img.alt} thumbnail ${i + 1}`}
                   width="96"
                   height="96"
                   loading="lazy"
+                  decoding="async"
                 />
               </button>
             ))}
@@ -133,15 +136,17 @@ const main = resolved[0] ?? null;
 
   // Warm the cache for every full-size image so switching is instant.
   // The <picture> serves WebP where supported, so preload that variant.
-  const preload = () => {
-    thumbs.forEach((btn) => {
-      const url = btn.dataset.webp || btn.dataset.full;
-      if (!url) return;
-      const img = new Image();
-      img.decoding = 'async';
-      img.src = url;
-    });
+  const warmed = new Set<string>();
+  const warm = (btn: HTMLButtonElement) => {
+    const url = btn.dataset.webp || btn.dataset.full;
+    if (!url || warmed.has(url)) return;
+    warmed.add(url);
+    const img = new Image();
+    img.decoding = 'async';
+    img.fetchPriority = 'low';
+    img.src = url;
   };
+  const preload = () => thumbs.forEach(warm);
   if ('requestIdleCallback' in window) {
     requestIdleCallback(preload, { timeout: 2000 });
   } else {
@@ -149,11 +154,22 @@ const main = resolved[0] ?? null;
   }
 
   thumbs.forEach((btn) => {
+    // Warm eagerly on intent so the swap is instant even before idle preload.
+    btn.addEventListener('pointerenter', () => warm(btn), { once: true });
+    btn.addEventListener('touchstart', () => warm(btn), { once: true, passive: true });
+  });
+
+  thumbs.forEach((btn) => {
     btn.addEventListener('click', () => {
       const main = document.getElementById('tcs-gallery-main-img') as HTMLImageElement | null;
       const source = main?.parentElement?.querySelector('source');
       if (!main) return;
-      if (source && btn.dataset.webp) source.setAttribute('srcset', btn.dataset.webp);
+      if (source) {
+        // Swap the WebP srcset alongside src; clear it when this image has no
+        // WebP variant so the browser falls back to the <img> src.
+        if (btn.dataset.webp) source.setAttribute('srcset', btn.dataset.webp);
+        else source.removeAttribute('srcset');
+      }
       main.src = btn.dataset.full ?? main.src;
       main.alt = btn.dataset.alt ?? main.alt;
       if (btn.dataset.w && btn.dataset.h) {
