@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import site from '../data/site.json';
 import '../styles/global.css';
 
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 interface Props {
   title: string;
   description: string;
@@ -86,5 +87,6 @@ const ogImageAbs = ogImage ? new URL(ogImage, site.url).href : undefined;
         Conversations land in the dashboard at chat.zeeops.dev under the
         `thecoffeesleeves` site. */}
     <script src="https://chat.zeeops.dev/widget.js?siteId=thecoffeesleeves" defer is:inline></script>
+      <WhatsAppButton />
   </body>
 </html>
