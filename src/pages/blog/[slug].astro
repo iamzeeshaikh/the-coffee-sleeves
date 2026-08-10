@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { BLOG_POSTS } from '../../utils/blog';
+import { blogPosting, breadcrumbs } from '../../utils/schema';
 
 export function getStaticPaths() {
   return BLOG_POSTS.map((post) => ({ params: { slug: post.slug }, props: { post } }));
@@ -23,6 +24,14 @@ const published = new Date(post.date + 'T12:00:00Z').toLocaleDateString('en-US',
   ogImage={post.image}
   ogType="article"
   offsetHeader={true}
+  schemas={[
+    blogPosting(post),
+    breadcrumbs([
+      { name: 'Home', url: '/' },
+      { name: 'Blog', url: '/blog/' },
+      { name: post.title, url: post.url },
+    ]),
+  ]}
 >
   <article class="post-wrap">
     <nav class="post-crumbs" aria-label="Breadcrumb">

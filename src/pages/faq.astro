@@ -1,17 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FaqBody from '../components/pagebody/FaqBody.astro';
-import { site } from '../utils/site';
+import { breadcrumbs, faqPage } from '../utils/schema';
+import faqs from '../data/faq-page.json';
 
+/* faq-page.json holds the twenty question/answer pairs FaqBody renders,
+   extracted from that component's markup so the two cannot disagree. */
 const schemas = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
-      { '@type': 'ListItem', position: 2, name: 'FAQ', item: `${site.url}/faq/` },
-    ],
-  },
+  breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'FAQ', url: '/faq/' },
+  ]),
+  faqPage(faqs),
 ];
 ---
 

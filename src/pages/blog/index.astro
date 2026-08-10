@@ -1,6 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { BLOG_POSTS } from '../../utils/blog';
+import { breadcrumbs, collectionPage } from '../../utils/schema';
+
+const schemas = [
+  collectionPage({
+    path: '/blog/',
+    name: 'Coffee Sleeve Blog',
+    description:
+      'Guides on coffee sleeve insulation, sizing, printing methods, eco materials and seasonal campaigns.',
+    items: BLOG_POSTS.map((p) => ({ name: p.title, url: p.url })),
+  }),
+  breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog/' },
+  ]),
+];
 
 const fmt = (iso: string) =>
   new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', {
@@ -15,6 +30,7 @@ const fmt = (iso: string) =>
   description="Guides on coffee sleeve insulation, sizing, printing methods, eco materials and seasonal campaigns for cafes and brands."
   path="/blog/"
   offsetHeader={true}
+  schemas={schemas}
 >
   <section class="blog-wrap">
     <h1>Coffee Sleeve Blog</h1>

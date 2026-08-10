@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import site from '../data/site.json';
+import { organization, website } from '../utils/schema';
 import '../styles/global.css';
 
 import WhatsAppButton from '../components/WhatsAppButton.astro';
@@ -30,6 +31,12 @@ const {
   offsetHeader = true,
   noindex = false,
 } = Astro.props;
+
+/* Organization and WebSite were emitted on the homepage alone, so the
+   `#organization` and `#website` nodes that Product, CollectionPage and
+   BlogPosting reference by @id resolved nowhere else. They belong on every
+   route; pages pass only their own page-specific graphs. */
+const graphs = [organization(), website(), ...schemas.filter(Boolean)];
 
 const canonical = new URL(path, site.url).href;
 // Vercel preview deployments must not be indexed; production must be.
@@ -70,7 +77,7 @@ const ogImageAbs = ogImage ? new URL(ogImage, site.url).href : undefined;
     <meta name="twitter:description" content={description} />
     {ogImageAbs && <meta name="twitter:image" content={ogImageAbs} />}
     {
-      schemas.map((schema) => (
+      graphs.map((schema) => (
         <script type="application/ld+json" set:html={JSON.stringify(schema)} />
       ))
     }
