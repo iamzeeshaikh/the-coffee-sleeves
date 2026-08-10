@@ -12,9 +12,13 @@ import HomeFaq from '../components/home/HomeFaq.astro';
 import CtaBanner from '../components/home/CtaBanner.astro';
 import LeadSection from '../components/home/LeadSection.astro';
 import site from '../data/site.json';
+import homeFaqs from '../data/home-faqs.json';
+import { faqPage } from '../utils/schema';
 
 // Organization and WebSite come from BaseLayout on every route.
-const schemas: object[] = [];
+// home-faqs.json holds the twelve question/answer pairs HomeFaq renders,
+// extracted from that component's markup so the two cannot disagree.
+const schemas = [faqPage(homeFaqs)];
 ---
 
 <BaseLayout

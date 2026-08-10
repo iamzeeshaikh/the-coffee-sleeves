@@ -153,6 +153,30 @@ export function product(input: {
   };
 }
 
+/**
+ * Generic page node. Content pages carried only a BreadcrumbList, so nothing
+ * tied the URL to the site or the business. `type` narrows it where schema.org
+ * has a better fit than plain WebPage.
+ */
+export function webPage(input: {
+  path: string;
+  name: string;
+  description: string;
+  type?: 'WebPage' | 'AboutPage' | 'ContactPage';
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': input.type ?? 'WebPage',
+    '@id': `${abs(input.path)}#webpage`,
+    url: abs(input.path),
+    name: input.name,
+    description: input.description,
+    isPartOf: { '@id': `${site.url}/#website` },
+    about: { '@id': `${site.url}/#organization` },
+    inLanguage: 'en-US',
+  };
+}
+
 /** Listing pages: the CollectionPage owns the ItemList of what it shows. */
 export function collectionPage(input: {
   path: string;

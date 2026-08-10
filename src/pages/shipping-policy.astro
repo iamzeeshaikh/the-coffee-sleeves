@@ -2,16 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ShippingBody from '../components/pagebody/ShippingBody.astro';
 import { site } from '../utils/site';
+import { breadcrumbs, webPage } from '../utils/schema';
 
 const schemas = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
-      { '@type': 'ListItem', position: 2, name: 'Shipping Policy', item: `${site.url}/shipping-policy/` },
-    ],
-  },
+  breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'Shipping Policy', url: '/shipping-policy/' },
+  ]),
+  webPage({
+    path: '/shipping-policy/',
+    name: 'Shipping Policy - The Coffee Sleeves',
+    description: 'Shipping policy for The Coffee Sleeves — processing times, shipping methods, rates and estimated delivery windows.',
+  }),
 ];
 ---
 

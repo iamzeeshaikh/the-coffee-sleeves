@@ -2,16 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TermsBody from '../components/pagebody/TermsBody.astro';
 import { site } from '../utils/site';
+import { breadcrumbs, webPage } from '../utils/schema';
 
 const schemas = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
-      { '@type': 'ListItem', position: 2, name: 'Terms and Conditions', item: `${site.url}/terms-conditions/` },
-    ],
-  },
+  breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'Terms and Conditions', url: '/terms-conditions/' },
+  ]),
+  webPage({
+    path: '/terms-conditions/',
+    name: 'Terms and Conditions - The Coffee Sleeves',
+    description: 'Terms and conditions governing use of thecoffeesleeves.com and orders for custom coffee sleeve products.',
+  }),
 ];
 ---
 

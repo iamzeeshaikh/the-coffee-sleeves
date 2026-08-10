@@ -2,16 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GetQuoteBody from '../components/pagebody/GetQuoteBody.astro';
 import { site } from '../utils/site';
+import { breadcrumbs, webPage } from '../utils/schema';
 
 const schemas = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
-      { '@type': 'ListItem', position: 2, name: 'Get Quote', item: `${site.url}/get-quote/` },
-    ],
-  },
+  breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'Get Quote', url: '/get-quote/' },
+  ]),
+  webPage({
+    path: '/get-quote/',
+    name: 'Get Quote - The Coffee Sleeves',
+    description: 'Request a free custom coffee sleeve quote. Tell us your quantity, material and design and we',
+  }),
 ];
 ---
 

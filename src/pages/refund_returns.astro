@@ -2,16 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RefundBody from '../components/pagebody/RefundBody.astro';
 import { site } from '../utils/site';
+import { breadcrumbs, webPage } from '../utils/schema';
 
 const schemas = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
-      { '@type': 'ListItem', position: 2, name: 'Refund and Returns Policy', item: `${site.url}/refund_returns/` },
-    ],
-  },
+  breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'Refund and Returns Policy', url: '/refund_returns/' },
+  ]),
+  webPage({
+    path: '/refund_returns/',
+    name: 'Refund and Returns Policy - The Coffee Sleeves',
+    description: 'Refund and returns policy for The Coffee Sleeves — return windows, conditions, exchanges and refund processing times.',
+  }),
 ];
 ---
 

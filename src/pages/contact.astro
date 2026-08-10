@@ -2,16 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactBody from '../components/pagebody/ContactBody.astro';
 import { site } from '../utils/site';
+import { breadcrumbs, webPage } from '../utils/schema';
 
 const schemas = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
-      { '@type': 'ListItem', position: 2, name: 'Contact', item: `${site.url}/contact/` },
-    ],
-  },
+  breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'Contact', url: '/contact/' },
+  ]),
+  webPage({
+    path: '/contact/',
+    name: 'Contact - The Coffee Sleeves',
+    description: 'Contact The Coffee Sleeves — call (503) 358-0443 or email info@thecoffeesleeves.com for custom coffee sleeve quotes, samples and support.',
+    type: 'ContactPage',
+  }),
 ];
 ---
 
