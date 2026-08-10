@@ -210,6 +210,12 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-shrink: 0;
+}
+
+/* Short CTA label, swapped in on small phones */
+.tcs-btn-short {
+    display: none;
 }
 
 .tcs-phone {
@@ -270,12 +276,16 @@
     display: none;
     flex-direction: column;
     justify-content: space-between;
+    box-sizing: content-box;
     width: 30px;
     height: 24px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
+    /* 30x24 bars inside a 44x44 tap target */
+    padding: 10px 7px;
+    /* never let the flex row squeeze the toggle away */
+    flex-shrink: 0;
     z-index: 10001;
 }
 
@@ -335,12 +345,21 @@
     }
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
+/* Mobile + tablet + small laptop.
+   The desktop nav row needs ~1270px (logo + 6 nav items + phone + CTA).
+   Below that it used to overflow and clip the phone number and CTA, so the
+   drawer nav is used all the way up to 1100px. */
+@media (max-width: 1100px) {
     .tcs-header-wrapper {
         padding: 12px 0;
+        gap: 12px;
     }
-    
+
+    /* let the brand text wrap instead of forcing the row wider */
+    .tcs-logo {
+        min-width: 0;
+    }
+
     .tcs-brand-the {
         font-size: 1.1rem;
     }
@@ -445,7 +464,24 @@
     .tcs-container {
         padding: 0 15px;
     }
-    
+
+    .tcs-header-wrapper {
+        gap: 10px;
+    }
+
+    .tcs-header-actions {
+        gap: 8px;
+    }
+
+    /* "Get Free Quote" -> "Quote" so logo + phone + CTA + toggle all fit */
+    .tcs-btn-full {
+        display: none;
+    }
+
+    .tcs-btn-short {
+        display: inline;
+    }
+
     .tcs-brand-the {
         font-size: 1rem;
     }
@@ -462,6 +498,32 @@
     .tcs-btn-primary {
         padding: 8px 12px;
         font-size: 0.75rem;
+    }
+}
+
+/* Between the drawer breakpoint and a comfortable desktop the nav row is
+   still tight, so tighten spacing rather than let it clip the CTA. */
+@media (min-width: 1101px) and (max-width: 1400px) {
+    .tcs-nav-menu {
+        gap: 8px;
+    }
+
+    .tcs-nav-menu > li > a {
+        font-size: 0.9rem;
+        padding: 8px 8px;
+    }
+
+    .tcs-header-actions {
+        gap: 12px;
+    }
+
+    .tcs-phone {
+        padding: 8px 10px;
+    }
+
+    .tcs-btn-primary {
+        padding: 10px 16px;
+        font-size: 0.85rem;
     }
 }
 
@@ -604,7 +666,7 @@ body.tcs-menu-open {
                     </svg>
                     <span>(503) 358-0443</span>
                 </a>
-                <a href="/get-quote/" class="tcs-btn tcs-btn-primary">Get Free Quote</a>
+                <a href="/get-quote/" class="tcs-btn tcs-btn-primary" aria-label="Get Free Quote"><span class="tcs-btn-full">Get Free Quote</span><span class="tcs-btn-short">Quote</span></a>
             </div>
 
             <!-- Mobile Menu Toggle -->
