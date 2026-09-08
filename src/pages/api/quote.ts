@@ -3,6 +3,8 @@ export const prerender = false;
 import type { APIRoute } from 'astro';
 import nodemailer from 'nodemailer';
 
+const LEAD_RECIPIENTS = ['shanimazhar82@gmail.com', 'dev@zeecustomboxes.com'] as const;
+
 const MAX_FILE_BYTES = 8 * 1024 * 1024; // 8 MB
 const ALLOWED_EXT = /\.(pdf|png|jpe?g|ai|eps|svg|zip)$/i;
 const ALLOWED_MIME = new Set([
@@ -72,7 +74,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   if (rateLimited(clientAddress ?? 'unknown')) {
     return json(429, {
       success: false,
-      message: 'Too many requests. Please try again later or call (503) 358-0443.',
+      message: 'Too many requests. Please try again later or call (503) 461-4788.',
     });
   }
 
@@ -131,10 +133,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     SMTP_PORT,
     SMTP_USER,
     SMTP_PASS,
-    SMTP_TO,
     SMTP_FROM_EMAIL,
     SMTP_FROM_NAME,
-    QUOTE_TO_EMAIL,
     QUOTE_FROM_EMAIL,
   } = process.env;
   if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
@@ -142,7 +142,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     return json(500, {
       success: false,
       message:
-        'Our quote form is temporarily unavailable. Please email info@thecoffeesleeves.com or call (503) 358-0443.',
+        'Our quote form is temporarily unavailable. Please email info@thecoffeesleeves.com or call (503) 461-4788.',
     });
   }
 
@@ -172,7 +172,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         name: SMTP_FROM_NAME ?? 'The Coffee Sleeves',
         address: SMTP_FROM_EMAIL ?? QUOTE_FROM_EMAIL ?? SMTP_USER,
       },
-      to: SMTP_TO ?? QUOTE_TO_EMAIL ?? 'info@thecoffeesleeves.com',
+      to: [...LEAD_RECIPIENTS],
       replyTo: email,
       subject: `Quote request${product ? ` — ${product}` : ''} (thecoffeesleeves.com)`,
       text: lines.join('\n'),
@@ -183,7 +183,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     return json(502, {
       success: false,
       message:
-        'We could not send your request right now. Please email info@thecoffeesleeves.com or call (503) 358-0443.',
+        'We could not send your request right now. Please email info@thecoffeesleeves.com or call (503) 461-4788.',
     });
   }
 

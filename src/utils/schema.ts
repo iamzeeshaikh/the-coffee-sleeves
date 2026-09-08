@@ -28,7 +28,7 @@ export function organization() {
     url: `${site.url}/`,
     logo: `${site.url}/favicon-192x192.png`,
     email: site.email,
-    telephone: '+1-503-358-0443',
+    telephone: '+1-503-461-4788',
     address: {
       '@type': 'PostalAddress',
       streetAddress: site.address.street,
