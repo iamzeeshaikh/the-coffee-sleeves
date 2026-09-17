@@ -25,7 +25,7 @@
     if (!f || f.tagName !== "FORM") return;
     var meta = (f.id || "") + " " + (f.className || "") + " " + (f.getAttribute("action") || "") + " " + (f.getAttribute("role") || "");
     if (/search/i.test(meta)) return;
-    send("lead_form_submit", {
+    send(f.dataset.gaEvent || "lead_form_submit", {
       form_id: f.id || "",
       form_name: f.getAttribute("name") || "",
       form_action: (f.getAttribute("action") || "").slice(0, 120),
