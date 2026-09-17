@@ -117,9 +117,30 @@ const RETURN_POLICY = {
  * The offer was an AggregateOffer over a $0.12-$0.90 range. A price range
  * leaves the product ineligible for a merchant listing, so it now carries the
  * single site-wide $0.30 per-sleeve entry price, which is also the figure the
- * product cards and listing pages display.
+ * product pages and the homepage product cards display.
  */
 export const UNIT_PRICE = '0.30';
+
+/**
+ * The same figure formatted for the page. Anything that shows a price to a
+ * visitor must render this, never a typed-out "$0.30": a listing that quotes a
+ * price and lands on a page showing none (or a different one) is what Merchant
+ * Center treats as misrepresentation, so the visible figure and the figure in
+ * the Offer are physically the same string.
+ */
+export const UNIT_PRICE_DISPLAY = `$${UNIT_PRICE}`;
+export const UNIT_PRICE_FROM = `From ${UNIT_PRICE_DISPLAY} per sleeve`;
+
+/**
+ * Google drops an offer whose `priceValidUntil` is in the past, so it is
+ * computed from the build date rather than hard-coded to a date that goes
+ * stale between rebuilds.
+ */
+const priceValidUntil = (() => {
+  const d = new Date();
+  d.setFullYear(d.getFullYear() + 1);
+  return d.toISOString().slice(0, 10);
+})();
 
 export function product(input: {
   name: string;
@@ -145,7 +166,7 @@ export function product(input: {
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
       itemCondition: 'https://schema.org/NewCondition',
-      priceValidUntil: '2027-08-04',
+      priceValidUntil,
       seller: { '@id': `${site.url}/#organization` },
       shippingDetails: SHIPPING_DETAILS,
       hasMerchantReturnPolicy: RETURN_POLICY,

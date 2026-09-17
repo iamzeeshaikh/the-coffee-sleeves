@@ -11,7 +11,12 @@ import OrderProcess from '../../components/product/OrderProcess.astro';
 import DesignTemplates from '../../components/product/DesignTemplates.astro';
 import BulkOrder from '../../components/product/BulkOrder.astro';
 import { products, categories, localImage, site } from '../../utils/site';
-import { breadcrumbs, faqPage, product as product_ } from '../../utils/schema';
+import {
+  breadcrumbs,
+  faqPage,
+  product as product_,
+  UNIT_PRICE_FROM,
+} from '../../utils/schema';
 
 export function getStaticPaths() {
   return products.map((product) => ({ params: { slug: product.slug }, props: { product } }));
@@ -77,6 +82,13 @@ const schemas = [
           <ProductGallery images={product.images} productName={product.name} />
         </div>
         <div class="tcs-product-summary-col">
+          <p class="tcs-product-price">
+            <span class="tcs-product-price-amount">{UNIT_PRICE_FROM}</span>
+            <span class="tcs-product-price-note"
+              >Bulk entry price. Your final rate depends on size, material, printing and
+              quantity &mdash; request a quote for an exact figure.</span
+            >
+          </p>
           <div class="entry-content" set:html={product.shortDescription} />
           <a class="tcs-product-cta" href="#instant-quote">Get a Quote</a>
         </div>
@@ -136,6 +148,28 @@ const schemas = [
     grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr);
     gap: 28px;
     align-items: start;
+  }
+  .tcs-product-price {
+    margin: 0 0 14px;
+    padding: 12px 16px;
+    background: #fff8f0;
+    border: 1px solid #f0e5da;
+    border-left: 4px solid #d2691e;
+    border-radius: 8px;
+  }
+  .tcs-product-price-amount {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #7e4a25;
+    line-height: 1.3;
+  }
+  .tcs-product-price-note {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #8a6f5c;
   }
   .tcs-product-cta {
     display: inline-block;

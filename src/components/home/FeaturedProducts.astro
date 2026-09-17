@@ -1,3 +1,9 @@
+---
+// The homepage cards show the same site-wide unit price the product Offer
+// carries, so the two can never drift apart.
+import { UNIT_PRICE_DISPLAY } from '../../utils/schema';
+---
+
 <!-- Paste in Elementor HTML Widget -->
 
 <style is:global>
@@ -257,7 +263,7 @@
                     <div class="tcs-product-footer">
                         <div>
                             <div class="tcs-product-price-label">Starting at</div>
-                            <div class="tcs-product-price-amount">$0.30</div>
+                            <div class="tcs-product-price-amount">{UNIT_PRICE_DISPLAY}</div>
                         </div>
                         <a href="/product/custom-cup-sleeves/" class="tcs-product-btn">
                             Learn More →
@@ -288,7 +294,7 @@
                     <div class="tcs-product-footer">
                         <div>
                             <div class="tcs-product-price-label">Starting at</div>
-                            <div class="tcs-product-price-amount">$0.30</div>
+                            <div class="tcs-product-price-amount">{UNIT_PRICE_DISPLAY}</div>
                         </div>
                         <a href="/product/kraft-coffee-sleeves/" class="tcs-product-btn">
                             Learn More →
@@ -319,7 +325,7 @@
                     <div class="tcs-product-footer">
                         <div>
                             <div class="tcs-product-price-label">Starting at</div>
-                            <div class="tcs-product-price-amount">$0.30</div>
+                            <div class="tcs-product-price-amount">{UNIT_PRICE_DISPLAY}</div>
                         </div>
                         <a href="/product/printed-coffee-sleeves/" class="tcs-product-btn">
                             Learn More →
@@ -350,7 +356,7 @@
                     <div class="tcs-product-footer">
                         <div>
                             <div class="tcs-product-price-label">Starting at</div>
-                            <div class="tcs-product-price-amount">$0.30</div>
+                            <div class="tcs-product-price-amount">{UNIT_PRICE_DISPLAY}</div>
                         </div>
                         <a href="/product/branded-cup-sleeves/" class="tcs-product-btn">
                             Learn More →
