@@ -81,7 +81,7 @@ export function faqPage(faqs: Faq[]) {
 /**
  * Shipping and returns as published on the shipping-policy and
  * refund_returns pages. Note there is deliberately no `shippingRate`: the
- * policy states rates are calculated at checkout from weight, destination and
+ * policy states rates are calculated per quote from weight, destination and
  * method, so any single figure here would be invented.
  */
 const SHIPPING_DETAILS = {
