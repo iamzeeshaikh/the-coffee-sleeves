@@ -2,7 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PrivacyBody from '../components/pagebody/PrivacyBody.astro';
 import { site } from '../utils/site';
-import { breadcrumbs, webPage } from '../utils/schema';
+import { breadcrumbs, webPage, faqPage } from '../utils/schema';
+import PageExtras from '../components/PageExtras.astro';
+import { extraFaqs } from '../utils/page-extras';
+
+const faqs = extraFaqs('privacy-policy');
 
 const schemas = [
   breadcrumbs([
@@ -14,6 +18,7 @@ const schemas = [
     name: 'Privacy Policy - The Coffee Sleeves',
     description: 'Privacy policy for The Coffee Sleeves — what personal information we collect, how it is used, and your choices.',
   }),
+  faqPage(faqs),
 ];
 ---
 
@@ -25,6 +30,7 @@ const schemas = [
   offsetHeader={true}
 >
   <div class="tcs-policy-wrap"><PrivacyBody /></div>
+  <PageExtras extra={{ sections: [], faqs }} id="policy" />
 </BaseLayout>
 
 <style>

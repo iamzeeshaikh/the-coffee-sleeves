@@ -2,7 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TermsBody from '../components/pagebody/TermsBody.astro';
 import { site } from '../utils/site';
-import { breadcrumbs, webPage } from '../utils/schema';
+import { breadcrumbs, webPage, faqPage } from '../utils/schema';
+import PageExtras from '../components/PageExtras.astro';
+import { extraFaqs } from '../utils/page-extras';
+
+const faqs = extraFaqs('terms-conditions');
 
 const schemas = [
   breadcrumbs([
@@ -14,6 +18,7 @@ const schemas = [
     name: 'Terms and Conditions - The Coffee Sleeves',
     description: 'Terms and conditions for using thecoffeesleeves.com and ordering custom printed cup sleeves: quotes, proofs, payment, production, delivery and returns.',
   }),
+  faqPage(faqs),
 ];
 ---
 
@@ -25,6 +30,7 @@ const schemas = [
   offsetHeader={true}
 >
   <div class="tcs-policy-wrap"><TermsBody /></div>
+  <PageExtras extra={{ sections: [], faqs }} id="policy" />
 </BaseLayout>
 
 <style>

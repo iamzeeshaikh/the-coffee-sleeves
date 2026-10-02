@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { BLOG_POSTS } from '../../utils/blog';
-import { blogPosting, breadcrumbs } from '../../utils/schema';
+import { blogPosting, breadcrumbs, faqPage } from '../../utils/schema';
+import PageExtras from '../../components/PageExtras.astro';
+import { extraFaqs } from '../../utils/page-extras';
 
 export function getStaticPaths() {
   return BLOG_POSTS.map((post) => ({ params: { slug: post.slug }, props: { post } }));
@@ -9,6 +11,7 @@ export function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = post;
+const faqs = extraFaqs(post.slug);
 
 const published = new Date(post.date + 'T12:00:00Z').toLocaleDateString('en-US', {
   year: 'numeric',
@@ -31,6 +34,7 @@ const published = new Date(post.date + 'T12:00:00Z').toLocaleDateString('en-US',
       { name: 'Blog', url: '/blog/' },
       { name: post.title, url: post.url },
     ]),
+    faqPage(faqs),
   ]}
 >
   <article class="post-wrap">
@@ -52,6 +56,7 @@ const published = new Date(post.date + 'T12:00:00Z').toLocaleDateString('en-US',
       <Content />
     </div>
   </article>
+  <PageExtras extra={{ sections: [], faqs }} id="post" />
 </BaseLayout>
 
 <style>
