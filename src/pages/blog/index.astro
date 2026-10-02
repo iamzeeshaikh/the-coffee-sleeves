@@ -1,20 +1,24 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { BLOG_POSTS } from '../../utils/blog';
-import { breadcrumbs, collectionPage } from '../../utils/schema';
+import { breadcrumbs, collectionPage, faqPage } from '../../utils/schema';
+import PageExtras from '../../components/PageExtras.astro';
+import { pageExtras } from '../../utils/page-extras';
+
+const extra = pageExtras['blog'];
 
 const schemas = [
   collectionPage({
     path: '/blog/',
     name: 'Coffee Sleeve Blog',
-    description:
-      'Guides on coffee sleeve insulation, sizing, printing methods, eco materials and seasonal campaigns.',
+    description: extra.metaDescription,
     items: BLOG_POSTS.map((p) => ({ name: p.title, url: p.url })),
   }),
   breadcrumbs([
     { name: 'Home', url: '/' },
     { name: 'Blog', url: '/blog/' },
   ]),
+  faqPage(extra.faqs),
 ];
 
 const fmt = (iso: string) =>
@@ -26,8 +30,8 @@ const fmt = (iso: string) =>
   });
 ---
 <BaseLayout
-  title="Blog | The Coffee Sleeves"
-  description="Guides on coffee sleeve insulation, sizing, printing methods, eco materials and seasonal campaigns for cafes and brands."
+  title={extra.metaTitle}
+  description={extra.metaDescription}
   path="/blog/"
   offsetHeader={true}
   schemas={schemas}
@@ -61,6 +65,7 @@ const fmt = (iso: string) =>
       }
     </div>
   </section>
+  <PageExtras extra={extra} id="blog" />
 </BaseLayout>
 
 <style>

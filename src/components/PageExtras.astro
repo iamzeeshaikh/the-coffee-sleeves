@@ -1,0 +1,106 @@
+---
+import { UNIT_PRICE_DISPLAY } from '../utils/schema';
+
+/**
+ * Page-specific sections and FAQs for the shop, category and company pages,
+ * from src/data/page-extras.json. Bodies may carry one markdown-style
+ * [anchor](/path) link; everything else is escaped text. `{price}` renders the
+ * site-wide entry price so the visible figure always matches the Offer.
+ */
+export interface Extra {
+  sections: { title: string; body: string; bullets?: string[] }[];
+  faqs: { q: string; a: string }[];
+}
+
+interface Props {
+  extra: Extra;
+  id: string;
+}
+
+const { extra, id } = Astro.props;
+
+const esc = (s: string) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const rich = (s: string) =>
+  esc(s.replaceAll('{price}', UNIT_PRICE_DISPLAY)).replace(
+    /\[([^\]]+)\]\((\/[^)\s]*)\)/g,
+    '<a href="$2">$1</a>',
+  );
+---
+
+<section class="tcs-extras" aria-labelledby={`${id}-extras`}>
+  <div class="tcs-extras-inner">
+    {
+      extra.sections.map((s, i) => (
+        <div class="tcs-extras-block">
+          <h2 id={i === 0 ? `${id}-extras` : undefined}>{s.title}</h2>
+          {s.body.split('\n\n').map((p) => <p set:html={rich(p)} />)}
+          {s.bullets && s.bullets.length > 0 && (
+            <ul>
+              {s.bullets.map((b) => <li set:html={rich(b)} />)}
+            </ul>
+          )}
+        </div>
+      ))
+    }
+    {
+      extra.faqs.length > 0 && (
+        <div class="tcs-extras-block">
+          <h2>Common questions</h2>
+          {extra.faqs.map((f) => (
+            <details class="tcs-extras-faq">
+              <summary>{f.q}</summary>
+              <p set:html={rich(f.a)} />
+            </details>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .tcs-extras {
+    padding: 10px 20px 60px;
+  }
+  .tcs-extras-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .tcs-extras-block {
+    margin-top: 34px;
+  }
+  .tcs-extras h2 {
+    margin: 0 0 12px;
+    font-size: 1.5rem;
+    color: #2c1810;
+  }
+  .tcs-extras p,
+  .tcs-extras li {
+    color: #5a4636;
+    line-height: 1.75;
+  }
+  .tcs-extras ul {
+    margin: 10px 0 0;
+    padding-left: 1.2em;
+  }
+  .tcs-extras a {
+    color: #a0521a;
+    text-decoration: underline;
+  }
+  .tcs-extras-faq {
+    border: 1px solid #ecdccd;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    background: #fff;
+  }
+  .tcs-extras-faq summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #2c1810;
+  }
+  .tcs-extras-faq p {
+    margin: 10px 0 0;
+  }
+</style>

@@ -3,6 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FaqBody from '../components/pagebody/FaqBody.astro';
 import { breadcrumbs, faqPage } from '../utils/schema';
 import faqs from '../data/faq-page.json';
+import { pageExtras } from '../utils/page-extras';
+
+const extra = pageExtras['faq'];
 
 /* faq-page.json holds the twenty question/answer pairs FaqBody renders,
    extracted from that component's markup so the two cannot disagree. */
@@ -16,8 +19,8 @@ const schemas = [
 ---
 
 <BaseLayout
-  title='FAQ - The Coffee Sleeves'
-  description='Frequently asked questions about custom coffee sleeves — minimum order quantities, materials, printing options, delivery times and ordering process.'
+  title={extra.metaTitle}
+  description={extra.metaDescription}
   path="/faq/"
   schemas={schemas}
   offsetHeader={false}

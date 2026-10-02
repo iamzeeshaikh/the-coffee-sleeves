@@ -2,7 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArchiveGrid from '../components/ArchiveGrid.astro';
 import { products, site } from '../utils/site';
-import { breadcrumbs, collectionPage } from '../utils/schema';
+import { breadcrumbs, collectionPage, faqPage } from '../utils/schema';
+import PageExtras from '../components/PageExtras.astro';
+import { pageExtras } from '../utils/page-extras';
+
+const extra = pageExtras['shop'];
 
 // Was a bare ItemList with no breadcrumb and no page owning it, and its
 // entries carried a URL but no name.
@@ -14,18 +18,19 @@ const schemas = [
   collectionPage({
     path: '/shop/',
     name: 'Shop',
-    description:
-      'Browse all custom coffee sleeves and cup sleeves from The Coffee Sleeves.',
+    description: extra.metaDescription,
     items: products.map((p) => ({ name: p.name, url: `/product/${p.slug}/` })),
   }),
+  faqPage(extra.faqs),
 ];
 ---
 
 <BaseLayout
-  title="Shop - The Coffee Sleeves"
-  description="Browse all custom coffee sleeves and cup sleeves from The Coffee Sleeves — cardboard, kraft, paper, printed, branded and more. Request a free quote."
+  title={extra.metaTitle}
+  description={extra.metaDescription}
   path="/shop/"
   schemas={schemas}
 >
-  <ArchiveGrid heading="Shop" products={products} />
+  <ArchiveGrid heading="Shop" intro={extra.blurb} products={products} />
+  <PageExtras extra={extra} id="shop" />
 </BaseLayout>

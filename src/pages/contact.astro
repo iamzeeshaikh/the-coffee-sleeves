@@ -2,7 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactBody from '../components/pagebody/ContactBody.astro';
 import { site } from '../utils/site';
-import { breadcrumbs, webPage } from '../utils/schema';
+import { breadcrumbs, webPage, faqPage } from '../utils/schema';
+import PageExtras from '../components/PageExtras.astro';
+import { pageExtras } from '../utils/page-extras';
+
+const extra = pageExtras['contact'];
 
 const schemas = [
   breadcrumbs([
@@ -11,20 +15,22 @@ const schemas = [
   ]),
   webPage({
     path: '/contact/',
-    name: 'Contact - The Coffee Sleeves',
-    description: 'Contact The Coffee Sleeves — call (503) 461-4788 or email info@thecoffeesleeves.com for custom coffee sleeve quotes, samples and support.',
+    name: extra.metaTitle,
+    description: extra.metaDescription,
     type: 'ContactPage',
   }),
+  faqPage(extra.faqs),
 ];
 ---
 
 <BaseLayout
-  title='Contact - The Coffee Sleeves'
-  description='Contact The Coffee Sleeves — call (503) 461-4788 or email info@thecoffeesleeves.com for custom coffee sleeve quotes, samples and support.'
+  title={extra.metaTitle}
+  description={extra.metaDescription}
   path="/contact/"
   schemas={schemas}
   offsetHeader={false}
 >
   <ContactBody />
+  <PageExtras extra={extra} id="contact" />
 </BaseLayout>
 

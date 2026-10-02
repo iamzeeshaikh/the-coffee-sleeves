@@ -2,7 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GetQuoteBody from '../components/pagebody/GetQuoteBody.astro';
 import { site } from '../utils/site';
-import { breadcrumbs, webPage } from '../utils/schema';
+import { breadcrumbs, webPage, faqPage } from '../utils/schema';
+import PageExtras from '../components/PageExtras.astro';
+import { pageExtras } from '../utils/page-extras';
+
+const extra = pageExtras['get-quote'];
 
 const schemas = [
   breadcrumbs([
@@ -11,19 +15,21 @@ const schemas = [
   ]),
   webPage({
     path: '/get-quote/',
-    name: 'Get Quote - The Coffee Sleeves',
-    description: 'Request a free custom coffee sleeve quote. Tell us your quantity, material and design and we',
+    name: extra.metaTitle,
+    description: extra.metaDescription,
   }),
+  faqPage(extra.faqs),
 ];
 ---
 
 <BaseLayout
-  title='Get Quote - The Coffee Sleeves'
-  description="Request a free custom coffee sleeve quote. Tell us your quantity, material and design and we'll get back to you within 24 hours."
+  title={extra.metaTitle}
+  description={extra.metaDescription}
   path="/get-quote/"
   schemas={schemas}
   offsetHeader={false}
 >
   <GetQuoteBody />
+  <PageExtras extra={extra} id="get-quote" />
 </BaseLayout>
 

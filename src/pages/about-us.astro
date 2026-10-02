@@ -1,7 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../utils/site';
-import { breadcrumbs, webPage } from '../utils/schema';
+import { breadcrumbs, webPage, faqPage } from '../utils/schema';
+import PageExtras from '../components/PageExtras.astro';
+import { pageExtras } from '../utils/page-extras';
+
+const extra = pageExtras['about-us'];
 
 const schemas = [
   breadcrumbs([
@@ -10,16 +14,17 @@ const schemas = [
   ]),
   webPage({
     path: '/about-us/',
-    name: 'About Us - The Coffee Sleeves',
-    description: 'The Coffee Sleeves crafts custom-printed coffee cup sleeves for cafés, events and brands across the US — quality materials, low minimums and fast turnaround.',
+    name: extra.metaTitle,
+    description: extra.metaDescription,
     type: 'AboutPage',
   }),
+  faqPage(extra.faqs),
 ];
 ---
 
 <BaseLayout
-  title="About Us - The Coffee Sleeves"
-  description="The Coffee Sleeves crafts custom-printed coffee cup sleeves for cafés, events and brands across the US — quality materials, low minimums and fast turnaround."
+  title={extra.metaTitle}
+  description={extra.metaDescription}
   path="/about-us/"
   schemas={schemas}
   offsetHeader={true}
@@ -85,6 +90,7 @@ const schemas = [
       </div>
     </div>
   </section>
+  <PageExtras extra={extra} id="about-us" />
 </BaseLayout>
 
 <style>

@@ -89,10 +89,11 @@ const SHIPPING_DETAILS = {
   shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
   deliveryTime: {
     '@type': 'ShippingDeliveryTime',
+    // Every sleeve is printed to order: the policy's custom-order time.
     handlingTime: {
       '@type': 'QuantitativeValue',
-      minValue: 1,
-      maxValue: 3,
+      minValue: 7,
+      maxValue: 10,
       unitCode: 'DAY',
     },
     transitTime: {

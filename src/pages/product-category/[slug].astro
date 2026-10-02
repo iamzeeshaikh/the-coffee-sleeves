@@ -2,7 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArchiveGrid from '../../components/ArchiveGrid.astro';
 import { categories, productsInCategory, site } from '../../utils/site';
-import { breadcrumbs, collectionPage } from '../../utils/schema';
+import { breadcrumbs, collectionPage, faqPage } from '../../utils/schema';
+import PageExtras from '../../components/PageExtras.astro';
+import { pageExtras } from '../../utils/page-extras';
 
 export function getStaticPaths() {
   return categories.map((category) => ({ params: { slug: category.slug }, props: { category } }));
@@ -11,6 +13,11 @@ export function getStaticPaths() {
 const { category } = Astro.props;
 const path = `/product-category/${category.slug}/`;
 const items = productsInCategory(category.name);
+// Each category has its own intro, sections and FAQs; they were a one-line
+// blurb over a grid, 61-81% the same as /shop/.
+const extra = pageExtras[category.slug];
+const title = extra?.metaTitle ?? category.metaTitle;
+const description = extra?.metaDescription ?? category.metaDescription;
 
 const schemas = [
   breadcrumbs([
@@ -22,17 +29,19 @@ const schemas = [
   collectionPage({
     path,
     name: category.name,
-    description: category.metaDescription,
+    description,
     items: items.map((p) => ({ name: p.name, url: `/product/${p.slug}/` })),
   }),
+  extra ? faqPage(extra.faqs) : null,
 ];
 ---
 
 <BaseLayout
-  title={category.metaTitle}
-  description={category.metaDescription}
+  title={title}
+  description={description}
   path={path}
   schemas={schemas}
 >
-  <ArchiveGrid heading={category.name} intro={category.blurb} products={items} currentCategorySlug={category.slug} />
+  <ArchiveGrid heading={category.name} intro={extra?.blurb ?? category.blurb} products={items} currentCategorySlug={category.slug} />
+  {extra && <PageExtras extra={extra} id={category.slug} />}
 </BaseLayout>

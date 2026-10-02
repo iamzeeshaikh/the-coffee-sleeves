@@ -13,7 +13,6 @@ const STATIC_PATHS = [
   '/shipping-policy/',
   '/terms-conditions/',
   '/refund_returns/',
-  '/brand/the-coffee-sleeves/',
 ];
 
 export const GET: APIRoute = () => {
