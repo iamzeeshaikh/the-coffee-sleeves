@@ -80,12 +80,12 @@ export function faqPage(faqs: Faq[]) {
 
 /**
  * Shipping and returns as published on the shipping-policy and
- * refund_returns pages. Note there is deliberately no `shippingRate`: the
- * policy states rates are calculated per quote from weight, destination and
- * method, so any single figure here would be invented.
+ * refund_returns pages. Shipping is free on every US order (confirmed by the
+ * owner, 2 October 2026), which the zero `shippingRate` states.
  */
 const SHIPPING_DETAILS = {
   '@type': 'OfferShippingDetails',
+  shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'USD' },
   shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
   deliveryTime: {
     '@type': 'ShippingDeliveryTime',
