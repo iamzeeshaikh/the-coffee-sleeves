@@ -1,0 +1,155 @@
+{
+  "_note": "Ratings the old WordPress site emitted, restored 2026-10-05 (aggregateRating only: the old Review node's text and date were never recorded). Only these paths may carry a rating; products added after the migration get none.",
+  "ratings": {
+    "/product/8-oz-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/8oz-cup-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/beverage-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/black-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/blank-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/branded-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/branded-cup-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/cardboard-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/christmas-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/christmas-cup-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/coffee-cups-with-sleeves-and-lids/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/corrugated-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/cup-sleeves-for-hot-drinks/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/custom-cup-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/cute-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/disposable-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/funny-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/holiday-coffee-cup-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/holiday-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/hot-beverage-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/hot-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/hot-cup-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/kraft-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/paper-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/pink-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/printed-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/reusable-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/solo-cup-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/white-coffee-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    },
+    "/product/white-cup-sleeves/": {
+      "ratingValue": "5",
+      "reviewCount": 1,
+      "_source": "Old site's rating recorded at migration: src/utils/schema.ts lines 8-10 at df21fed (first written in commit f75c6d9, src/pages/product/[slug].astro): 'the old site's 5/5 rating was a single \"webmaster\" review'. Product list = the 30 WP products (post IDs 64-93) imported in migration commit b4d5d1c."
+    }
+  }
+}

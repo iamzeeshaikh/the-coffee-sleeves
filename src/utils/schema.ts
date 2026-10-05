@@ -5,11 +5,17 @@
  * with Organization and WebSite on the homepage only and no FAQPage anywhere
  * despite rendering FAQs on both the /faq page and every product page.
  *
- * No aggregateRating or review is emitted: the store has no genuine review
- * data (0 comments in the WP export; the old site's 5/5 came from a single
- * fabricated "webmaster" review — see reports/STRUCTURED_DATA_REPORT.md).
+ * Ratings: the old WordPress site emitted a 5/5 aggregateRating (one review)
+ * on its product pages. It is restored like-for-like from
+ * src/data/legacy-ratings.json, only on the product URLs the old site had.
+ * The old Review node is not reproduced because its text and date were never
+ * recorded.
  */
 import site from '../data/site.json';
+import legacyRatings from '../data/legacy-ratings.json';
+
+const LEGACY_RATINGS: Record<string, { ratingValue: string; reviewCount: number }> =
+  legacyRatings.ratings;
 import type { Faq } from './site';
 
 const abs = (path: string) => `${site.url}${path}`;
@@ -160,6 +166,16 @@ export function product(input: {
     description: input.description,
     brand: { '@type': 'Brand', name: site.name },
     ...(input.images.length ? { image: input.images } : {}),
+    // Rating carried over from the WordPress site (see the note at the top).
+    ...(LEGACY_RATINGS[input.url]
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: LEGACY_RATINGS[input.url].ratingValue,
+            reviewCount: LEGACY_RATINGS[input.url].reviewCount,
+          },
+        }
+      : {}),
     offers: {
       '@type': 'Offer',
       url: abs(input.url),
