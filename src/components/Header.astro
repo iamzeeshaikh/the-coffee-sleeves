@@ -736,6 +736,32 @@ body.tcs-menu-open {
 .tcs-dropdown-menu::-webkit-scrollbar-thumb:hover {
     background: var(--tcs-primary-brown);
 }
+
+/* Desktop header sizes in px, not rem (owner 2026-10-23): Chrome's "Font size: Large" raises
+   the root font size, every rem in this row grew by 25-50%, the row stopped fitting and the
+   header fell back to the drawer. The row's layout must not depend on that setting. */
+@media (min-width: 901px) {
+    .tcs-brand-the { font-size: 21px; }
+    .tcs-brand-name { font-size: 26px; }
+    .tcs-nav-menu > li > a { font-size: 15px; }
+    .tcs-dropdown-arrow { font-size: 11px; }
+    .tcs-header-actions .tcs-btn { font-size: 15px; }
+    .tcs-dropdown-menu li a { font-size: 14px; }
+}
+@media (min-width: 901px) and (max-width: 1365px) {
+    .tcs-brand-the { font-size: 16px; }
+    .tcs-brand-name { font-size: 19.5px; }
+    .tcs-nav-menu > li > a { font-size: 13.8px; }
+    .tcs-dropdown-arrow { font-size: 9.6px; }
+    .tcs-header-actions .tcs-btn { font-size: 12.8px; }
+}
+@media (min-width: 901px) and (max-width: 1100px) {
+    .tcs-brand-the { font-size: 14.4px; }
+    .tcs-brand-name { font-size: 17.3px; }
+    .tcs-nav-menu > li > a { font-size: 12.8px; }
+    .tcs-dropdown-arrow { font-size: 8.8px; }
+    .tcs-header-actions .tcs-btn { font-size: 11.8px; }
+}
 </style>
 
 <!-- HTML Structure -->
