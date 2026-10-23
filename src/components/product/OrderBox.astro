@@ -1,0 +1,47 @@
+---
+// Buy box: sleeves are sold in runs of 100 at PACK_PRICE (src/utils/order.ts). "Add to order"
+// keeps the line in localStorage and opens /checkout/, where the order is placed.
+import { PACK_QTY, PACK_PRICE, MAX_PACKS, money } from '../../utils/order';
+const { slug } = Astro.props as { slug: string };
+---
+<form class="tcs-ob" id="order" action="/checkout/" method="get" data-order-box data-slug={slug} data-pack={PACK_PRICE} data-qty={PACK_QTY} data-max={MAX_PACKS}>
+  <input type="hidden" name="add" value={slug} />
+  <label for="tcs-ob-packs">Quantity</label>
+  <!-- Larger quantities are added by the script, so 50 option labels are not repeated in every page's text. -->
+  <select id="tcs-ob-packs" name="packs"><option value="1">{PACK_QTY} sleeves</option></select>
+  <p class="tcs-ob-total">Total <strong data-total>{money(PACK_PRICE)}</strong> <span>Free US shipping</span></p>
+  <button type="submit" class="tcs-ob-go">Add to order</button>
+  <p class="tcs-ob-note">Pay by PayPal or bank transfer invoice after you approve a free digital proof. Nothing is printed or charged before that. Over 5,000 sleeves? <a href="#instant-quote">Ask for volume pricing</a>.</p>
+</form>
+<script>
+  const KEY = 'tcs-cart';
+  for (const f of document.querySelectorAll<HTMLFormElement>('[data-order-box]')) {
+    const sel = f.querySelector('select')!;
+    const out = f.querySelector<HTMLElement>('[data-total]')!;
+    const pack = Number(f.dataset.pack), qty = Number(f.dataset.qty), max = Number(f.dataset.max);
+    for (let n = 2; n <= max; n++) sel.add(new Option(`${(n * qty).toLocaleString('en-US')} sleeves`, String(n)));
+    sel.addEventListener('change', () => { out.textContent = `$${(Number(sel.value) * pack).toFixed(2)}`; });
+    f.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let cart: { slug: string; packs: number }[] = [];
+      try { cart = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch {}
+      const slug = f.dataset.slug!, packs = Number(sel.value);
+      const line = cart.find((l) => l.slug === slug);
+      if (line) line.packs = packs; else cart.push({ slug, packs });
+      try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch {}
+      (window as any).gtag?.('event', 'add_to_cart', { currency: 'USD', value: packs * pack, items: [{ item_id: slug, quantity: packs }] });
+      location.href = `/checkout/?add=${encodeURIComponent(slug)}&packs=${packs}`;
+    });
+  }
+</script>
+<style>
+  .tcs-ob { display: grid; gap: 10px; margin: 0 0 14px; padding: 16px; background: #fff; border: 1px solid #f0e5da; border-radius: 10px; }
+  .tcs-ob label { font-size: 0.85rem; font-weight: 600; color: #6f4e37; }
+  .tcs-ob select { min-height: 44px; padding: 8px 12px; border: 1px solid #e0d2c4; border-radius: 8px; font: inherit; background: #fff; color: #2c1810; }
+  .tcs-ob-total { margin: 0; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .tcs-ob-total strong { font-size: 1.5rem; color: #2c1810; }
+  .tcs-ob-total span { font-size: 0.85rem; color: #2f7a3d; font-weight: 600; }
+  .tcs-ob-go { min-height: 48px; border: 0; border-radius: 8px; background: #d2691e; color: #fff; font-weight: 700; font-size: 1rem; cursor: pointer; }
+  .tcs-ob-go:hover { background: #b85a17; }
+  .tcs-ob-note { margin: 0; font-size: 0.8rem; line-height: 1.5; color: #8a6f5c; }
+</style>

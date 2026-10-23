@@ -10,6 +10,7 @@ import MaterialsQuality from '../../components/product/MaterialsQuality.astro';
 import OrderProcess from '../../components/product/OrderProcess.astro';
 import DesignTemplates from '../../components/product/DesignTemplates.astro';
 import BulkOrder from '../../components/product/BulkOrder.astro';
+import OrderBox from '../../components/product/OrderBox.astro';
 import { products, categories, localImage, site } from '../../utils/site';
 import {
   breadcrumbs,
@@ -85,12 +86,13 @@ const schemas = [
           <p class="tcs-product-price">
             <span class="tcs-product-price-amount">{UNIT_PRICE_FROM}</span>
             <span class="tcs-product-price-note"
-              >Bulk entry price. Your final rate depends on size, material, printing and
-              quantity &mdash; request a quote for an exact figure.</span
+              >Free shipping in the US. Order in runs of 100, printed with your artwork after you
+              approve a free digital proof.</span
             >
           </p>
+          <OrderBox slug={product.slug} />
           <div class="entry-content" set:html={product.shortDescription} />
-          <a class="tcs-product-cta" href="#instant-quote">Get a Quote</a>
+          <a class="tcs-product-cta" href="#instant-quote">Or ask for a quote</a>
         </div>
         <div class="tcs-product-form-col" id="instant-quote">
           <QuoteSidebar productName={product.name} />

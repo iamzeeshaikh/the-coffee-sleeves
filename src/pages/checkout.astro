@@ -1,0 +1,92 @@
+---
+// Checkout: lines come from the visitor's browser (localStorage, set by the order box);
+// prices shown here come from src/utils/order.ts and are re-computed by /api/order/.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { products, localImage } from '../utils/site';
+import { PACK_QTY, PACK_PRICE, MAX_PACKS, PAYMENT_METHODS, SHIP_COUNTRIES, money } from '../utils/order';
+
+const catalog = Object.fromEntries(products.map((p) => [p.slug, { t: p.name, i: p.images[0] ? localImage(p.images[0].url)?.src ?? '' : '' }]));
+const cfg = { catalog, pack: PACK_PRICE, qty: PACK_QTY, max: MAX_PACKS };
+---
+<BaseLayout title="Checkout - The Coffee Sleeves" description={`Place your custom cup sleeve order: ${PACK_QTY} sleeves for ${money(PACK_PRICE)} with free US shipping, paid by PayPal or bank transfer invoice after a free proof.`} path="/checkout/" offsetHeader={true} noindex={true}>
+  <section class="tcs-co">
+    <h1>Checkout</h1>
+    <p class="tcs-co-lede">{PACK_QTY} sleeves for {money(PACK_PRICE)} on every design, with free shipping in the US. We email a free digital proof first; nothing is printed or charged before you approve it.</p>
+    <form id="tcs-co-form" novalidate>
+      <div class="tcs-co-grid">
+        <div>
+          <fieldset>
+            <legend>Your details</legend>
+            <label class="full">Full name<input name="name" autocomplete="name" required maxlength="120" /></label>
+            <label>Email<input name="email" type="email" autocomplete="email" required maxlength="180" /></label>
+            <label>Phone<input name="phone" type="tel" autocomplete="tel" required maxlength="40" /></label>
+            <label class="full">Company (optional)<input name="company" autocomplete="organization" maxlength="140" /></label>
+          </fieldset>
+          <fieldset>
+            <legend>Shipping address</legend>
+            <label class="full">Address<input name="address1" autocomplete="address-line1" required maxlength="200" /></label>
+            <label class="full">Apartment, suite (optional)<input name="address2" autocomplete="address-line2" maxlength="200" /></label>
+            <label>City<input name="city" autocomplete="address-level2" required maxlength="100" /></label>
+            <label>State<input name="region" autocomplete="address-level1" required maxlength="60" /></label>
+            <label>ZIP code<input name="postal" autocomplete="postal-code" required maxlength="20" /></label>
+            <label>Country<select name="country">{SHIP_COUNTRIES.map((c) => <option value={c.code}>{c.name}</option>)}</select></label>
+            <p class="full tcs-co-small">Outside the US? <a href="/get-quote/">Ask for a quote</a> with your delivery country.</p>
+          </fieldset>
+          <fieldset>
+            <legend>Artwork</legend>
+            <label class="full">Logo or design file (optional, up to 4 MB)<input name="artwork" type="file" accept=".pdf,.ai,.eps,.svg,.png,.jpg,.jpeg,.zip" /></label>
+            <label class="full">Notes for our designer (optional)<textarea name="notes" rows="3" maxlength="2000" placeholder="Colours, wording, cup size, deadline"></textarea></label>
+          </fieldset>
+          <fieldset>
+            <legend>Payment</legend>
+            {PAYMENT_METHODS.map((m, k) => (
+              <label class="pm"><input type="radio" name="payment" value={m.id} checked={k === 0} /><span><strong>{m.name}</strong><small>{m.detail}</small></span></label>
+            ))}
+          </fieldset>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="tcs-hp" />
+        </div>
+        <aside>
+          <h2>Your order</h2>
+          <table><tbody data-lines><tr><td>Your order is empty. <a href="/shop/">Choose sleeves</a></td></tr></tbody></table>
+          <table class="tcs-co-sum"><tbody>
+            <tr><td>Shipping</td><td class="r">Free</td></tr>
+            <tr><td><strong>Total</strong></td><td class="r"><strong data-grand>{money(0)}</strong></td></tr>
+          </tbody></table>
+          <p class="err" data-err role="alert"></p>
+          <button class="tcs-co-go" type="submit" data-place disabled>Place order</button>
+          <p class="tcs-co-small">By placing the order you agree to our <a href="/terms-conditions/">terms</a>, <a href="/shipping-policy/">shipping policy</a> and <a href="/refund_returns/">refund policy</a>.</p>
+        </aside>
+      </div>
+    </form>
+  </section>
+  <script is:inline define:vars={{ cfg }}>window.TCS_CHECKOUT = cfg;</script>
+  <script is:inline src="/tcs-checkout.js" defer></script>
+</BaseLayout>
+
+<style>
+  .tcs-co { max-width: 1100px; margin: 0 auto; padding: 40px 16px 72px; color: #2c1810; }
+  .tcs-co h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: #6f4e37; margin: 0 0 8px; }
+  .tcs-co-lede { color: #5c4033; max-width: 760px; }
+  .tcs-co-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items: start; margin-top: 20px; }
+  fieldset { border: 1px solid #f0e5da; border-radius: 12px; padding: 18px; margin: 0 0 18px; display: grid; gap: 12px; grid-template-columns: 1fr 1fr; background: #fff; }
+  legend { font-weight: 700; color: #6f4e37; padding: 0 6px; }
+  label { display: grid; gap: 6px; font-size: 0.85rem; font-weight: 600; color: #6f4e37; }
+  .full { grid-column: 1 / -1; }
+  input, select, textarea { width: 100%; min-height: 44px; padding: 8px 12px; border: 1px solid #e0d2c4; border-radius: 8px; font: inherit; font-weight: 400; color: #2c1810; background: #fff; box-sizing: border-box; }
+  [aria-invalid="true"] { border-color: #c0392b; }
+  .pm { grid-column: 1 / -1; grid-template-columns: auto 1fr; align-items: start; gap: 10px; border: 1px solid #f0e5da; border-radius: 10px; padding: 12px; cursor: pointer; }
+  .pm input { width: auto; min-height: 0; margin-top: 4px; }
+  .pm small { display: block; color: #8a6f5c; font-weight: 400; margin-top: 2px; }
+  .tcs-hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
+  aside { background: #fff; border: 1px solid #f0e5da; border-radius: 12px; padding: 20px; position: sticky; top: 100px; }
+  aside h2 { margin: 0 0 12px; font-size: 1.2rem; color: #6f4e37; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  td { padding: 8px 4px; border-bottom: 1px solid #f5ede4; vertical-align: top; }
+  td.r { text-align: right; white-space: nowrap; }
+  .tcs-co-sum { margin-top: 8px; }
+  .err { color: #c0392b; font-size: 0.9rem; min-height: 1em; }
+  .tcs-co-go { width: 100%; min-height: 50px; border: 0; border-radius: 8px; background: #d2691e; color: #fff; font-weight: 700; font-size: 1.05rem; cursor: pointer; }
+  .tcs-co-go:disabled { opacity: .6; cursor: default; }
+  .tcs-co-small { font-size: 0.8rem; color: #8a6f5c; margin: 10px 0 0; }
+  @media (max-width: 860px) { .tcs-co-grid { grid-template-columns: 1fr; } fieldset { grid-template-columns: 1fr; } aside { position: static; } }
+</style>

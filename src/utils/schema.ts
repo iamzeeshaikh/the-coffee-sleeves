@@ -17,6 +17,7 @@ import legacyRatings from '../data/legacy-ratings.json';
 const LEGACY_RATINGS: Record<string, { ratingValue: string; reviewCount: number }> =
   legacyRatings.ratings;
 import type { Faq } from './site';
+import { PACK_PRICE_TEXT, PACK_QTY, PACK_LINE } from './order';
 
 const abs = (path: string) => `${site.url}${path}`;
 
@@ -127,6 +128,12 @@ const RETURN_POLICY = {
  * product pages and the homepage product cards display.
  */
 export const UNIT_PRICE = '0.30';
+/**
+ * What the offer actually sells (owner 2026-10-23): a run of 100 sleeves for
+ * $30.00. The Merchant feed carries the same price with g:multipack 100, and
+ * every page shows PACK_LINE, so offer, feed and page agree.
+ */
+export { PACK_LINE };
 
 /**
  * The same figure formatted for the page. Anything that shows a price to a
@@ -135,8 +142,8 @@ export const UNIT_PRICE = '0.30';
  * Center treats as misrepresentation, so the visible figure and the figure in
  * the Offer are physically the same string.
  */
-export const UNIT_PRICE_DISPLAY = `$${UNIT_PRICE}`;
-export const UNIT_PRICE_FROM = `From ${UNIT_PRICE_DISPLAY} per sleeve`;
+export const UNIT_PRICE_DISPLAY = PACK_LINE;
+export const UNIT_PRICE_FROM = PACK_LINE;
 
 /**
  * Google drops an offer whose `priceValidUntil` is in the past, so it is
@@ -179,8 +186,9 @@ export function product(input: {
     offers: {
       '@type': 'Offer',
       url: abs(input.url),
-      price: UNIT_PRICE,
+      price: PACK_PRICE_TEXT,
       priceCurrency: 'USD',
+      eligibleQuantity: { '@type': 'QuantitativeValue', value: PACK_QTY, unitCode: 'C62' },
       availability: 'https://schema.org/InStock',
       itemCondition: 'https://schema.org/NewCondition',
       priceValidUntil,

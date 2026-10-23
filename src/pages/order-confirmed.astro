@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PAYMENT_METHODS } from '../utils/order';
+const pay = Object.fromEntries(PAYMENT_METHODS.map((m) => [m.id, m.detail]));
+---
+<BaseLayout title="Order Received - The Coffee Sleeves" description="Your cup sleeve order has been received. We email a free digital proof next, then print and ship once you approve it." path="/order-confirmed/" offsetHeader={true} noindex={true}>
+  <section class="tcs-ok">
+    <h1>Thank you, your order is in</h1>
+    <p class="ref">Order reference <strong data-ref>sent by email</strong></p>
+    <p>We have emailed a copy of your order. Here is what happens next.</p>
+    <ol>
+      <li>Our designer checks your artwork and emails a free digital proof.</li>
+      <li>You approve the proof or ask for changes. Nothing is printed before you approve.</li>
+      <li data-pay>{pay.paypal}</li>
+      <li>Your sleeves are printed in 7 to 10 business days after approval and ship free within the US.</li>
+    </ol>
+    <p>Questions? Call <a href="tel:+15034614788">(503) 461-4788</a> or email <a href="mailto:info@thecoffeesleeves.com">info@thecoffeesleeves.com</a> with your order reference.</p>
+    <p><a class="btn" href="/shop/">Back to all sleeves</a></p>
+  </section>
+  <script is:inline define:vars={{ pay }}>
+    var q = new URLSearchParams(location.search);
+    var ref = (q.get('ref') || '').replace(/[^A-Z0-9-]/g, '');
+    if (ref) document.querySelector('[data-ref]').textContent = ref;
+    if (pay[q.get('pay')]) document.querySelector('[data-pay]').textContent = pay[q.get('pay')];
+  </script>
+</BaseLayout>
+<style>
+  .tcs-ok { max-width: 760px; margin: 0 auto; padding: 48px 16px 80px; color: #2c1810; }
+  .tcs-ok h1 { color: #6f4e37; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+  .ref { font-size: 1.1rem; }
+  ol { line-height: 1.8; padding-left: 1.2em; }
+  .btn { display: inline-block; background: #d2691e; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; }
+</style>

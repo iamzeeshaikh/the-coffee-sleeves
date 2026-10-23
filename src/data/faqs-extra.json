@@ -1,6 +1,6 @@
 {
   "shop": [
-    {"q": "Are the prices shown on shop listings final?", "a": "No. Listings show a bulk entry price from {price} per sleeve as a starting point. Your final rate depends on sleeve size, material, printing and quantity, and the per-sleeve cost drops as quantities rise. Your quote lists every charge, including any shipping, before you approve it."},
+    {"q": "Are the prices shown on shop listings final?", "a": "Yes. Every standard printed design is {price}, with free shipping in the US, and that is the total you see at checkout. Special finishes, custom die cuts, rush production or runs above 5,000 sleeves are priced on a free quote before you approve anything."},
     {"q": "What happens after I find a sleeve I like in the shop?", "a": "Request a free quote with your quantity, material and cup size. Our team replies within 24 hours with pricing and turnaround. Once you go ahead, our designers prepare the artwork, you approve a digital proof, and standard production takes 7-10 business days after approval."},
     {"q": "Which sleeves in the shop suit very hot drinks or long walks?", "a": "Corrugated sleeves. Their fluted layer traps air between the cup and the hand, which slows heat more than a flat sleeve and gives a firmer grip on wet cups. They suit drive-thru, delivery and customers who carry drinks a long way from the counter."}
   ],

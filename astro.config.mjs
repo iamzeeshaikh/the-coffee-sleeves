@@ -13,8 +13,8 @@ export default defineConfig({
   },
   redirects: {
     // WooCommerce endpoints with no equivalent on a quotation site (see REDIRECT_MAP.csv)
-    '/cart/': { status: 301, destination: '/get-quote/' },
-    '/checkout/': { status: 301, destination: '/get-quote/' },
+    // Products are ordered online since 2026-10-23 (100 sleeves = $30); the old cart URL opens the checkout.
+    '/cart/': { status: 301, destination: '/checkout/' },
     '/my-account/': { status: 301, destination: '/contact/' },
     // The brand archive listed every product, so it was a 99% copy of /shop/.
     '/brand/the-coffee-sleeves/': { status: 301, destination: '/shop/' },

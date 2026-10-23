@@ -30,13 +30,13 @@
       },
       {
         "title": "From Browsing to a Printed Order",
-        "body": "There is no cart or checkout here. Every order starts with a free, no-obligation quote, and our team replies within 24 hours with pricing and turnaround. Design help is included with every order, with up to 3 free revisions, and you approve a digital proof before anything is printed. Standard production takes 7-10 business days after approval, and rush production is available for an additional fee. Once your sleeves ship, you receive a tracking number by email. When you have found the sleeve you want, [request your free quote](/get-quote/) and tell us the quantity, material and cup size."
+        "body": "Every printed design is {price}, with free shipping in the US. Order straight from the product page, or ask for a free quote for very large runs or special finishes; our team replies within 24 hours. Design help is included with every order, with up to 3 free revisions, and you approve a digital proof before anything is printed. Standard production takes 7-10 business days after approval, and rush production is available for an additional fee. Once your sleeves ship, you receive a tracking number by email. When you have found the sleeve you want, [request your free quote](/get-quote/) and tell us the quantity, material and cup size."
       }
     ],
     "faqs": [
       {
-        "q": "Why is there no checkout on the shop page?",
-        "a": "Every sleeve is printed to order, so the price depends on size, material, printing and quantity. Instead of a cart, you request a free quote and our team replies within 24 hours with an exact figure. Product pages show a bulk entry price from {price} per sleeve as a starting point."
+        "q": "How do I order from the shop?",
+        "a": "Open any sleeve, choose how many runs of 100 you need and place the order: every design is {price} with free US shipping. We email a free digital proof, and you pay by PayPal or bank transfer invoice once you approve it."
       },
       {
         "q": "How do I choose between two similar sleeves in the grid?",
@@ -263,7 +263,7 @@
     "sections": [
       {
         "title": "Wholesale Pricing and Quantities",
-        "body": "Cup sleeves wholesale pricing is built around your order rather than a fixed price list. Product pages show a bulk entry price from {price} per sleeve, and your final rate depends on size, material, printing and quantity. Orders start at 100 pieces, and the per-sleeve cost goes down as quantities grow, so cafes, chains and event teams can order for a single trial or for months of supply. Our quote form covers runs from 100 units to more than 10,000 units, and our team replies within 24 hours. To see your exact figure, [request a wholesale quote](/get-quote/).",
+        "body": "Cup sleeves wholesale pricing is one clear figure: every design is {price}, with free shipping in the US, and you can order it straight from the product page. Orders start at 100 pieces and go up in runs of 100, so cafes, chains and event teams can order for a single trial or for months of supply. For runs above 5,000 units or special finishes, [request a wholesale quote](/get-quote/) and our team replies within 24 hours.",
         "bullets": [
           "Orders from 100 pieces",
           "Lower per-sleeve cost on larger runs",
@@ -293,7 +293,7 @@
     "faqs": [
       {
         "q": "What does a wholesale cup sleeve cost?",
-        "a": "Product pages show a bulk entry price from {price} per sleeve. Your final rate depends on size, material, printing and quantity, and the per-sleeve cost drops as quantities rise. Request a quote for an exact figure."
+        "a": "Every design is {price}, with free US shipping, ordered in runs of 100 from the product page. For very large runs or special finishes, request a free quote."
       },
       {
         "q": "What details do you need for a wholesale quote?",
@@ -438,7 +438,7 @@
       },
       {
         "title": "How Your Price Is Worked Out",
-        "body": "Your price depends on four things: sleeve size, material, printing and quantity. Product pages show a bulk entry price from {price} per sleeve, and the per-sleeve cost drops as quantities rise. Specialty finishes or custom die cuts can add to the price, and rush production is available for an additional fee. Your quote lists every charge clearly before you approve it."
+        "body": "Your price depends on four things: sleeve size, material, printing and quantity. Every standard design is {price}, with free US shipping, and you can order it from the product page. Specialty finishes or custom die cuts can add to the price, and rush production is available for an additional fee. Your quote lists every charge clearly before you approve it."
       }
     ],
     "faqs": [
