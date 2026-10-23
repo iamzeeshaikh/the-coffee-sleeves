@@ -1,3 +1,15 @@
+---
+// Menu thumbnails come from each product's first image (src/utils/site.ts), so they follow the catalogue.
+import { productBySlug, localImage } from '../utils/site';
+import fs from 'node:fs';
+// 96px WebP made by scripts/build-menu-thumbs.mjs; falls back to the product's 600w image.
+const thumb = (slug: string) => {
+  if (fs.existsSync(`public/images/menu/${slug}.webp`)) return `/images/menu/${slug}.webp`;
+  const p = productBySlug(slug);
+  const img = p?.images[0] ? localImage(p.images[0].url) : null;
+  return img ? (img.thumb ?? img.webp ?? img.src) : null;
+};
+---
 <style is:global>
 /* ========================================
    CSS Variables & Styles
@@ -190,7 +202,9 @@
 }
 
 .tcs-dropdown-menu li a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     padding: 10px 15px;
     color: var(--tcs-text-dark);
     font-size: 0.9rem;
@@ -204,6 +218,22 @@
     color: var(--tcs-primary-brown);
     padding-left: 20px;
 }
+
+/* Product thumbnails in the menu */
+.tcs-dd-thumb {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 6px;
+    background: var(--tcs-light-cream);
+}
+.tcs-dropdown-menu { min-width: 290px; }
+
+/* Header row never overflows: logo and button keep their size, the menu gives way. */
+.tcs-logo { flex-shrink: 0; }
+.tcs-logo-text, .tcs-brand-name { white-space: nowrap; }
+.tcs-nav { min-width: 0; }
 
 /* Header Actions */
 .tcs-header-actions {
@@ -341,7 +371,7 @@
     .tcs-header-actions { gap: 10px; }
     .tcs-header-actions .tcs-btn { padding: 11px 18px; }
 }
-@media (min-width: 1101px) and (max-width: 1399px) {
+@media (min-width: 1101px) and (max-width: 1599px) {
     /* Phone shows as an icon only; the number stays in the link for screen readers and taps. */
     .tcs-phone { padding: 8px; }
     .tcs-phone span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -617,10 +647,10 @@ body.tcs-menu-open {
                     <li class="tcs-dropdown">
                         <a href="/product-category/sleeve-materials/">Sleeve Materials <span class="tcs-dropdown-arrow">▼</span></a>
                         <ul class="tcs-dropdown-menu">
-                            <li><a href="/product/cardboard-coffee-sleeves/">Cardboard Coffee Sleeves</a></li>
-                            <li><a href="/product/paper-coffee-sleeves/">Paper Coffee Sleeves</a></li>
-                            <li><a href="/product/kraft-coffee-sleeves/">Kraft Coffee Sleeves</a></li>
-                            <li><a href="/product/corrugated-coffee-sleeves/">Corrugated Coffee Sleeves</a></li>
+                            <li><a href="/product/cardboard-coffee-sleeves/">{thumb('cardboard-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('cardboard-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Cardboard Coffee Sleeves</span></a></li>
+                            <li><a href="/product/paper-coffee-sleeves/">{thumb('paper-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('paper-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Paper Coffee Sleeves</span></a></li>
+                            <li><a href="/product/kraft-coffee-sleeves/">{thumb('kraft-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('kraft-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Kraft Coffee Sleeves</span></a></li>
+                            <li><a href="/product/corrugated-coffee-sleeves/">{thumb('corrugated-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('corrugated-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Corrugated Coffee Sleeves</span></a></li>
                         </ul>
                     </li>
                     
@@ -628,11 +658,11 @@ body.tcs-menu-open {
                     <li class="tcs-dropdown">
                         <a href="/product-category/sleeve-usage/">Sleeve Usage <span class="tcs-dropdown-arrow">▼</span></a>
                         <ul class="tcs-dropdown-menu">
-                            <li><a href="/product/hot-coffee-sleeves/">Hot Coffee Sleeves</a></li>
-                            <li><a href="/product/hot-beverage-sleeves/">Hot Beverage Sleeves</a></li>
-                            <li><a href="/product/beverage-sleeves/">Beverage Sleeves</a></li>
-                            <li><a href="/product/disposable-coffee-sleeves/">Disposable Coffee Sleeves</a></li>
-                            <li><a href="/product/reusable-coffee-sleeves/">Reusable Coffee Sleeves</a></li>
+                            <li><a href="/product/hot-coffee-sleeves/">{thumb('hot-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('hot-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Hot Coffee Sleeves</span></a></li>
+                            <li><a href="/product/hot-beverage-sleeves/">{thumb('hot-beverage-sleeves') && <img class="tcs-dd-thumb" src={thumb('hot-beverage-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Hot Beverage Sleeves</span></a></li>
+                            <li><a href="/product/beverage-sleeves/">{thumb('beverage-sleeves') && <img class="tcs-dd-thumb" src={thumb('beverage-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Beverage Sleeves</span></a></li>
+                            <li><a href="/product/disposable-coffee-sleeves/">{thumb('disposable-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('disposable-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Disposable Coffee Sleeves</span></a></li>
+                            <li><a href="/product/reusable-coffee-sleeves/">{thumb('reusable-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('reusable-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Reusable Coffee Sleeves</span></a></li>
                         </ul>
                     </li>
                     
@@ -640,17 +670,17 @@ body.tcs-menu-open {
                     <li class="tcs-dropdown">
                         <a href="/product-category/sleeve-styles/">Sleeve Styles <span class="tcs-dropdown-arrow">▼</span></a>
                         <ul class="tcs-dropdown-menu">
-                            <li><a href="/product/printed-coffee-sleeves/">Printed Coffee Sleeves</a></li>
-                            <li><a href="/product/branded-coffee-sleeves/">Branded Coffee Sleeves</a></li>
-                            <li><a href="/product/blank-coffee-sleeves/">Blank Coffee Sleeves</a></li>
-                            <li><a href="/product/white-coffee-sleeves/">White Coffee Sleeves</a></li>
-                            <li><a href="/product/black-coffee-sleeves/">Black Coffee Sleeves</a></li>
-                            <li><a href="/product/pink-coffee-sleeves/">Pink Coffee Sleeves</a></li>
-                            <li><a href="/product/cute-coffee-sleeves/">Cute Coffee Sleeves</a></li>
-                            <li><a href="/product/funny-coffee-sleeves/">Funny Coffee Sleeves</a></li>
-                            <li><a href="/product/8-oz-coffee-sleeves/">8 oz Coffee Sleeves</a></li>
-                            <li><a href="/product/christmas-coffee-sleeves/">Christmas Coffee Sleeves</a></li>
-                            <li><a href="/product/holiday-coffee-sleeves/">Holiday Coffee Sleeves</a></li>
+                            <li><a href="/product/printed-coffee-sleeves/">{thumb('printed-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('printed-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Printed Coffee Sleeves</span></a></li>
+                            <li><a href="/product/branded-coffee-sleeves/">{thumb('branded-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('branded-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Branded Coffee Sleeves</span></a></li>
+                            <li><a href="/product/blank-coffee-sleeves/">{thumb('blank-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('blank-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Blank Coffee Sleeves</span></a></li>
+                            <li><a href="/product/white-coffee-sleeves/">{thumb('white-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('white-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>White Coffee Sleeves</span></a></li>
+                            <li><a href="/product/black-coffee-sleeves/">{thumb('black-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('black-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Black Coffee Sleeves</span></a></li>
+                            <li><a href="/product/pink-coffee-sleeves/">{thumb('pink-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('pink-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Pink Coffee Sleeves</span></a></li>
+                            <li><a href="/product/cute-coffee-sleeves/">{thumb('cute-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('cute-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Cute Coffee Sleeves</span></a></li>
+                            <li><a href="/product/funny-coffee-sleeves/">{thumb('funny-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('funny-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Funny Coffee Sleeves</span></a></li>
+                            <li><a href="/product/8-oz-coffee-sleeves/">{thumb('8-oz-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('8-oz-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>8 oz Coffee Sleeves</span></a></li>
+                            <li><a href="/product/christmas-coffee-sleeves/">{thumb('christmas-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('christmas-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Christmas Coffee Sleeves</span></a></li>
+                            <li><a href="/product/holiday-coffee-sleeves/">{thumb('holiday-coffee-sleeves') && <img class="tcs-dd-thumb" src={thumb('holiday-coffee-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Holiday Coffee Sleeves</span></a></li>
                         </ul>
                     </li>
                     
@@ -658,20 +688,19 @@ body.tcs-menu-open {
                     <li class="tcs-dropdown">
                         <a href="/product-category/cup-sleeves/">Cup Sleeves <span class="tcs-dropdown-arrow">▼</span></a>
                         <ul class="tcs-dropdown-menu">
-                            <li><a href="/product/coffee-cups-with-sleeves-and-lids/">Coffee Cups with Sleeves and Lids</a></li>
-                            <li><a href="/product/hot-cup-sleeves/">Hot Cup Sleeves</a></li>
-                            <li><a href="/product/custom-cup-sleeves/">Custom Cup Sleeves</a></li>
-                            <li><a href="/product/branded-cup-sleeves/">Branded Cup Sleeves</a></li>
-                            <li><a href="/product/white-cup-sleeves/">White Cup Sleeves</a></li>
-                            <li><a href="/product/8oz-cup-sleeves/">8oz Cup Sleeves</a></li>
-                            <li><a href="/product/christmas-cup-sleeves/">Christmas Cup Sleeves</a></li>
-                            <li><a href="/product/solo-cup-sleeves/">Solo Cup Sleeves</a></li>
-                            <li><a href="/product/cup-sleeves-for-hot-drinks/">Cup Sleeves for Hot Drinks</a></li>
-                            <li><a href="/product/holiday-coffee-cup-sleeves/">Holiday Coffee Cup Sleeves</a></li>
+                            <li><a href="/product/coffee-cups-with-sleeves-and-lids/">{thumb('coffee-cups-with-sleeves-and-lids') && <img class="tcs-dd-thumb" src={thumb('coffee-cups-with-sleeves-and-lids')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Coffee Cups with Sleeves and Lids</span></a></li>
+                            <li><a href="/product/hot-cup-sleeves/">{thumb('hot-cup-sleeves') && <img class="tcs-dd-thumb" src={thumb('hot-cup-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Hot Cup Sleeves</span></a></li>
+                            <li><a href="/product/custom-cup-sleeves/">{thumb('custom-cup-sleeves') && <img class="tcs-dd-thumb" src={thumb('custom-cup-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Custom Cup Sleeves</span></a></li>
+                            <li><a href="/product/branded-cup-sleeves/">{thumb('branded-cup-sleeves') && <img class="tcs-dd-thumb" src={thumb('branded-cup-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Branded Cup Sleeves</span></a></li>
+                            <li><a href="/product/white-cup-sleeves/">{thumb('white-cup-sleeves') && <img class="tcs-dd-thumb" src={thumb('white-cup-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>White Cup Sleeves</span></a></li>
+                            <li><a href="/product/8oz-cup-sleeves/">{thumb('8oz-cup-sleeves') && <img class="tcs-dd-thumb" src={thumb('8oz-cup-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>8oz Cup Sleeves</span></a></li>
+                            <li><a href="/product/christmas-cup-sleeves/">{thumb('christmas-cup-sleeves') && <img class="tcs-dd-thumb" src={thumb('christmas-cup-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Christmas Cup Sleeves</span></a></li>
+                            <li><a href="/product/solo-cup-sleeves/">{thumb('solo-cup-sleeves') && <img class="tcs-dd-thumb" src={thumb('solo-cup-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Solo Cup Sleeves</span></a></li>
+                            <li><a href="/product/cup-sleeves-for-hot-drinks/">{thumb('cup-sleeves-for-hot-drinks') && <img class="tcs-dd-thumb" src={thumb('cup-sleeves-for-hot-drinks')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Cup Sleeves for Hot Drinks</span></a></li>
+                            <li><a href="/product/holiday-coffee-cup-sleeves/">{thumb('holiday-coffee-cup-sleeves') && <img class="tcs-dd-thumb" src={thumb('holiday-coffee-cup-sleeves')} alt="" width="40" height="40" loading="lazy" decoding="async" />}<span>Holiday Coffee Cup Sleeves</span></a></li>
                         </ul>
                     </li>
 
-                    <li><a href="/blog/">Blog</a></li>
                 </ul>
             </nav>
 
