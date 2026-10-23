@@ -233,7 +233,6 @@ const thumb = (slug: string) => {
 /* Header row never overflows: logo and button keep their size, the menu gives way. */
 .tcs-logo { flex-shrink: 0; }
 .tcs-logo-text, .tcs-brand-name { white-space: nowrap; }
-.tcs-nav { min-width: 0; }
 
 /* Header Actions */
 .tcs-header-actions {
@@ -371,7 +370,7 @@ const thumb = (slug: string) => {
     .tcs-header-actions { gap: 10px; }
     .tcs-header-actions .tcs-btn { padding: 11px 18px; }
 }
-@media (min-width: 1101px) and (max-width: 1599px) {
+@media (min-width: 1101px) {
     /* Phone shows as an icon only; the number stays in the link for screen readers and taps. */
     .tcs-phone { padding: 8px; }
     .tcs-phone span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -505,6 +504,98 @@ const thumb = (slug: string) => {
         font-size: 0.85rem;
     }
 }
+
+/* The same small-screen layout, switched on by script whenever the desktop row does not
+   fit (browser zoom, wider system fonts). Owner saw the menu run into the logo, 2026-10-23. */
+.tcs-header.tcs-compact .tcs-header-wrapper {
+        padding: 12px 0;
+        gap: 12px;
+    }
+
+.tcs-header.tcs-compact .tcs-logo {
+        min-width: 0;
+    }
+    .tcs-header.tcs-compact .tcs-brand-the {
+        font-size: 1.1rem;
+    }
+    .tcs-header.tcs-compact .tcs-brand-name {
+        font-size: 1.3rem;
+    }
+    .tcs-header.tcs-compact .tcs-logo-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .tcs-header.tcs-compact .tcs-mobile-toggle {
+        display: flex;
+    }
+    .tcs-header.tcs-compact .tcs-nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 300px;
+        height: 100vh;
+        background-color: var(--tcs-white);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        padding: 80px 25px 25px;
+        overflow-y: auto;
+        transition: left 0.3s ease;
+        z-index: 9999;
+    }
+    .tcs-header.tcs-compact .tcs-nav.active {
+        left: 0;
+    }
+    .tcs-header.tcs-compact .tcs-nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+    .tcs-header.tcs-compact .tcs-nav-menu > li {
+        border-bottom: 1px solid var(--tcs-cream);
+    }
+    .tcs-header.tcs-compact .tcs-nav-menu > li:last-child {
+        border-bottom: none;
+    }
+    .tcs-header.tcs-compact .tcs-nav-menu > li > a {
+        padding: 15px;
+        justify-content: space-between;
+    }
+    .tcs-header.tcs-compact .tcs-nav-menu > li > a::after {
+        display: none;
+    }
+    .tcs-header.tcs-compact .tcs-dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        box-shadow: none;
+        border-radius: 0;
+        margin-top: 0;
+        padding: 0 0 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    .tcs-header.tcs-compact .tcs-dropdown.active .tcs-dropdown-menu {
+        max-height: 600px;
+    }
+    .tcs-header.tcs-compact .tcs-dropdown-menu li {
+        border-bottom: 1px solid var(--tcs-light-cream);
+    }
+    .tcs-header.tcs-compact .tcs-header-actions {
+        gap: 10px;
+    }
+    .tcs-header.tcs-compact .tcs-phone span {
+        display: none;
+    }
+    .tcs-header.tcs-compact .tcs-phone svg {
+        width: 24px;
+        height: 24px;
+    }
+    .tcs-header.tcs-compact .tcs-btn-primary {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+
 
 /* Small Mobile */
 @media (max-width: 480px) {
@@ -747,6 +838,19 @@ body.tcs-menu-open {
         const overlay = document.getElementById('tcsMobileOverlay');
         const dropdowns = document.querySelectorAll('.tcs-dropdown');
         
+        // Desktop row too wide for this window (zoom, fonts)? Use the compact menu instead of overlapping.
+        const wrapper = header.querySelector('.tcs-header-wrapper');
+        function fitHeader() {
+            header.classList.remove('tcs-compact');
+            if (window.innerWidth <= 1100) return;
+            const menu = nav.querySelector('.tcs-nav-menu');
+            if (wrapper.scrollWidth > wrapper.clientWidth + 1 || menu.scrollWidth > nav.clientWidth + 1) header.classList.add('tcs-compact');
+        }
+        fitHeader();
+        let fitQueued = false;
+        window.addEventListener('resize', function() { if (!fitQueued) { fitQueued = true; requestAnimationFrame(function() { fitQueued = false; fitHeader(); }); } });
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHeader);
+
         // Sticky Header
         let ticking = false;
         
