@@ -505,6 +505,22 @@ const thumb = (slug: string) => {
     }
 }
 
+/* Narrow desktops (1101-1365px, the owner's screen): keep the full desktop menu on one row
+   by tightening the logo, labels and button instead of switching to the off-canvas menu. */
+@media (min-width: 1101px) and (max-width: 1365px) {
+    .tcs-container { padding: 0 14px; }
+    .tcs-header-wrapper { gap: 10px; }
+    .tcs-logo a { gap: 8px; }
+    .tcs-logo-icon { width: 38px; height: 38px; }
+    .tcs-brand-the { font-size: 1rem; }
+    .tcs-brand-name { font-size: 1.22rem; letter-spacing: 0.5px; }
+    .tcs-nav-menu { gap: 0; }
+    .tcs-nav-menu > li > a { font-size: 0.86rem; padding: 8px 7px; }
+    .tcs-dropdown-arrow { font-size: 0.6rem; }
+    .tcs-header-actions { gap: 6px; }
+    .tcs-header-actions .tcs-btn { padding: 10px 13px; font-size: 0.8rem; letter-spacing: 0.3px; }
+}
+
 /* The same small-screen layout, switched on by script whenever the desktop row does not
    fit (browser zoom, wider system fonts). Owner saw the menu run into the logo, 2026-10-23. */
 .tcs-header.tcs-compact .tcs-header-wrapper {
@@ -843,13 +859,20 @@ body.tcs-menu-open {
         function fitHeader() {
             header.classList.remove('tcs-compact');
             if (window.innerWidth <= 1100) return;
-            const menu = nav.querySelector('.tcs-nav-menu');
-            if (wrapper.scrollWidth > wrapper.clientWidth + 1 || menu.scrollWidth > nav.clientWidth + 1) header.classList.add('tcs-compact');
+            // Compare the visible pieces only. scrollWidth also counts the hidden dropdown panels,
+            // which hang past the row at narrow widths and made this flip on and off.
+            const R = (sel) => header.querySelector(sel).getBoundingClientRect();
+            const logo = R('.tcs-logo'), menu = R('.tcs-nav-menu'), actions = R('.tcs-header-actions'), row = wrapper.getBoundingClientRect();
+            if (logo.right > menu.left + 1 || menu.right > actions.left + 1 || actions.right > row.right + 1) header.classList.add('tcs-compact');
         }
         fitHeader();
         let fitQueued = false;
         window.addEventListener('resize', function() { if (!fitQueued) { fitQueued = true; requestAnimationFrame(function() { fitQueued = false; fitHeader(); }); } });
         if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHeader);
+        // Measure again once everything (fonts, images, late CSS) has settled: an early pass can see a wider row.
+        window.addEventListener('load', fitHeader);
+        if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', fitHeader);
+        [600, 2000, 4000].forEach(function(t) { setTimeout(fitHeader, t); });
 
         // Sticky Header
         let ticking = false;
