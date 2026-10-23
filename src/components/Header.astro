@@ -330,6 +330,23 @@
 }
 
 /* Tablet Responsive */
+/* Desktop: logo, five menu items, phone and the quote button must fit on one row.
+   At 1101-1536px the 1200px container wrapped the menu labels onto two lines and pushed
+   the button past the edge (owner, 2026-10-23). */
+@media (min-width: 1101px) {
+    .tcs-header .tcs-container { max-width: 1400px; }
+    .tcs-header-wrapper { gap: 14px; }
+    .tcs-nav-menu { gap: 2px; }
+    .tcs-nav-menu > li > a { white-space: nowrap; padding: 8px 10px; font-size: 0.95rem; }
+    .tcs-header-actions { gap: 10px; }
+    .tcs-header-actions .tcs-btn { padding: 11px 18px; }
+}
+@media (min-width: 1101px) and (max-width: 1399px) {
+    /* Phone shows as an icon only; the number stays in the link for screen readers and taps. */
+    .tcs-phone { padding: 8px; }
+    .tcs-phone span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+
 @media (max-width: 1024px) {
     .tcs-nav-menu {
         gap: 18px;
