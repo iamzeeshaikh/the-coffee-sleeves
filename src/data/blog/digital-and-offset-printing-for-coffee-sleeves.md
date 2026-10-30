@@ -84,4 +84,4 @@ Both methods deserve the same proofing discipline. The steps below protect every
 
 The board-and-light check at step three catches the classic color surprise, since screens flatter every color they show. Keep the archived proof from step six with the job number, because reorders reference it for years.
 
-When your artwork and quantities are taking shape, [send them through the quote form](/get-quote/) for pricing both ways. We will lay out the coffee sleeve printing costs across digital and offset at your exact volumes, with samples before anything runs.
+When your artwork and quantities are taking shape, [send them through the quote form](/get-quote/) for pricing both ways. Runs up to 5,000 sleeves are a fixed $30.00 per 100 on the product pages; above that, we will lay out the coffee sleeve printing costs across digital and offset at your exact volumes before anything runs.

@@ -82,4 +82,4 @@ Selection comes down to matching construction and size to your cups and drinks. 
 5. Hand test with counter staff for one shift and collect complaints.
 6. Confirm the print options and case counts before the wholesale order.
 
-Sleeves in the [cup sleeves for hot drinks range](/product/cup-sleeves-for-hot-drinks/) publish their cup compatibility per format, which shortens step three considerably. When your full cup list is ready, send it over with your monthly volumes for a quote. We will match the sleeve constructions to how coffee cup sleeves work hardest in your own service, with samples included for your hand test.
+Sleeves in the [cup sleeves for hot drinks range](/product/cup-sleeves-for-hot-drinks/) publish their cup compatibility per format, which shortens step three considerably. When your full cup list is ready, order each size in packs of 100, or send it with your monthly volumes for a quote on larger runs. We will match the sleeve constructions to how coffee cup sleeves work hardest in your own service.

@@ -50,7 +50,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
   if (REQUIRED.some((k) => !v[k]) || !/^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/.test(v.email)) return json(422, { ok: false, error: 'Please fill in every required field' });
   const country = SHIP_COUNTRIES.find((c) => c.code === (v.country || 'US'));
-  if (!country) return json(422, { ok: false, error: 'Online orders ship within the US; ask for a quote for other countries' });
+  if (!country) return json(422, { ok: false, error: 'We ship to addresses in the United States only' });
   const method = PAYMENT_METHODS.find((m) => m.id === v.payment);
   if (!method) return json(422, { ok: false, error: 'Choose a payment method' });
 

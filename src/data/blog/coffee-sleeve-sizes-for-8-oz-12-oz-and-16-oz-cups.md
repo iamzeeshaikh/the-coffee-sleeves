@@ -80,4 +80,4 @@ The order sheet carries a short set of decisions:
 - Case quantities weighted by drink mix, because 12 oz sleeves run out first
 - A reorder trigger point noted per size before stock hits zero
 
-The weighted quantities matter more than they look. Even splits leave a mountain of small sleeves beside an empty standard case by month two. Browse the [full cup sleeve category](/product-category/cup-sleeves/) to match formats against your sheet. Then send the finished sheet over with your monthly volumes for a quote. We will confirm the coffee sleeve sizes against every cup on it and ship samples for your own slide test first.
+The weighted quantities matter more than they look. Even splits leave a mountain of small sleeves beside an empty standard case by month two. Browse the [full cup sleeve category](/product-category/cup-sleeves/) to match formats against your sheet. Then order each size from its product page in packs of 100, or send the finished sheet with your monthly volumes for a quote if you need more than 5,000 sleeves. We will check the coffee sleeve sizes against every cup on it on your digital proof.

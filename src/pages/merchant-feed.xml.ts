@@ -23,7 +23,9 @@ export function GET() {
     <g:brand>${x(site.name)}</g:brand>
     <g:identifier_exists>no</g:identifier_exists>
     <g:product_type>${x(p.categories.join(' > ') || 'Cup Sleeves')}</g:product_type>
-    <g:shipping><g:country>US</g:country><g:service>Free shipping</g:service><g:price>0.00 USD</g:price></g:shipping>
+    <g:shipping><g:country>US</g:country><g:service>Free shipping</g:service><g:price>0.00 USD</g:price><g:min_transit_time>3</g:min_transit_time><g:max_transit_time>7</g:max_transit_time></g:shipping>
+    <g:min_handling_time>7</g:min_handling_time>
+    <g:max_handling_time>10</g:max_handling_time>
   </item>`;
   }).join('\n');
   return new Response(`<?xml version="1.0" encoding="UTF-8"?>

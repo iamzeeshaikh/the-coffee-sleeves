@@ -5,17 +5,9 @@
  * with Organization and WebSite on the homepage only and no FAQPage anywhere
  * despite rendering FAQs on both the /faq page and every product page.
  *
- * Ratings: the old WordPress site emitted a 5/5 aggregateRating (one review)
- * on its product pages. It is restored like-for-like from
- * src/data/legacy-ratings.json, only on the product URLs the old site had.
- * The old Review node is not reproduced because its text and date were never
- * recorded.
+ * No aggregateRating or Review markup: the site has no collected reviews to show.
  */
 import site from '../data/site.json';
-import legacyRatings from '../data/legacy-ratings.json';
-
-const LEGACY_RATINGS: Record<string, { ratingValue: string; reviewCount: number }> =
-  legacyRatings.ratings;
 import type { Faq } from './site';
 import { PACK_PRICE_TEXT, PACK_QTY, PACK_LINE } from './order';
 
@@ -36,6 +28,14 @@ export function organization() {
     logo: `${site.url}/favicon-192x192.png`,
     email: site.email,
     telephone: '+1-503-461-4788',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+1-503-461-4788',
+      email: site.email,
+      contactType: 'customer service',
+      areaServed: 'US',
+      availableLanguage: 'en',
+    },
     address: {
       '@type': 'PostalAddress',
       streetAddress: site.address.street,
@@ -96,7 +96,8 @@ const SHIPPING_DETAILS = {
   shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
   deliveryTime: {
     '@type': 'ShippingDeliveryTime',
-    // Every sleeve is printed to order: the policy's custom-order time.
+    // Every sleeve is printed to order: 7-10 business days after proof approval,
+    // then 3-7 business days in transit (shipping policy, feed, product pages).
     handlingTime: {
       '@type': 'QuantitativeValue',
       minValue: 7,
@@ -112,13 +113,16 @@ const SHIPPING_DETAILS = {
   },
 };
 
+/**
+ * Printed to order: no change-of-mind returns. Defective, damaged or misprinted
+ * sleeves reported within 14 days of delivery are replaced or refunded (see
+ * /refund_returns/), which schema.org has no category for beyond "not permitted".
+ */
 const RETURN_POLICY = {
   '@type': 'MerchantReturnPolicy',
   applicableCountry: 'US',
-  returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-  merchantReturnDays: 10,
-  returnMethod: 'https://schema.org/ReturnByMail',
-  returnFees: 'https://schema.org/FreeReturn',
+  returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+  merchantReturnLink: `${site.url}/refund_returns/`,
 };
 
 /**
@@ -173,16 +177,6 @@ export function product(input: {
     description: input.description,
     brand: { '@type': 'Brand', name: site.name },
     ...(input.images.length ? { image: input.images } : {}),
-    // Rating carried over from the WordPress site (see the note at the top).
-    ...(LEGACY_RATINGS[input.url]
-      ? {
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: LEGACY_RATINGS[input.url].ratingValue,
-            reviewCount: LEGACY_RATINGS[input.url].reviewCount,
-          },
-        }
-      : {}),
     offers: {
       '@type': 'Offer',
       url: abs(input.url),

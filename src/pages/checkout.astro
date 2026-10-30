@@ -30,7 +30,7 @@ const cfg = { catalog, pack: PACK_PRICE, qty: PACK_QTY, max: MAX_PACKS };
             <label>State<input name="region" autocomplete="address-level1" required maxlength="60" /></label>
             <label>ZIP code<input name="postal" autocomplete="postal-code" required maxlength="20" /></label>
             <label>Country<select name="country">{SHIP_COUNTRIES.map((c) => <option value={c.code}>{c.name}</option>)}</select></label>
-            <p class="full tcs-co-small">Outside the US? <a href="/get-quote/">Ask for a quote</a> with your delivery country.</p>
+            <p class="full tcs-co-small">We ship to addresses in the United States only.</p>
           </fieldset>
           <fieldset>
             <legend>Artwork</legend>
